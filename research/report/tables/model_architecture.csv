@@ -1,0 +1,17 @@
+stage,operation,input_shape,output_shape,notes,source
+input,RGB observation,"[B,3,128,128]","[B,3,128,128]",RGB converted/resized to model resolution,va_research/models/v4/model.py
+visual_1,"Conv2d(3,32,3,stride=2,pad=1)+GroupNorm(8,32)+GELU","[B,3,128,128]","[B,32,64,64]",stride-2,va_research/models/v4/model.py
+visual_2,"Conv2d(32,64,3,stride=2,pad=1)+GroupNorm(8,64)+GELU","[B,32,64,64]","[B,64,32,32]",stride-2,va_research/models/v4/model.py
+visual_3,"Conv2d(64,128,3,stride=2,pad=1)+GroupNorm(8,128)+GELU","[B,64,32,32]","[B,128,16,16]",stride-2,va_research/models/v4/model.py
+visual_4,"Conv2d(128,256,3,stride=2,pad=1)+GroupNorm(8,256)+GELU","[B,128,16,16]","[B,256,8,8]",stride-2,va_research/models/v4/model.py
+visual_tokens,"flatten(8x8), transpose, learned position","[B,256,8,8]","[B,64,256]",64 spatial tokens,va_research/models/v4/model.py
+body_query,MLP 68->256->256 + LayerNorm + GELU,"[B,68]","[B,1,256]",query unsqueeze,va_research/models/v4/model.py
+grasp_query,MLP 68->256->256 + LayerNorm + GELU,"[B,68]","[B,1,256]",query unsqueeze,va_research/models/v4/model.py
+body_cross,4-head MultiheadAttention + residual/FF,"Q [B,1,256], V [B,64,256]","[B,256]",FF 256->512->256,va_research/models/v4/model.py
+grasp_cross,4-head MultiheadAttention + residual/FF,"Q [B,1,256], V [B,64,256]","[B,256]",FF 256->512->256,va_research/models/v4/model.py
+body_head,MLP 256->512->512; MLP 512->512->640,"[B,256]","[B,10,64]",10 body tokens,va_research/models/v4/model.py
+hand_state,MLP 28->128->128 + GELU,"[B,28]","[B,128]",current hand q/dq,va_research/models/v4/model.py
+hand_head,Linear 448->512; MLP 512->512->700,"[B,448]","[B,50,14]",50 hand references,va_research/models/v4/model.py
+phase_head,Linear 64->3,"[B,64]","[B,3]",phase logits,va_research/models/v4/model.py
+progress_head,Linear 64->1 + sigmoid,"[B,64]",[B],closure progress,va_research/models/v4/model.py
+grasp_ready_head,Linear 256->1,"[B,256]","[B,1]",V4.1 readiness logit,va_research/models/v4_1/model.py

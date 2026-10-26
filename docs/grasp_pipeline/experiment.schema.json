@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Grasp Phase B experiment v1",
+  "type": "object",
+  "required": ["schema_version", "artifact_type", "experiment_id", "config", "milestone", "stages", "training_authorized"],
+  "properties": {
+    "schema_version": {"const": 1}, "artifact_type": {"const": "experiment"},
+    "experiment_id": {"type": "string", "minLength": 1}, "config": {"type": "object"},
+    "training_authorized": {"const": false}, "milestone": {"type": "string"},
+    "stages": {
+      "type": "object", "required": ["compile", "dataset_build", "dataset_audit", "training"],
+      "additionalProperties": {"$ref": "#/$defs/stage"},
+      "properties": {"training": {"allOf": [{"$ref": "#/$defs/stage"}, {"properties": {"state": {"const": "NOT_STARTED"}}}]}}
+    }
+  },
+  "$defs": {"stage": {"type": "object", "required": ["state", "attempts"], "properties": {
+    "state": {"enum": ["NOT_STARTED", "RUNNING", "SUCCEEDED", "FAILED", "BLOCKED", "SKIPPED"]},
+    "attempts": {"type": "array", "items": {"type": "string"}}
+  }}}
+}

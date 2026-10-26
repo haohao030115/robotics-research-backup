@@ -1,0 +1,106 @@
+--- original/src/g1/g1_deploy_onnx_ref/include/robot_parameters.hpp
++++ instrumented/src/g1/g1_deploy_onnx_ref/include/robot_parameters.hpp
+@@ -38,6 +38,7 @@
+  * index (see G1JointIndex).
+  */
+ struct MotorCommand {
++    uint32_t canonical_decision_id = 0; // bookkeeping only; not a motor field
+     std::array<float, G1_NUM_MOTOR> q_target = {};   ///< Target position (rad).
+     std::array<float, G1_NUM_MOTOR> dq_target = {};  ///< Target velocity (rad/s).
+     std::array<float, G1_NUM_MOTOR> kp = {};          ///< Position gain (Nm/rad).
+--- original/src/g1/g1_deploy_onnx_ref/src/g1_deploy_onnx_ref.cpp
++++ instrumented/src/g1/g1_deploy_onnx_ref/src/g1_deploy_onnx_ref.cpp
+@@ -48,6 +48,7 @@
+  *   --motor-kd-scale      | Scale selected hardware motor Kd gains
+  */
+ #include <cmath>
++#include "canonical_trace.hpp"
+ #ifndef SONIC_MUSA
+ #include <cuda_runtime_api.h>
+ #endif
+@@ -275,6 +276,7 @@
+ 
+     std::array<double, 4> init_ref_data_root_rot_array_;
+ 
++    uint64_t canonical_frame_=0, canonical_playing_=0, canonical_observe_ns_=0, canonical_encode_start_=0, canonical_encode_end_=0;
+     DataBuffer<LowState_> low_state_buffer_;
+     DataBuffer<MotorCommand> motor_command_buffer_;
+     DataBuffer<IMUState_> imu_torso_buffer_;
+@@ -1674,12 +1676,14 @@
+       }
+ 
+       // Run encoder inference (handles CPU→GPU transfer, inference, GPU→CPU transfer)
++      canonical_encode_start_=canonical_ns();
+       if (!encoder_engine_->Encode()) {
+         std::cerr << "✗ Error: Encoder inference failed" << std::endl;
+         return false;
+       }
+ 
+       // Access encoded tokens from encoder's internal buffer (already populated by Encode)
++      canonical_encode_end_=canonical_ns();
+       auto& token_buffer = encoder_engine_->GetTokenBuffer();
+       const size_t token_dim = encoder_engine_->GetTokenDimension();
+       
+@@ -2721,6 +2725,12 @@
+           dds_low_command.motor_cmd().at(i).kd() = mc->kd.at(i);
+         }
+ 
++        static uint32_t canonical_publication_id=0;
++        dds_low_command.reserve()[0]=mc->canonical_decision_id;
++        dds_low_command.reserve()[1]=++canonical_publication_id;
++        auto& trace=canonical_stream(true);
++        const uint64_t header[]={mc->canonical_decision_id,canonical_publication_id,canonical_ns()};
++        trace.write(reinterpret_cast<const char*>(header),sizeof(header)); trace.flush();
+         dds_low_command.crc() = Crc32Core((uint32_t*)&dds_low_command, (sizeof(dds_low_command) >> 2) - 1);
+         lowcmd_publisher_->Write(dds_low_command);
+       }
+@@ -2863,6 +2873,7 @@
+         return false;
+       }
+       used_low_state_data_ = (low_state_data);
++      canonical_observe_ns_=canonical_ns();
+       used_imu_torso_data_ = (imu_data);
+       // robot state data
+       std::array<double, G1_NUM_MOTOR> body_q = {0.0};
+@@ -3149,6 +3160,8 @@
+      * (hardware order) using `g1_action_scale` and `default_angles`.
+      */
+     bool CreatePolicyCommand() {
++      const auto canonical_previous_action=last_action;
++      const auto canonical_decode_start=canonical_ns();
+       // Convert double observation to float and populate policy's internal input buffer
+       auto& obs_buffer_float = policy_engine_->GetInputBuffer();
+       for (size_t i = 0; i < obs_buffer_.size(); i++) { 
+@@ -3176,6 +3189,24 @@
+         motor_command_tmp.dq_target.at(i) = 0.0;
+       }
+       apply_motor_gain_scales(motor_gain_scales_, motor_command_tmp);
++      motor_command_tmp.canonical_decision_id=static_cast<uint32_t>(logging_counter_);
++      {
++        auto& trace=canonical_stream(false);
++        const auto ls=used_low_state_data_.data;
++        const uint64_t header[]={static_cast<uint64_t>(logging_counter_),ls->reserve()[0],ls->tick(),canonical_frame_,canonical_playing_,canonical_observe_ns_,canonical_encode_start_,canonical_encode_end_,canonical_decode_start,canonical_ns()};
++        trace.write(reinterpret_cast<const char*>(header),sizeof(header));
++        canonical_floats(trace,encoder_engine_->GetInputBuffer());
++        canonical_floats(trace,policy_engine_->GetInputBuffer());
++        canonical_floats(trace,encoder_engine_->GetTokenBuffer());
++        canonical_floats(trace,policy_engine_->GetActionBuffer());
++        canonical_floats(trace,canonical_previous_action);
++        canonical_floats(trace,motor_command_tmp.q_target);
++        canonical_floats(trace,motor_command_tmp.dq_target);
++        canonical_floats(trace,motor_command_tmp.kp);
++        canonical_floats(trace,motor_command_tmp.kd);
++        canonical_floats(trace,motor_command_tmp.tau_ff);
++        trace.flush();
++      }
+       motor_command_buffer_.SetData(motor_command_tmp);
+       return true;
+     }
+@@ -3961,6 +3992,7 @@
+             current_motion_copy = current_motion_;
+             current_encoder_mode_copy = current_motion_copy->GetEncodeMode();
+             current_play_copy = operator_state.play;
++            canonical_frame_=current_frame_copy; canonical_playing_=current_play_copy;
+ 
+             // reset saved frame for observation window before gathering observations so that we can get the latest value
+             saved_frame_for_observation_window_ = 0;

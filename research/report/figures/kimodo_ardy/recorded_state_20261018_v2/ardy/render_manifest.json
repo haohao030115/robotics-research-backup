@@ -1,0 +1,50 @@
+{
+  "producer": "ardy",
+  "scope": "representative_saved_state_replay",
+  "run": "/workspace/group2/outputs/unified_adapter_v2/joint_optimization_20261017/ardy_seed_batch_v4/ardy_center_seed12_calibrated_control/replay",
+  "source": "/workspace/group2/outputs/unified_adapter_v2/joint_optimization_20261017/ardy_seed_batch_v4/ardy_center_seed12_calibrated_control/replay/simulation.npz",
+  "source_sha256": "bcbfabd7bc20519da5a75d7e5840c9100bee297516b91a05e932ed029b24f72d",
+  "physics_sha256": "b342e87b99c3ecfa840d328981f81a543d9001eb302ab80760e671f4d2b8b856",
+  "result_sha256": "db300ca0f23fac59f7b877c3841b79d753d7d7f9dda300dea9d445eb8610a647",
+  "scene_sha256": "e3a92089bb550afdb3aca43a5a8c7fb75f483836cd7a466ef56e39d34aabc19d",
+  "robot_sha256": "72fa3c795c24fe357ae8725452f1487e0176847e191568ff5403322674f60c9c",
+  "camera": {
+    "azimuth": 215.0,
+    "elevation": -16.0,
+    "distance": 2.15,
+    "lookat": [
+      0.42,
+      0.02,
+      0.92
+    ]
+  },
+  "events": {
+    "approach": {
+      "frame": 306,
+      "time_s": 6.120000000003131
+    },
+    "grasp": {
+      "frame": 381,
+      "time_s": 7.620000000003898
+    },
+    "lift": {
+      "frame": 566,
+      "time_s": 11.320000000005791
+    },
+    "hold": {
+      "frame": 809,
+      "time_s": 16.180000000008278
+    }
+  },
+  "result": {
+    "physical_success": true,
+    "expert_valid": true,
+    "max_lift_m": 0.14588670960013206,
+    "max_hold_s": 4.8649999999999185,
+    "robot_table_contact_steps": 0,
+    "robot_self_contact_steps": 0
+  },
+  "mujoco_version": "3.14.0",
+  "physics_reexecuted": false,
+  "grasp_validation_performed": false
+}

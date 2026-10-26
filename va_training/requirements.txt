@@ -1,0 +1,5 @@
+# Runtime already provided by va-train; do not replace it with public CPU/CUDA wheels.
+torch==2.9.0
+torch_musa==2.9.0+8432052
+numpy>=1.24,<3
+# Tests use Python unittest. No torchvision, FlashAttention, Triton or downloads.

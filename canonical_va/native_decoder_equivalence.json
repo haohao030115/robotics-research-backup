@@ -1,0 +1,8 @@
+{
+  "purpose": "read-only historical decoder port equivalence; not new replay evidence",
+  "total": 818,
+  "matched": 818,
+  "max_absolute_error": 5.722462891100122e-06,
+  "atol": 0.0001,
+  "legacy_log_semantic": "Historical action row j+1 holds output from decoder input/token row j. New recorder stores current output immediately."
+}

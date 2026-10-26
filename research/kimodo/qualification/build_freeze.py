@@ -1,0 +1,19 @@
+"""Pre-run preparation only; never invoked by qualification entry point."""
+from pathlib import Path
+import json,hashlib
+workspace=Path(__file__).resolve().parents[3];r=Path(__file__).resolve().parents[1];sonic=Path(__import__('os').environ.get('SONIC_REPO', workspace/'GR00T-WholeBodyControl')).resolve();check=r.parent/'checkpoints/Kimodo-G1-RP-v1'
+allowed=['/usr','/lib','/lib64','/bin','/etc','/proc','/sys','/dev','/opt','/run',*[str(r/x) for x in ['code','tests','config','qualification','assets']],str(sonic),str(check)]
+prompts=['A standing person slowly raises the right hand outside the front edge of a table.','A standing person reaches the right hand over the table and lowers it beside a red cube.','A standing person steadily grasps a red cube with the right hand.','A standing person slowly lifts a red cube with the right hand.','A standing person holds a red cube steadily in the right hand above the table.']
+c=dict(mode='task9_qualification',case='center',seed=0,duration_s=16.2,source_fps=30,source_frames=487,reference_hz=50,reference_frames=810,reference_span_s=16.18,physics_hz=200,physical_gpu=1,model='Kimodo-G1-RP-v1',prompts=prompts,segmented=True,segment_frames=[120,120,60,60,127],model_api_call_count=1,expected_model_sampling_calls=5,num_denoising_steps=100,cfg=[2,4],transition_frames=5,native_postprocessing=False,warm_up=False,candidate_count=1,retry_count=0,manual_modification_count=0,text_encoder='shared generic pretrained LLM2Vec; authorized frozen copy; no ARDY grasp information',adapter=dict(mode='neutral-world-wrist',entry_blend_s=1.5,clearance_m=.03,clearance_blend_s=[4,7],lift_margin_m=0,contact_refine=True,approach_refine=True,refinement_blend_s=[1,2],position_halfwidth_m=.005,rotation_radius_rad=.04,maximum_position_correction_m=.10,calibration=None,offline_ik=True,runtime_ik=False,ik_iterations=60,ik_damping=.001,ik_max_step_rad=.1,ik_convergence=1e-5,orientation_weight=.3),task_constraints=dict(cube_center=[.4,-.15,.785],cube_side_m=.07,cube_mass_kg=.1,cube_friction=[.95,.01,.001],table_top_m=.75,canonical_wrist_offset_m=[.135,.065,0],canonical_wrist_orientation_xyz_rad=[-1.5707963267948966,0,0],lift_height_m=.18,phases={'initial':[0,1],'raise':[1,4],'cross':[4,6],'lower':[6,8],'close':[8,10],'lift':[10,12],'hold':[12,16.2]},right_hand_final_index_middle=[1.2]*4,right_hand_final_thumb=[0,-1,-1.25],constraint_keyframe_stride=6,fullbody_frames=[0,30]),sonic=dict(repo=str(sonic),mujoco_version='3.14.0',integrator='implicitfast',gravity=[0,0,-9.81],physics_dt=.005,policy_hz=50,hand_pd=[12,.3],thumb0_torque_limit=2.45,other_hand_torque_limit=1.4,support=False,weld=False,external_force=False,canonical_neutral='neutral_standing_v1',initial_pose_source='public canonical reset'),success=dict(cube_lift_m=.10,contact_force_N=1e-4,opposition='right thumb AND (right index OR right middle)',continuous_hold_s=2,no_cube_table_contact_during_hold=True,no_fall=True,no_support=True,no_weld=True,complete_finite_synchronized_unassisted_sonic=True),read_allowlist=allowed)
+if (r/'qualification/execution.json').exists():raise RuntimeError('Trial already started; refuse config build')
+(r/'config/frozen_config.json').write_text(json.dumps(c,indent=2)+'\n')
+files=[p for p in check.rglob('*') if p.is_file()]+list((sonic/'gear_sonic_deploy/policy/release').glob('*'))
+files += [sonic/'gear_sonic_deploy/target/release/g1_deploy_onnx_ref',sonic/'decoupled_wbc/control/robot_model/model_data/g1/g1_29dof_with_hand_rev_1_0_activatedfinger.xml']
+files += [p for p in (r/'assets/text_encoders').rglob('*') if p.is_file() and '/.cache/' not in str(p)]
+def sha(p):
+ h=hashlib.sha256()
+ with p.open('rb') as f:
+  for b in iter(lambda:f.read(1024*1024),b''):h.update(b)
+ return h.hexdigest()
+(r/'config/resource_hashes.json').write_text(json.dumps({str(p):sha(p) for p in files if p.is_file()},indent=2))
+print('Predeclared config and resources pinned')

@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Exact CanonicalV4 dataset v1", "type": "object",
+  "required": ["schema_version", "artifact_type", "dataset_id", "builder_version", "model", "sample_count", "tensors", "episodes", "builder_config", "builder_source_hashes", "files", "normalization_applied"],
+  "properties": {
+    "schema_version": {"const": 1}, "artifact_type": {"const": "v4_dataset"}, "model": {"const": "v4"},
+    "dataset_id": {"type": "string", "minLength": 1}, "builder_version": {"type": "string"},
+    "sample_count": {"type": "integer", "minimum": 1}, "normalization_applied": {"const": false},
+    "tensors": {"type": "object", "required": ["rgb", "body", "hand", "body_tokens", "hand_ref", "phase", "progress"]},
+    "episodes": {"type": "array", "minItems": 1, "items": {"type": "object", "required": ["episode_id", "canonical_artifact_id", "source_manifest", "sample_start", "sample_end", "sample_count", "metadata", "source_hashes", "baseline_report"]}},
+    "builder_config": {"type": "object"}, "builder_source_hashes": {"type": "object"},
+    "files": {"type": "object", "required": ["samples.npz", "split.json", "index.jsonl"], "additionalProperties": {"type": "string", "pattern": "^[0-9a-f]{64}$"}}
+  }
+}

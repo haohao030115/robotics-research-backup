@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Figure system_architecture.svg; source: docs/TECHNICAL_REPORT.md; docs/architecture_audit/PIPELINE_CALL_CHAINS.md; va_research/models/v4_1/model.py; data_factory/runtime; outputs/va_v4_1_kimodo_rule_20261009/closed_loop/provenance.json -->
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="860" viewBox="0 0 1600 860">
+<metadata>Source evidence: docs/TECHNICAL_REPORT.md; docs/architecture_audit/PIPELINE_CALL_CHAINS.md; va_research/models/v4_1/model.py; data_factory/runtime; outputs/va_v4_1_kimodo_rule_20261009/closed_loop/provenance.json</metadata>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#34495e"/></marker><marker id="arrowblue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2878b5"/></marker></defs>
+<rect x="0" y="0" width="1600" height="860" fill="#ffffff"/>
+<text x="40" y="45" font-family="DejaVu Sans,Arial,sans-serif" font-size="29px" font-weight="700" fill="#152238" text-anchor="start">Figure 1. End-to-end visual-action system architecture</text>
+<text x="40" y="75" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#516171" text-anchor="start">Evidence-backed architecture; execution gates and physical result are reported separately.</text>
+<rect x="45" y="130" width="220" height="180" rx="12" fill="#eef5fb" stroke="#2878b5" stroke-width="2"/>
+<text x="59" y="158" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#183b56" text-anchor="start">Motion producers</text>
+<text x="59" y="185" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">Kimodo prompt + checkpoint</text>
+<text x="59" y="206" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">ARDY segmented generator</text>
+<text x="59" y="227" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">Native reference trajectories</text>
+<rect x="325" y="130" width="220" height="180" rx="12" fill="#f1f7f2" stroke="#4b8a5a" stroke-width="2"/>
+<text x="339" y="158" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#183b56" text-anchor="start">Unified Adapter</text>
+<text x="339" y="185" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">50 Hz canonical body array</text>
+<text x="339" y="206" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">joint/frame calibration</text>
+<text x="339" y="227" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">provenance + stage hashes</text>
+<rect x="605" y="130" width="245" height="180" rx="12" fill="#fff8ec" stroke="#bd7b20" stroke-width="2"/>
+<text x="619" y="158" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#183b56" text-anchor="start">Canonical Data Factory</text>
+<text x="619" y="185" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">native replay + observations</text>
+<text x="619" y="206" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">timestamp/ID alignment</text>
+<text x="619" y="227" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">validation + immutable episode</text>
+<rect x="910" y="130" width="235" height="180" rx="12" fill="#f4effb" stroke="#7653a6" stroke-width="2"/>
+<text x="924" y="158" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#183b56" text-anchor="start">V4.1 VA training</text>
+<text x="924" y="185" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">RGB + body + hand inputs</text>
+<text x="924" y="206" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">cross-attention policy</text>
+<text x="924" y="227" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">auxiliary supervision</text>
+<rect x="1205" y="130" width="320" height="180" rx="12" fill="#fceff0" stroke="#b44351" stroke-width="2"/>
+<text x="1219" y="158" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#183b56" text-anchor="start">Checkpoint and offline gate</text>
+<text x="1219" y="185" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">checkpoint + dataset hashes</text>
+<text x="1219" y="206" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">token/hand/phase/progress metrics</text>
+<text x="1219" y="227" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">promotion before closed loop</text>
+<line x1="265" y1="220" x2="325" y2="220" stroke="#34495e" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="545" y1="220" x2="605" y2="220" stroke="#34495e" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="850" y1="220" x2="910" y2="220" stroke="#34495e" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="1145" y1="220" x2="1205" y2="220" stroke="#34495e" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="55" y="370" font-family="DejaVu Sans,Arial,sans-serif" font-size="20px" font-weight="700" fill="#152238" text-anchor="start">Online closed-loop path</text>
+<rect x="45" y="415" width="220" height="175" rx="12" fill="#eef5fb" stroke="#2878b5" stroke-width="2"/>
+<text x="59" y="443" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#183b56" text-anchor="start">RGB/state capture</text>
+<text x="59" y="470" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">head_rgb (10 Hz)</text>
+<text x="59" y="491" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">68D body + 28D hand</text>
+<text x="59" y="512" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">current observation IDs</text>
+<rect x="325" y="415" width="220" height="175" rx="12" fill="#f4effb" stroke="#7653a6" stroke-width="2"/>
+<text x="339" y="443" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#183b56" text-anchor="start">Inference and scheduler</text>
+<text x="339" y="470" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">V4.1 forward pass</text>
+<text x="339" y="491" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">10 body tokens + 50 hand refs</text>
+<text x="339" y="512" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">absolute tick PlanBuffer</text>
+<rect x="605" y="415" width="245" height="175" rx="12" fill="#fff8ec" stroke="#bd7b20" stroke-width="2"/>
+<text x="619" y="443" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#183b56" text-anchor="start">SONIC token handoff</text>
+<text x="619" y="470" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">64D post-FSQ token stream</text>
+<text x="619" y="491" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">native decoder/controller</text>
+<text x="619" y="512" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">hand PD reference path</text>
+<rect x="910" y="415" width="235" height="175" rx="12" fill="#f1f7f2" stroke="#4b8a5a" stroke-width="2"/>
+<text x="924" y="443" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#183b56" text-anchor="start">DDS and physics</text>
+<text x="924" y="470" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">50 Hz commands / 200 Hz physics</text>
+<text x="924" y="491" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">isolated DDS namespace</text>
+<text x="924" y="512" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">MuJoCo tabletop scene</text>
+<rect x="1205" y="415" width="320" height="175" rx="12" fill="#fceff0" stroke="#b44351" stroke-width="2"/>
+<text x="1219" y="443" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#183b56" text-anchor="start">Evaluation and diagnostics</text>
+<text x="1219" y="470" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">scheduler integrity</text>
+<text x="1219" y="491" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">contacts / lift / hold / fall</text>
+<text x="1219" y="512" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">MTT S4000 renderer evidence</text>
+<line x1="265" y1="505" x2="325" y2="505" stroke="#34495e" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="545" y1="505" x2="605" y2="505" stroke="#34495e" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="850" y1="505" x2="910" y2="505" stroke="#34495e" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="1145" y1="505" x2="1205" y2="505" stroke="#34495e" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="1340" y1="310" x2="1340" y2="405" stroke="#7a8791" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#arrow)"/>
+<text x="1360" y="360" font-family="DejaVu Sans,Arial,sans-serif" font-size="14px" font-weight="400" fill="#6c7780" text-anchor="start">promote only if gate passes</text>
+<text x="45" y="690" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#152238" text-anchor="start">Recorded result for representative V4.1 rollout</text>
+<rect x="45" y="715" width="430" height="95" rx="12" fill="#eaf7ef" stroke="#4b8a5a" stroke-width="2"/>
+<text x="59" y="743" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#183b56" text-anchor="start">Runtime integrity</text>
+<text x="59" y="770" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">810/810 ticks; uncovered=0; strict_runtime_pass=true</text>
+<rect x="500" y="715" width="500" height="95" rx="12" fill="#fff1f0" stroke="#b44351" stroke-width="2"/>
+<text x="514" y="743" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#183b56" text-anchor="start">Physical task result</text>
+<text x="514" y="770" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">physical_grasp_success=false; max lift=0.019827 m; hold=0 s</text>
+<rect x="1025" y="715" width="500" height="95" rx="12" fill="#f7f7f7" stroke="#65737e" stroke-width="2"/>
+<text x="1039" y="743" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#183b56" text-anchor="start">Interpretation</text>
+<text x="1039" y="770" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">Complete runtime trace, failed physical lift criterion</text>
+</svg>

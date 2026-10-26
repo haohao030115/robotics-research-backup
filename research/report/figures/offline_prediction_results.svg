@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Figure offline_prediction_results.svg; source: outputs/va_v4_1_kimodo_rule_20261009/offline_metrics.json -->
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="880" viewBox="0 0 1500 880">
+<metadata>Source evidence: outputs/va_v4_1_kimodo_rule_20261009/offline_metrics.json</metadata>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#34495e"/></marker><marker id="arrowblue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2878b5"/></marker></defs>
+<rect x="0" y="0" width="1500" height="880" fill="#ffffff"/>
+<text x="40" y="45" font-family="DejaVu Sans,Arial,sans-serif" font-size="29px" font-weight="700" fill="#152238" text-anchor="start">Figure 13. Offline prediction results</text>
+<text x="40" y="75" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#516171" text-anchor="start">Metrics are read from the final V4.1 offline_metrics.json; values are not physical-task results.</text>
+<text x="60" y="145" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#152238" text-anchor="start">Final checkpoint metrics</text>
+<text x="60" y="212" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="700" fill="#203a50" text-anchor="start">token MAE</text>
+<rect x="300" y="190" width="317.89196468889713" height="34" rx="5" fill="#2878b5" stroke="#ffffff" stroke-width="1"/>
+<text x="1075" y="214" font-family="DejaVu Sans,Arial,sans-serif" font-size="14px" font-weight="700" fill="#203a50" text-anchor="start">0.004182789</text>
+<text x="60" y="282" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="700" fill="#203a50" text-anchor="start">hand MAE</text>
+<rect x="300" y="260" width="224.5405688881874" height="34" rx="5" fill="#2878b5" stroke="#ffffff" stroke-width="1"/>
+<text x="1075" y="284" font-family="DejaVu Sans,Arial,sans-serif" font-size="14px" font-weight="700" fill="#203a50" text-anchor="start">0.002954481</text>
+<text x="60" y="352" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="700" fill="#203a50" text-anchor="start">progress MAE</text>
+<rect x="300" y="330" width="330.3556703031063" height="34" rx="5" fill="#2878b5" stroke="#ffffff" stroke-width="1"/>
+<text x="1075" y="354" font-family="DejaVu Sans,Arial,sans-serif" font-size="14px" font-weight="700" fill="#203a50" text-anchor="start">0.004346785</text>
+<text x="60" y="422" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="700" fill="#203a50" text-anchor="start">FSQ scalar accuracy</text>
+<rect x="300" y="400" width="751.7466974258423" height="34" rx="5" fill="#4b8a5a" stroke="#ffffff" stroke-width="1"/>
+<text x="1075" y="424" font-family="DejaVu Sans,Arial,sans-serif" font-size="14px" font-weight="700" fill="#203a50" text-anchor="start">0.989140391</text>
+<text x="60" y="492" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="700" fill="#203a50" text-anchor="start">whole token exact accuracy</text>
+<rect x="300" y="470" width="424.89672660827637" height="34" rx="5" fill="#4b8a5a" stroke="#ffffff" stroke-width="1"/>
+<text x="1075" y="494" font-family="DejaVu Sans,Arial,sans-serif" font-size="14px" font-weight="700" fill="#203a50" text-anchor="start">0.559074640</text>
+<text x="60" y="562" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="700" fill="#203a50" text-anchor="start">phase accuracy</text>
+<rect x="300" y="540" width="754.7133183479309" height="34" rx="5" fill="#4b8a5a" stroke="#ffffff" stroke-width="1"/>
+<text x="1075" y="564" font-family="DejaVu Sans,Arial,sans-serif" font-size="14px" font-weight="700" fill="#203a50" text-anchor="start">0.993043840</text>
+<text x="60" y="650" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#152238" text-anchor="start">Body-token MAE by horizon (10 future token slots)</text>
+<line x1="120" y1="820" x2="120" y2="690" stroke="#34495e" stroke-width="2" marker-end=""/>
+<line x1="120" y1="820" x2="1360" y2="820" stroke="#34495e" stroke-width="2" marker-end=""/>
+<line x1="244.0" y1="820" x2="244.0" y2="690" stroke="#e1e6eb" stroke-width="1" stroke-dasharray="4 4" marker-end=""/>
+<text x="244.0" y="842" font-family="DejaVu Sans,Arial,sans-serif" font-size="12px" font-weight="400" fill="#516171" text-anchor="middle">1</text>
+<line x1="368.0" y1="820" x2="368.0" y2="690" stroke="#e1e6eb" stroke-width="1" stroke-dasharray="4 4" marker-end=""/>
+<text x="368.0" y="842" font-family="DejaVu Sans,Arial,sans-serif" font-size="12px" font-weight="400" fill="#516171" text-anchor="middle">2</text>
+<line x1="492.0" y1="820" x2="492.0" y2="690" stroke="#e1e6eb" stroke-width="1" stroke-dasharray="4 4" marker-end=""/>
+<text x="492.0" y="842" font-family="DejaVu Sans,Arial,sans-serif" font-size="12px" font-weight="400" fill="#516171" text-anchor="middle">3</text>
+<line x1="616.0" y1="820" x2="616.0" y2="690" stroke="#e1e6eb" stroke-width="1" stroke-dasharray="4 4" marker-end=""/>
+<text x="616.0" y="842" font-family="DejaVu Sans,Arial,sans-serif" font-size="12px" font-weight="400" fill="#516171" text-anchor="middle">4</text>
+<line x1="740.0" y1="820" x2="740.0" y2="690" stroke="#e1e6eb" stroke-width="1" stroke-dasharray="4 4" marker-end=""/>
+<text x="740.0" y="842" font-family="DejaVu Sans,Arial,sans-serif" font-size="12px" font-weight="400" fill="#516171" text-anchor="middle">5</text>
+<line x1="864.0" y1="820" x2="864.0" y2="690" stroke="#e1e6eb" stroke-width="1" stroke-dasharray="4 4" marker-end=""/>
+<text x="864.0" y="842" font-family="DejaVu Sans,Arial,sans-serif" font-size="12px" font-weight="400" fill="#516171" text-anchor="middle">6</text>
+<line x1="988.0" y1="820" x2="988.0" y2="690" stroke="#e1e6eb" stroke-width="1" stroke-dasharray="4 4" marker-end=""/>
+<text x="988.0" y="842" font-family="DejaVu Sans,Arial,sans-serif" font-size="12px" font-weight="400" fill="#516171" text-anchor="middle">7</text>
+<line x1="1112.0" y1="820" x2="1112.0" y2="690" stroke="#e1e6eb" stroke-width="1" stroke-dasharray="4 4" marker-end=""/>
+<text x="1112.0" y="842" font-family="DejaVu Sans,Arial,sans-serif" font-size="12px" font-weight="400" fill="#516171" text-anchor="middle">8</text>
+<line x1="1236.0" y1="820" x2="1236.0" y2="690" stroke="#e1e6eb" stroke-width="1" stroke-dasharray="4 4" marker-end=""/>
+<text x="1236.0" y="842" font-family="DejaVu Sans,Arial,sans-serif" font-size="12px" font-weight="400" fill="#516171" text-anchor="middle">9</text>
+<line x1="1360.0" y1="820" x2="1360.0" y2="690" stroke="#e1e6eb" stroke-width="1" stroke-dasharray="4 4" marker-end=""/>
+<text x="1360.0" y="842" font-family="DejaVu Sans,Arial,sans-serif" font-size="12px" font-weight="400" fill="#516171" text-anchor="middle">10</text>
+<line x1="120" y1="820.0" x2="1360" y2="820.0" stroke="#e1e6eb" stroke-width="1" stroke-dasharray="4 4" marker-end=""/>
+<text x="110" y="824.0" font-family="DejaVu Sans,Arial,sans-serif" font-size="12px" font-weight="400" fill="#516171" text-anchor="end">0</text>
+<line x1="120" y1="794.4633267995968" x2="1360" y2="794.4633267995968" stroke="#e1e6eb" stroke-width="1" stroke-dasharray="4 4" marker-end=""/>
+<text x="110" y="798.4633267995968" font-family="DejaVu Sans,Arial,sans-serif" font-size="12px" font-weight="400" fill="#516171" text-anchor="end">0.001</text>
+<line x1="120" y1="768.9266535991936" x2="1360" y2="768.9266535991936" stroke="#e1e6eb" stroke-width="1" stroke-dasharray="4 4" marker-end=""/>
+<text x="110" y="772.9266535991936" font-family="DejaVu Sans,Arial,sans-serif" font-size="12px" font-weight="400" fill="#516171" text-anchor="end">0.002</text>
+<line x1="120" y1="743.3899803987904" x2="1360" y2="743.3899803987904" stroke="#e1e6eb" stroke-width="1" stroke-dasharray="4 4" marker-end=""/>
+<text x="110" y="747.3899803987904" font-family="DejaVu Sans,Arial,sans-serif" font-size="12px" font-weight="400" fill="#516171" text-anchor="end">0.003</text>
+<line x1="120" y1="717.8533071983873" x2="1360" y2="717.8533071983873" stroke="#e1e6eb" stroke-width="1" stroke-dasharray="4 4" marker-end=""/>
+<text x="110" y="721.8533071983873" font-family="DejaVu Sans,Arial,sans-serif" font-size="12px" font-weight="400" fill="#516171" text-anchor="end">0.004</text>
+<line x1="120" y1="692.316633997984" x2="1360" y2="692.316633997984" stroke="#e1e6eb" stroke-width="1" stroke-dasharray="4 4" marker-end=""/>
+<text x="110" y="696.316633997984" font-family="DejaVu Sans,Arial,sans-serif" font-size="12px" font-weight="400" fill="#516171" text-anchor="end">0.005</text>
+<text x="740.0" y="868" font-family="DejaVu Sans,Arial,sans-serif" font-size="14px" font-weight="700" fill="#203a50" text-anchor="middle">future slot</text>
+<text x="65" y="755.0" font-family="DejaVu Sans,Arial,sans-serif" font-size="14px" font-weight="700" fill="#203a50" text-anchor="middle">body MAE</text>
+<path d="M 244.0,713.7 L 368.0,712.4 L 492.0,713.0 L 616.0,716.0 L 740.0,716.6 L 864.0,715.6 L 988.0,714.8 L 1112.0,711.7 L 1236.0,711.1 L 1360.0,707.0" fill="none" stroke="#7653a6" stroke-width="3"/>
+<circle cx="244.0" cy="713.7" r="5" fill="#7653a6"/>
+<circle cx="368.0" cy="712.4" r="5" fill="#7653a6"/>
+<circle cx="492.0" cy="713.0" r="5" fill="#7653a6"/>
+<circle cx="616.0" cy="716.0" r="5" fill="#7653a6"/>
+<circle cx="740.0" cy="716.6" r="5" fill="#7653a6"/>
+<circle cx="864.0" cy="715.6" r="5" fill="#7653a6"/>
+<circle cx="988.0" cy="714.8" r="5" fill="#7653a6"/>
+<circle cx="1112.0" cy="711.7" r="5" fill="#7653a6"/>
+<circle cx="1236.0" cy="711.1" r="5" fill="#7653a6"/>
+<circle cx="1360.0" cy="707.0" r="5" fill="#7653a6"/>
+<text x="60" y="875" font-family="DejaVu Sans,Arial,sans-serif" font-size="13px" font-weight="400" fill="#516171" text-anchor="start">Source metrics include token_mse, moving_right_hand_mae and confusion matrix in offline_metrics.json.</text>
+</svg>

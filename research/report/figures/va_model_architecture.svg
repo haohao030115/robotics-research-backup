@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Figure va_model_architecture.svg; source: va_research/models/v4/model.py; va_research/models/v4_1/model.py; outputs/va_v4_1_kimodo_rule_20261009/training_status.json -->
+<svg xmlns="http://www.w3.org/2000/svg" width="1700" height="1060" viewBox="0 0 1700 1060">
+<metadata>Source evidence: va_research/models/v4/model.py; va_research/models/v4_1/model.py; outputs/va_v4_1_kimodo_rule_20261009/training_status.json</metadata>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#34495e"/></marker><marker id="arrowblue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2878b5"/></marker></defs>
+<rect x="0" y="0" width="1700" height="1060" fill="#ffffff"/>
+<text x="40" y="45" font-family="DejaVu Sans,Arial,sans-serif" font-size="29px" font-weight="700" fill="#152238" text-anchor="start">Figure 6. Final V4.1 VA model architecture and tensor dimensions</text>
+<text x="40" y="75" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#516171" text-anchor="start">V4.1 extends V4 with a grasp-readiness head; checkpoint reports 3,502,977 parameters.</text>
+<text x="40" y="125" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#203a50" text-anchor="start">Visual encoder</text>
+<rect x="40" y="150" width="330" height="66" rx="12" fill="#eef5fb" stroke="#2878b5" stroke-width="2"/>
+<text x="54" y="178" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#203a50" text-anchor="start">RGB</text>
+<text x="54" y="205" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">[B,3,128,128]</text>
+<rect x="40" y="232" width="330" height="66" rx="12" fill="#eef5fb" stroke="#2878b5" stroke-width="2"/>
+<text x="54" y="260" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#203a50" text-anchor="start">Conv2d 3→32, k3,s2 + GN(8) + GELU</text>
+<text x="54" y="287" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">[B,32,64,64]</text>
+<rect x="40" y="314" width="330" height="66" rx="12" fill="#eef5fb" stroke="#2878b5" stroke-width="2"/>
+<text x="54" y="342" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#203a50" text-anchor="start">Conv2d 32→64, k3,s2 + GN(8) + GELU</text>
+<text x="54" y="369" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">[B,64,32,32]</text>
+<rect x="40" y="396" width="330" height="66" rx="12" fill="#eef5fb" stroke="#2878b5" stroke-width="2"/>
+<text x="54" y="424" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#203a50" text-anchor="start">Conv2d 64→128, k3,s2 + GN(8) + GELU</text>
+<text x="54" y="451" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">[B,128,16,16]</text>
+<rect x="40" y="478" width="330" height="66" rx="12" fill="#eef5fb" stroke="#2878b5" stroke-width="2"/>
+<text x="54" y="506" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#203a50" text-anchor="start">Conv2d 128→256, k3,s2 + GN(8) + GELU</text>
+<text x="54" y="533" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">[B,256,8,8]</text>
+<rect x="40" y="560" width="330" height="66" rx="12" fill="#eef5fb" stroke="#2878b5" stroke-width="2"/>
+<text x="54" y="588" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#203a50" text-anchor="start">Flatten(8×8), transpose + learned position</text>
+<text x="54" y="615" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">[B,64,256]</text>
+<line x1="205" y1="216" x2="205" y2="230" stroke="#2878b5" stroke-width="2" marker-end="url(#arrowblue)"/>
+<line x1="205" y1="298" x2="205" y2="312" stroke="#2878b5" stroke-width="2" marker-end="url(#arrowblue)"/>
+<line x1="205" y1="380" x2="205" y2="394" stroke="#2878b5" stroke-width="2" marker-end="url(#arrowblue)"/>
+<line x1="205" y1="462" x2="205" y2="476" stroke="#2878b5" stroke-width="2" marker-end="url(#arrowblue)"/>
+<line x1="205" y1="544" x2="205" y2="558" stroke="#2878b5" stroke-width="2" marker-end="url(#arrowblue)"/>
+<rect x="445" y="150" width="250" height="110" rx="12" fill="#fff8ec" stroke="#bd7b20" stroke-width="2"/>
+<text x="459" y="178" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#183b56" text-anchor="start">Body input</text>
+<text x="459" y="205" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">[B,68] normalized</text>
+<text x="459" y="226" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">MLP 68→256→256</text>
+<rect x="445" y="310" width="250" height="110" rx="12" fill="#fff8ec" stroke="#bd7b20" stroke-width="2"/>
+<text x="459" y="338" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#183b56" text-anchor="start">Grasp query input</text>
+<text x="459" y="365" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">same [B,68] normalized</text>
+<text x="459" y="386" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">MLP 68→256→256</text>
+<rect x="760" y="150" width="290" height="110" rx="12" fill="#f4effb" stroke="#7653a6" stroke-width="2"/>
+<text x="774" y="178" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#183b56" text-anchor="start">Body cross-attention</text>
+<text x="774" y="205" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">Q=[B,1,256], V=[B,64,256]</text>
+<text x="774" y="226" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">4 heads, LayerNorm + FF 256→512→256</text>
+<rect x="760" y="310" width="290" height="110" rx="12" fill="#f4effb" stroke="#7653a6" stroke-width="2"/>
+<text x="774" y="338" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#183b56" text-anchor="start">Grasp cross-attention</text>
+<text x="774" y="365" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">Q=[B,1,256], V=[B,64,256]</text>
+<text x="774" y="386" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">4 heads, LayerNorm + FF 256→512→256</text>
+<line x1="370" y1="520" x2="760" y2="205" stroke="#34495e" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="370" y1="520" x2="760" y2="365" stroke="#34495e" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="695" y1="205" x2="760" y2="205" stroke="#34495e" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="695" y1="365" x2="760" y2="365" stroke="#34495e" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="1110" y="120" width="250" height="135" rx="12" fill="#eaf7ef" stroke="#4b8a5a" stroke-width="2"/>
+<text x="1124" y="148" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#183b56" text-anchor="start">Body path</text>
+<text x="1124" y="175" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">MLP 256→512→512</text>
+<text x="1124" y="196" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">MLP 512→512→640</text>
+<text x="1124" y="217" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">reshape body_tokens</text>
+<text x="1124" y="238" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">[B,10,64]</text>
+<rect x="1110" y="285" width="250" height="155" rx="12" fill="#eaf7ef" stroke="#4b8a5a" stroke-width="2"/>
+<text x="1124" y="313" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#183b56" text-anchor="start">Hand path</text>
+<text x="1124" y="340" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">hand state [B,28] → 128</text>
+<text x="1124" y="361" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">phase feature 256→64</text>
+<text x="1124" y="382" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">concat [B,448]</text>
+<text x="1124" y="403" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">MLP → 700; reshape</text>
+<text x="1124" y="424" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">hand_ref [B,50,14]</text>
+<rect x="1110" y="470" width="250" height="115" rx="12" fill="#fceff0" stroke="#b44351" stroke-width="2"/>
+<text x="1124" y="498" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#183b56" text-anchor="start">Auxiliary heads</text>
+<text x="1124" y="525" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">phase: 64→3 logits</text>
+<text x="1124" y="546" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">progress: 64→1 sigmoid</text>
+<text x="1124" y="567" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">V4.1 readiness: 256→1 logit</text>
+<line x1="1050" y1="205" x2="1110" y2="205" stroke="#34495e" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="1050" y1="365" x2="1110" y2="365" stroke="#34495e" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="1050" y1="365" x2="1110" y2="520" stroke="#34495e" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="40" y="740" font-family="DejaVu Sans,Arial,sans-serif" font-size="19px" font-weight="700" fill="#152238" text-anchor="start">Parameter and interface evidence</text>
+<rect x="40" y="775" width="420" height="100" rx="12" fill="#f7f9fb" stroke="#7a8791" stroke-width="2"/>
+<text x="54" y="803" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#203a50" text-anchor="start">Inputs</text>
+<text x="54" y="830" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">RGB [B,3,128,128]; body [B,68]; hand [B,28]</text>
+<rect x="500" y="775" width="420" height="100" rx="12" fill="#f7f9fb" stroke="#7a8791" stroke-width="2"/>
+<text x="514" y="803" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#203a50" text-anchor="start">Outputs</text>
+<text x="514" y="830" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">body_tokens [B,10,64]; hand_ref [B,50,14]</text>
+<rect x="960" y="775" width="400" height="100" rx="12" fill="#f7f9fb" stroke="#7a8791" stroke-width="2"/>
+<text x="974" y="803" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#203a50" text-anchor="start">Recorded checkpoint</text>
+<text x="974" y="830" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">50 epochs; 3,502,977 parameters; V4.1 checkpoint.pt</text>
+<text x="40" y="970" font-family="DejaVu Sans,Arial,sans-serif" font-size="14px" font-weight="400" fill="#516171" text-anchor="start">No observation history is consumed by the model; temporal context is represented by target horizons and absolute scheduling.</text>
+</svg>

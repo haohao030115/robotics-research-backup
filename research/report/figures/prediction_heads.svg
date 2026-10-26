@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Figure prediction_heads.svg; source: va_research/models/v4/model.py; va_research/models/v4_1/model.py -->
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="820" viewBox="0 0 1500 820">
+<metadata>Source evidence: va_research/models/v4/model.py; va_research/models/v4_1/model.py</metadata>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#34495e"/></marker><marker id="arrowblue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2878b5"/></marker></defs>
+<rect x="0" y="0" width="1500" height="820" fill="#ffffff"/>
+<text x="40" y="45" font-family="DejaVu Sans,Arial,sans-serif" font-size="29px" font-weight="700" fill="#152238" text-anchor="start">Figure 8. Body, hand and auxiliary prediction heads</text>
+<text x="40" y="75" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#516171" text-anchor="start">All outputs are explicit tensors consumed by training or the closed-loop scheduler.</text>
+<rect x="60" y="170" width="240" height="120" rx="12" fill="#f4effb" stroke="#7653a6" stroke-width="2"/>
+<text x="74" y="198" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#183b56" text-anchor="start">Body context</text>
+<text x="74" y="225" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">[B,256]</text>
+<text x="74" y="246" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">body_feature 256→512→512</text>
+<rect x="60" y="420" width="240" height="120" rx="12" fill="#f4effb" stroke="#7653a6" stroke-width="2"/>
+<text x="74" y="448" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#183b56" text-anchor="start">Grasp context</text>
+<text x="74" y="475" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">[B,256]</text>
+<text x="74" y="496" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">phase feature -&gt; [B,64]</text>
+<rect x="60" y="650" width="240" height="100" rx="12" fill="#fff8ec" stroke="#bd7b20" stroke-width="2"/>
+<text x="74" y="678" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#183b56" text-anchor="start">Hand state</text>
+<text x="74" y="705" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">[B,28] -&gt; [B,128]</text>
+<rect x="430" y="120" width="330" height="200" rx="12" fill="#eaf7ef" stroke="#4b8a5a" stroke-width="2"/>
+<text x="444" y="148" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#183b56" text-anchor="start">Body prediction head</text>
+<text x="444" y="175" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">MLP 512→512→640</text>
+<text x="444" y="196" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">reshape 640 = 10 × 64</text>
+<text x="444" y="217" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">body_tokens [B,10,64]</text>
+<text x="444" y="238" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">post-FSQ SONIC token target</text>
+<rect x="430" y="395" width="330" height="230" rx="12" fill="#eaf7ef" stroke="#4b8a5a" stroke-width="2"/>
+<text x="444" y="423" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#183b56" text-anchor="start">Hand prediction head</text>
+<text x="444" y="450" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">concat grasp [256] + phase [64] + hand [128]</text>
+<text x="444" y="471" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">input [B,448]</text>
+<text x="444" y="492" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">Linear 448→512→GELU</text>
+<text x="444" y="513" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">MLP 512→512→700</text>
+<text x="444" y="534" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">reshape 700 = 50 × 14</text>
+<text x="444" y="555" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">hand_ref [B,50,14]</text>
+<rect x="430" y="690" width="330" height="90" rx="12" fill="#fceff0" stroke="#b44351" stroke-width="2"/>
+<text x="444" y="718" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#183b56" text-anchor="start">Auxiliary outputs</text>
+<text x="444" y="745" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">phase logits [B,3]</text>
+<text x="444" y="766" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">progress sigmoid [B]</text>
+<rect x="930" y="180" width="390" height="150" rx="12" fill="#fceff0" stroke="#b44351" stroke-width="2"/>
+<text x="944" y="208" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#183b56" text-anchor="start">Grasp-readiness output (V4.1)</text>
+<text x="944" y="235" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">grasp_ready_head: Linear(256,1)</text>
+<text x="944" y="256" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">logit [B,1]</text>
+<text x="944" y="277" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">used as trigger/readiness training signal</text>
+<rect x="930" y="420" width="390" height="180" rx="12" fill="#fff8ec" stroke="#bd7b20" stroke-width="2"/>
+<text x="944" y="448" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#183b56" text-anchor="start">Scheduler interpretation</text>
+<text x="944" y="475" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">body token horizon = 10 slots</text>
+<text x="944" y="496" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">hand reference horizon = 50 slots</text>
+<text x="944" y="517" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">plans begin every 5 control ticks</text>
+<text x="944" y="538" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">absolute tick identity checked at consumption</text>
+<line x1="300" y1="230" x2="430" y2="220" stroke="#34495e" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="300" y1="475" x2="430" y2="500" stroke="#34495e" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="300" y1="700" x2="430" y2="510" stroke="#34495e" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="760" y1="220" x2="930" y2="220" stroke="#34495e" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="760" y1="500" x2="930" y2="500" stroke="#34495e" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="760" y1="735" x2="930" y2="500" stroke="#34495e" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="60" y="790" font-family="DejaVu Sans,Arial,sans-serif" font-size="14px" font-weight="400" fill="#516171" text-anchor="start">Source: va_research/models/v4/model.py and va_research/models/v4_1/model.py</text>
+</svg>

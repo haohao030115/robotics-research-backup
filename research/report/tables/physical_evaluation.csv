@@ -1,0 +1,18 @@
+metric,value,source
+physical_grasp_success,False,outputs/va_v4_1_kimodo_rule_20261009/closed_loop/report.json
+max_lift_m,0.019827474547440938,outputs/va_v4_1_kimodo_rule_20261009/closed_loop/report.json
+final_lift_m,-0.00010775542021634887,outputs/va_v4_1_kimodo_rule_20261009/closed_loop/report.json
+max_continuous_hold_s,0.0,outputs/va_v4_1_kimodo_rule_20261009/closed_loop/report.json
+recorded_ticks,810,outputs/va_v4_1_kimodo_rule_20261009/closed_loop/report.json
+expected_ticks,810,outputs/va_v4_1_kimodo_rule_20261009/closed_loop/report.json
+uncovered_ticks,0,outputs/va_v4_1_kimodo_rule_20261009/closed_loop/report.json
+repeated_ticks,0,outputs/va_v4_1_kimodo_rule_20261009/closed_loop/report.json
+skipped_ticks,0,outputs/va_v4_1_kimodo_rule_20261009/closed_loop/report.json
+deadline_misses,1,outputs/va_v4_1_kimodo_rule_20261009/closed_loop/report.json
+strict_runtime_pass,True,outputs/va_v4_1_kimodo_rule_20261009/closed_loop/report.json
+robot_table_contact_steps,107,outputs/va_v4_1_kimodo_rule_20261009/closed_loop/report.json
+robot_self_contact_steps,640,outputs/va_v4_1_kimodo_rule_20261009/closed_loop/report.json
+fall_steps,0,outputs/va_v4_1_kimodo_rule_20261009/closed_loop/report.json
+minimum_lift_threshold_m,0.1,outputs/va_v4_1_kimodo_rule_20261009/closed_loop/report.json
+minimum_hold_threshold_s,2.0,outputs/va_v4_1_kimodo_rule_20261009/closed_loop/report.json
+renderer,MTT S4000,outputs/va_v4_1_kimodo_rule_20261009/closed_loop/renderer_worker.json

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Figure dataset_structure.svg; source: docs/TECHNICAL_REPORT.md; docs/architecture_audit/PIPELINE_CALL_CHAINS.md; va_research/models/v4_1/model.py; data_factory/runtime; outputs/va_v4_1_kimodo_rule_20261009/closed_loop/provenance.json -->
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="780" viewBox="0 0 1500 780">
+<metadata>Source evidence: docs/TECHNICAL_REPORT.md; docs/architecture_audit/PIPELINE_CALL_CHAINS.md; va_research/models/v4_1/model.py; data_factory/runtime; outputs/va_v4_1_kimodo_rule_20261009/closed_loop/provenance.json</metadata>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#34495e"/></marker><marker id="arrowblue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2878b5"/></marker></defs>
+<rect x="0" y="0" width="1500" height="780" fill="#ffffff"/>
+<text x="40" y="45" font-family="DejaVu Sans,Arial,sans-serif" font-size="29px" font-weight="700" fill="#152238" text-anchor="start">Figure 5. Canonical episode format and VA supervision construction</text>
+<text x="40" y="75" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#516171" text-anchor="start">One row binds current observation tensors to future SONIC and hand-reference targets.</text>
+<rect x="45" y="160" width="275" height="260" rx="12" fill="#eef5fb" stroke="#2878b5" stroke-width="2"/>
+<text x="59" y="188" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#183b56" text-anchor="start">Episode metadata</text>
+<text x="59" y="215" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">episode_id, producer_type</text>
+<text x="59" y="236" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">reference_hz=50</text>
+<text x="59" y="257" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">num_frames=810</text>
+<text x="59" y="278" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">body_dof=29, hand_dof=14</text>
+<text x="59" y="299" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">quaternion order wxyz</text>
+<rect x="385" y="160" width="275" height="260" rx="12" fill="#fff8ec" stroke="#bd7b20" stroke-width="2"/>
+<text x="399" y="188" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#183b56" text-anchor="start">Current observation row</text>
+<text x="399" y="215" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">rgb: [3,128,128]</text>
+<text x="399" y="236" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">body: [68] = 29 q + 29 dq + quat + omega + gravity</text>
+<text x="399" y="257" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">hand: [28] = 14 q + 14 dq</text>
+<text x="399" y="278" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">IDs: observation_id, rgb_frame_id</text>
+<rect x="725" y="160" width="275" height="260" rx="12" fill="#f4effb" stroke="#7653a6" stroke-width="2"/>
+<text x="739" y="188" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#183b56" text-anchor="start">Future supervision</text>
+<text x="739" y="215" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">body_tokens: [10,64]</text>
+<text x="739" y="236" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">hand_ref: [50,14]</text>
+<text x="739" y="257" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">phase: scalar in {OPEN,CLOSING,HOLD}</text>
+<text x="739" y="278" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">progress: scalar in [0,1]</text>
+<text x="739" y="299" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">future offset +2..+6</text>
+<rect x="1065" y="160" width="370" height="260" rx="12" fill="#f1f7f2" stroke="#4b8a5a" stroke-width="2"/>
+<text x="1079" y="188" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#183b56" text-anchor="start">Validation and retention</text>
+<text x="1079" y="215" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">sample_mapping.jsonl joins IDs</text>
+<text x="1079" y="236" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">stored five-slot prefix checked exactly</text>
+<text x="1079" y="257" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">contiguous canonical target IDs required</text>
+<text x="1079" y="278" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">incomplete horizon tails dropped</text>
+<text x="1079" y="299" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">no synthetic target padding</text>
+<line x1="320" y1="290" x2="385" y2="290" stroke="#34495e" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="660" y1="290" x2="725" y2="290" stroke="#34495e" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="1000" y1="290" x2="1065" y2="290" stroke="#34495e" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="45" y="520" font-family="DejaVu Sans,Arial,sans-serif" font-size="19px" font-weight="700" fill="#152238" text-anchor="start">Authored row identity</text>
+<rect x="45" y="555" width="300" height="100" rx="12" fill="#f7f9fb" stroke="#7a8791" stroke-width="2"/>
+<text x="59" y="583" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#203a50" text-anchor="start">sample_id</text>
+<text x="59" y="610" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">episode:sample:NNNNNN</text>
+<line x1="345" y1="605" x2="390" y2="605" stroke="#34495e" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="395" y="555" width="300" height="100" rx="12" fill="#f7f9fb" stroke="#7a8791" stroke-width="2"/>
+<text x="409" y="583" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#203a50" text-anchor="start">observation_id</text>
+<text x="409" y="610" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">episode:observation:NNNNNN</text>
+<line x1="695" y1="605" x2="740" y2="605" stroke="#34495e" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="745" y="555" width="300" height="100" rx="12" fill="#f7f9fb" stroke="#7a8791" stroke-width="2"/>
+<text x="759" y="583" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#203a50" text-anchor="start">token_id</text>
+<text x="759" y="610" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">episode:token:NNNNNN</text>
+<line x1="1045" y1="605" x2="1090" y2="605" stroke="#34495e" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="1095" y="555" width="300" height="100" rx="12" fill="#f7f9fb" stroke="#7a8791" stroke-width="2"/>
+<text x="1109" y="583" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#203a50" text-anchor="start">hand_ref_id</text>
+<text x="1109" y="610" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">episode:handref:NNNNNN</text>
+<text x="45" y="705" font-family="DejaVu Sans,Arial,sans-serif" font-size="13px" font-weight="400" fill="#516171" text-anchor="start">Source: expert_datasets/train_dataset_v0/index.jsonl; va_research/models/v4/dataset.py</text>
+</svg>

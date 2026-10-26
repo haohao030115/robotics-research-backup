@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Figure closed_loop_inference.svg; source: va_research/models/v4/runtime.py; va_research/models/v4_1/model.py; outputs/va_v4_1_kimodo_rule_20261009/closed_loop/{report.json,provenance.json} -->
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+<metadata>Source evidence: va_research/models/v4/runtime.py; va_research/models/v4_1/model.py; outputs/va_v4_1_kimodo_rule_20261009/closed_loop/{report.json,provenance.json}</metadata>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#34495e"/></marker><marker id="arrowblue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2878b5"/></marker></defs>
+<rect x="0" y="0" width="1600" height="900" fill="#ffffff"/>
+<text x="40" y="45" font-family="DejaVu Sans,Arial,sans-serif" font-size="29px" font-weight="700" fill="#152238" text-anchor="start">Figure 10. Closed-loop inference and action scheduling</text>
+<text x="40" y="75" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#516171" text-anchor="start">Absolute ticks, native token handoff and independent physical diagnostics.</text>
+<rect x="45" y="150" width="250" height="190" rx="12" fill="#eef5fb" stroke="#2878b5" stroke-width="2"/>
+<text x="59" y="178" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#183b56" text-anchor="start">Observation capture</text>
+<text x="59" y="205" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">head_rgb at 10 Hz</text>
+<text x="59" y="226" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">body [68], hand [28]</text>
+<text x="59" y="247" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">observation IDs</text>
+<text x="59" y="268" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">MTT S4000 EGL renderer</text>
+<rect x="355" y="150" width="250" height="190" rx="12" fill="#f4effb" stroke="#7653a6" stroke-width="2"/>
+<text x="369" y="178" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#183b56" text-anchor="start">V4.1 inference</text>
+<text x="369" y="205" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">normalize state</text>
+<text x="369" y="226" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">forward policy</text>
+<text x="369" y="247" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">body [10,64] + hand [50,14]</text>
+<text x="369" y="268" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">phase/progress/readiness</text>
+<rect x="665" y="150" width="250" height="190" rx="12" fill="#fff8ec" stroke="#bd7b20" stroke-width="2"/>
+<text x="679" y="178" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#183b56" text-anchor="start">Absolute-tick PlanBuffer</text>
+<text x="679" y="205" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">first start anchor + lead=2</text>
+<text x="679" y="226" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">next plans start +5 ticks</text>
+<text x="679" y="247" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">reject duplicate/skip/uncovered</text>
+<text x="679" y="268" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">record deadlines</text>
+<rect x="975" y="150" width="250" height="190" rx="12" fill="#fff8ec" stroke="#bd7b20" stroke-width="2"/>
+<text x="989" y="178" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#183b56" text-anchor="start">External token adapter</text>
+<text x="989" y="205" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">pack each 64D token</text>
+<text x="989" y="226" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">publish to SONIC/native decoder</text>
+<text x="989" y="247" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">strict consumed tick identity</text>
+<rect x="1285" y="150" width="270" height="190" rx="12" fill="#eaf7ef" stroke="#4b8a5a" stroke-width="2"/>
+<text x="1299" y="178" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#183b56" text-anchor="start">Actuation and physics</text>
+<text x="1299" y="205" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">SONIC body command</text>
+<text x="1299" y="226" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">independent hand PD</text>
+<text x="1299" y="247" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">DDS LowCmd/LowState</text>
+<text x="1299" y="268" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">MuJoCo TabletopDDS</text>
+<line x1="295" y1="245" x2="355" y2="245" stroke="#34495e" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="605" y1="245" x2="665" y2="245" stroke="#34495e" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="915" y1="245" x2="975" y2="245" stroke="#34495e" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="1225" y1="245" x2="1285" y2="245" stroke="#34495e" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="55" y="430" font-family="DejaVu Sans,Arial,sans-serif" font-size="19px" font-weight="700" fill="#152238" text-anchor="start">Scheduler and task gates</text>
+<rect x="55" y="470" width="300" height="170" rx="12" fill="#eaf7ef" stroke="#4b8a5a" stroke-width="2"/>
+<text x="69" y="498" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#183b56" text-anchor="start">Runtime integrity</text>
+<text x="69" y="525" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">recorded ticks = 810</text>
+<text x="69" y="546" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">expected ticks = 810</text>
+<text x="69" y="567" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">uncovered = 0</text>
+<text x="69" y="588" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">deadline misses = 1</text>
+<text x="69" y="609" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">strict_runtime_pass = true</text>
+<rect x="405" y="470" width="300" height="170" rx="12" fill="#fff8ec" stroke="#bd7b20" stroke-width="2"/>
+<text x="419" y="498" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#183b56" text-anchor="start">Physical criterion</text>
+<text x="419" y="525" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">minimum lift = 0.1 m</text>
+<text x="419" y="546" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">continuous hold = 2 s</text>
+<text x="419" y="567" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">thumb + index/middle contacts</text>
+<text x="419" y="588" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">no cube/table contact; no fall</text>
+<rect x="755" y="470" width="300" height="170" rx="12" fill="#fceff0" stroke="#b44351" stroke-width="2"/>
+<text x="769" y="498" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#183b56" text-anchor="start">Recorded representative result</text>
+<text x="769" y="525" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">max lift = 0.019827 m</text>
+<text x="769" y="546" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">final lift = -0.000108 m</text>
+<text x="769" y="567" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">hold = 0 s</text>
+<text x="769" y="588" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">physical_grasp_success = false</text>
+<rect x="1105" y="470" width="400" height="170" rx="12" fill="#fceff0" stroke="#b44351" stroke-width="2"/>
+<text x="1119" y="498" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#183b56" text-anchor="start">Failure diagnostics</text>
+<text x="1119" y="525" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">cube remained in table contact</text>
+<text x="1119" y="546" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">robot-table contact steps = 107</text>
+<text x="1119" y="567" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">robot self-contact steps = 640</text>
+<text x="1119" y="588" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">fall steps = 0</text>
+<text x="1119" y="609" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">renderer hardware verified</text>
+<text x="55" y="750" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="700" fill="#203a50" text-anchor="start">Runtime pass and physical task pass are separate gates; the representative rollout passed the former and failed the latter.</text>
+</svg>

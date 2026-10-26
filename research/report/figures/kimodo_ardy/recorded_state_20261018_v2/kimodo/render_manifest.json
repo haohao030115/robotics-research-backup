@@ -1,0 +1,50 @@
+{
+  "producer": "kimodo",
+  "scope": "representative_saved_state_replay",
+  "run": "/workspace/group2/outputs/canonical_production/kimodo/kimodo_fresh_20261016_03/qualification",
+  "source": "/workspace/group2/outputs/canonical_production/kimodo/kimodo_fresh_20261016_03/qualification/simulation.npz",
+  "source_sha256": "81c4d640d7e13d404de6859fb7d1665e9fbd51df5cee2dda022ca40ddf2adee7",
+  "physics_sha256": "7c855f396ebbb3eb1b151bac68f1a92c75dc8a5757348f38f8cbcf1d994cd7a3",
+  "result_sha256": "165b138500dd7f51d7c6fa76345fbf11df42d2e5ed18086892f04107a0463fa1",
+  "scene_sha256": "e3a92089bb550afdb3aca43a5a8c7fb75f483836cd7a466ef56e39d34aabc19d",
+  "robot_sha256": "72fa3c795c24fe357ae8725452f1487e0176847e191568ff5403322674f60c9c",
+  "camera": {
+    "azimuth": 145.0,
+    "elevation": -18.0,
+    "distance": 2.2,
+    "lookat": [
+      0.4,
+      0.0,
+      0.9
+    ]
+  },
+  "events": {
+    "approach": {
+      "frame": 309,
+      "time_s": 6.180000000003162
+    },
+    "grasp": {
+      "frame": 384,
+      "time_s": 7.680000000003929
+    },
+    "lift": {
+      "frame": 581,
+      "time_s": 11.620000000005945
+    },
+    "hold": {
+      "frame": 809,
+      "time_s": 16.180000000008278
+    }
+  },
+  "result": {
+    "physical_success": true,
+    "expert_valid": true,
+    "max_lift_m": 0.12029209781005878,
+    "max_hold_s": 4.574999999999925,
+    "robot_table_contact_steps": 0,
+    "robot_self_contact_steps": 0
+  },
+  "mujoco_version": "3.14.0",
+  "physics_reexecuted": false,
+  "grasp_validation_performed": false
+}

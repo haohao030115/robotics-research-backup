@@ -1,0 +1,220 @@
+% Standalone LaTeX source converted from Test_and_Comparison_Report_v2.docx.
+% Compile with pdfLaTeX. All content is contained in this file.
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb}
+\usepackage[a4paper,top=0.78in,bottom=0.78in,left=0.86in,right=0.86in]{geometry}
+\usepackage[table]{xcolor}
+\usepackage{array,tabularx,multirow}
+\usepackage{caption,float}
+\usepackage{titlesec}
+
+% Keep both one-line and multi-line table captions centered.
+\captionsetup[table]{justification=centering,singlelinecheck=false,
+  font=small,labelfont=normalfont,labelsep=space,skip=7pt,position=top}
+\titleformat{\section}{\normalsize\bfseries}{}{0pt}{}
+\titlespacing*{\section}{0pt}{12pt}{6pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+\setlength{\tabcolsep}{5pt}
+\setlength{\arrayrulewidth}{0.4pt}
+\renewcommand{\arraystretch}{1.32}
+\renewcommand{\tabularxcolumn}[1]{m{#1}}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}m{#1}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}m{#1}}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\definecolor{tableheader}{HTML}{E8EDF2}
+\definecolor{tableborder}{HTML}{D9D9D9}
+\arrayrulecolor{tableborder}
+\setlength{\intextsep}{10pt}
+\emergencystretch=1.5em
+
+\begin{document}
+{\large\bfseries Test and Comparison\par}
+\vspace{3pt}
+
+
+We evaluated two motion generation pipelines for a right-hand grasp-and-lift task through a shared SONIC execution stack. In the fixed-center experiment, both pipelines achieved 19 validated successes in 20 trials. Their failures occurred at different stages, and Kimodo had a lower recorded median end-to-end time. A separate five-position pilot exposed preparation and contact limitations. These findings concern the complete adapted pipelines under the tested conditions.
+
+\section*{Experimental Design}
+
+Each pipeline generated motion before physical replay. Kimodo used segmented generation followed by a frozen canonical adapter, tracking calibration, and contact and approach refinement. ARDY used segmented generation with its own frozen adapter and center tracking calibration. Both then used SONIC for body control, independent Hand PD for the fingers, and MuJoCo for physical replay. The comparison therefore includes the effects of motion generation, adaptation, calibration, and execution.
+
+Text supplied the action semantics, while structured spatial constraints supported accurate object interaction. The replay consumed the prepared reference; it did not request new text instructions or online corrections from the motion generator. SONIC tracked the reference using robot state feedback. This distinction separates low-level feedback control from online language-conditioned replanning.
+
+\begin{table}[H]
+\centering
+\caption{Fixed-center experiment conducted on 8 October 2026}
+\label{tab:comparison-1}
+\small
+\begin{tabularx}{\linewidth}{|L{\dimexpr0.237\linewidth-2\tabcolsep\relax}|Y|}
+\hline
+\rowcolor{tableheader}
+\textbf{Setting} & \textbf{Specification} \\ \hline
+Task & Right-hand grasp, lift, and hold of a red cube \\ \hline
+Trials & 20 per method; 40 planned trials in total \\ \hline
+Seeds & 1000 to 1019; the same list for both methods \\ \hline
+Candidate budget & One candidate per seed; no best-of-K selection \\ \hline
+Retry policy & No replacement of method or physical failures \\ \hline
+Reference & 810 frames at \(50\,\mathrm{Hz}\); a \(16.2\,\mathrm{s}\) episode \\ \hline
+Execution & Shared SONIC, Hand PD, and MuJoCo logic \\ \hline
+Hardware and order & MTT S4000; all Kimodo trials, then all ARDY trials \\ \hline
+\end{tabularx}
+\end{table}
+
+Retries were limited to external infrastructure failures occurring before any simulation frame was recorded, and the same candidate had to be retained. Generation, preparation, physical-task, and evidence-validation failures remained in the planned denominator. The protocol and pipeline configuration were frozen before the formal batch.
+
+\section*{Evaluation Criteria}
+
+Physical success required a lift of at least \(0.10\,\mathrm{m}\), opposing contact between the right thumb and the index or middle finger, no cube-table contact during the qualifying interval, and at least \(2.0\,\mathrm{s}\) of continuous valid hold. The pilot and associated evaluation contract required a contact force above \(10^{-4}\,\mathrm{N}\). Validated success additionally required complete, finite, synchronized replay, no fall, and no weld, attachment, teleportation, or artificial external force. Robot-table contact was recorded and permitted by the primary formal criterion; strict no-table performance was reported separately.
+
+\begin{table}[H]
+\centering
+\caption{Primary validation criteria for the formal experiment (robot-table contact recorded but permitted)}
+\label{tab:comparison-2}
+\small
+\begin{tabularx}{\linewidth}{|L{\dimexpr0.206\linewidth-2\tabcolsep\relax}|L{\dimexpr0.237\linewidth-2\tabcolsep\relax}|Y|}
+\hline
+\rowcolor{tableheader}
+\textbf{Metric} & \textbf{Criterion} & \textbf{Requirement} \\ \hline
+\multirow{5}{*}{\texttt{physical\_success}} & Cube lift & Cube lift \(\geq 0.10\,\mathrm{m}\). \\ \cline{2-3}
+ & Opposing contact & Opposing contact: \(\text{right thumb}\land(\text{right index}\lor\text{right middle})\). \\ \cline{2-3}
+ & Contact force & Contact force \(>10^{-4}\,\mathrm{N}\). \\ \cline{2-3}
+ & Cube-table contact & No cube-table contact during the qualifying hold. \\ \cline{2-3}
+ & Continuous hold & Continuous qualifying hold \(\geq 2.0\,\mathrm{s}\). \\ \hline
+\multirow{4}{*}{\texttt{expert\_valid}} & Physical success & All \texttt{physical\_success} conditions are satisfied. \\ \cline{2-3}
+ & Replay & Complete, finite, synchronized, unassisted canonical SONIC replay. \\ \cline{2-3}
+ & Fall and assistance & No fall, weld, attachment, teleportation, or artificial external force; robot-table contact is recorded but permitted. \\ \cline{2-3}
+ & Validation integrity & All validation integrity checks pass. \\ \hline
+\end{tabularx}
+\end{table}
+
+\section*{Results in the Fixed Center Scene}
+
+Both methods produced a result for every planned trial, and each passed the primary evidence validation in 19 of 20 trials. Physical success and validated success were kept separate because a successful grasp could still fail execution or evidence checks.
+
+\begin{table}[H]
+\centering
+\caption{Formal results and uncertainty}
+\label{tab:comparison-3}
+\small
+\begin{tabularx}{\linewidth}{|Y|C{\dimexpr0.267\linewidth-2\tabcolsep\relax}|C{\dimexpr0.267\linewidth-2\tabcolsep\relax}|}
+\hline
+\rowcolor{tableheader}
+\textbf{Metric} & \textbf{Kimodo} & \textbf{ARDY} \\ \hline
+Planned trials & 20 & 20 \\ \hline
+Physical grasp success & \(19  \text{ of } 20\)  (\(95\%\)) & \(20 \text{ of } 20\)  (\(100\%\)) \\ \hline
+Validated success & \(19  \text{ of } 20\)  (\(95\%\)) & \(19  \text{ of } 20\)  (\(95\%\)) \\ \hline
+\(95\%\) Wilson interval for validated success & \(76.4\%\text{ to }99.1\%\) & \(76.4\%\text{ to }99.1\%\) \\ \hline
+Seed failing primary validation & 1006 & 1007 \\ \hline
+Median end-to-end wall time & \(162.678\,\mathrm{s}\) & \(182.749\,\mathrm{s}\) \\ \hline
+\end{tabularx}
+\end{table}
+
+The \(95\%\) Wilson interval for ARDY physical success was \(83.9\%\text{ to }100\%\). Among the 20 paired seeds, 18 passed for both methods, one passed only for ARDY, and one passed only for Kimodo. The two-sided exact McNemar test gave \(p = 1.0\). This sample provides no evidence of a validated-success difference; it does not establish equivalence or a precise population reliability of \(95\%\).
+
+\begin{table}[H]
+\centering
+\caption{Trajectory statistics for validated successes only}
+\label{tab:comparison-4}
+\small
+\begin{tabularx}{\linewidth}{|Y|C{\dimexpr0.294\linewidth-2\tabcolsep\relax}|C{\dimexpr0.294\linewidth-2\tabcolsep\relax}|}
+\hline
+\rowcolor{tableheader}
+\textbf{Metric} & \textbf{Kimodo  \(n = 19\)} & \textbf{ARDY  \(n = 19\)} \\ \hline
+Mean lift \(\pm\) standard deviation & \(0.126150 \pm 0.001524\,\mathrm{m}\) & \(0.139196 \pm 0.003102\,\mathrm{m}\) \\ \hline
+Median lift & \(0.126125\,\mathrm{m}\) & \(0.139129\,\mathrm{m}\) \\ \hline
+Mean hold \(\pm\) standard deviation & \(4.6308 \pm 0.0828\,\mathrm{s}\) & \(4.8466 \pm 0.0094\,\mathrm{s}\) \\ \hline
+Median hold & \(4.6500\,\mathrm{s}\) & \(4.8450\,\mathrm{s}\) \\ \hline
+\end{tabularx}
+\end{table}
+
+Successful trajectories exceeded both task thresholds. ARDY had a greater average lift and longer hold, with less hold variation; Kimodo had less lift variation. Greater lift alone does not imply a better grasp, and the successful-subset statistics exclude failed trials. Method-specific calibration and hand schedules may contribute to these differences, so they cannot be attributed independently to the raw generators.
+
+\section*{Formal Failures and Contact Behavior}
+
+Kimodo seed 1006 failed to establish effective grasp contact and recorded a hold of \(0\,\mathrm{s}\). The maximum-lift field contained no numerical value, so no measured lift height can be assigned to this trial. It was classified as a physical task failure and retained in the planned denominator.
+
+ARDY seed 1007 physically succeeded, lifting the cube by \(0.137024\,\mathrm{m}\) and holding it for \(4.820\,\mathrm{s}\). It nevertheless failed primary validation because state-frame coverage was incomplete and the reference cursor was stale. It was an execution and evidence-integrity failure, rather than a failed physical grasp. As it had entered physical replay, it did not qualify for the zero-frame infrastructure retry.
+
+ARDY passed the strict no-table criterion in 0 of 20 trials. Kimodo did not provide a directly comparable strict field; its successful trials recorded nonzero support-contact steps. A unified strict validator is needed before assigning Kimodo a matching strict-success count. Contact allowance in the primary task must remain explicit and must not be confused with absence of contact.
+
+\section*{Spatial Pilot and Development Testing}
+
+The separate development pilot used five cube positions, seeds 2 and 3, and two methods, for 20 planned trials. ARDY reached replay in 8 of 10 trials and physically succeeded in 2 of 10. Kimodo reached replay in 6 of 10 and physically succeeded in 3 of 10. Preparation failures remained in the denominator. Conditional on replay, the physical-success proportions were 2 of 8 and 3 of 6, respectively; these are not end-to-end success rates.
+
+\begin{table}[H]
+\centering
+\caption{Pilot results by position with two trials per method and position}
+\label{tab:comparison-5}
+\small
+\begin{tabularx}{\linewidth}{|L{\dimexpr0.115\linewidth-2\tabcolsep\relax}|C{\dimexpr0.321\linewidth-2\tabcolsep\relax}|Y|Y|}
+\hline
+\rowcolor{tableheader}
+\textbf{Case} & \textbf{Cube XYZ in metres} & \textbf{ARDY} & \textbf{Kimodo} \\ \hline
+Center & \((0.40, -0.15, 0.785)\) & 0 of 2 physical & 1 of 2 physical \\ \hline
+Near & \((0.30, -0.15, 0.785)\) & 2 of 2 physical & 2 of 2 physical \\ \hline
+Far & \((0.50, -0.15, 0.785)\) & 2 preparation failures & 2 preparation failures \\ \hline
+Left & \((0.40, 0.00, 0.785)\) & 0 of 2 physical & 2 preparation failures \\ \hline
+Right & \((0.40, -0.30, 0.785)\) & 0 of 2 physical & 0 of 2 physical \\ \hline
+\end{tabularx}
+\end{table}
+
+Under the pilot strict-validation criterion, ARDY passed in 0 of 10 trials and Kimodo in 3 of 10. Both ARDY physical successes occurred at the near position and were rejected for robot-environment support contact. The available contact classification does not establish whether these events involved prohibited load-bearing support or ordinary table contact. This uncertainty limits interpretation of the strict-success difference.
+
+The pilot used different recipes and slightly different trajectory lengths: ARDY generated a full trajectory with 10 denoising steps and replayed 800 frames over approximately \(16.0\,\mathrm{s}\); Kimodo used segmented generation with 100 steps and 810 frames over \(16.2\,\mathrm{s}\). The later formal experiment used segmented ARDY generation. Together with the contact-rule differences and only two trials per condition, these changes prevent pooling the batches or interpreting the formal result as a controlled improvement over the pilot.
+
+Earlier ARDY development tests reused a cached motion with coordinate retargeting; their summary was compiled from read-only terminal output rather than independently recomputed from the raw artifacts. Of 10 planned slots, eight were replayed and four succeeded. Left-position trials reached the lift threshold but held for only \(0.635\text{ and }0.925\,\mathrm{s}\); right-position lift was approximately \(0.0103\,\mathrm{m}\). Far-position preparation failed with an IK error of \(0.03352\,\mathrm{m}\) against a \(0.001\,\mathrm{m}\) limit. This grid diagnoses reachability and hold failures, but does not evaluate fresh generation on every trial.
+
+Early Kimodo integration also demonstrated why component completion is insufficient. Real generation and the SONIC C++ loader succeeded, but MuJoCo became unstable at \(1.365\,\mathrm{s}\) before SONIC playback began. The run recorded 273 initialization samples and no qualifying hold. Initial body-pose mismatch and a joint discontinuity above \(\pi\) were diagnostic observations; they were not proven causes of the instability.
+
+Engineering verification covered array dimensions, finite values, joint order and limits, time grids, coordinate conversion, hand alignment, file integrity, and loader compatibility. The later integration version passed 15 checks for the task compiler, 20 for the generator wrapper, and 24 for replay and validation. These checks verify software behavior and interface consistency; physical reliability is evaluated separately through repeated grasp trials. Earlier H100 demonstrations used dense expert constraints and a different candidate budget and were excluded from the S4000 comparison.
+
+\section*{Timing and Control Measurements}
+
+Kimodo and ARDY had recorded median end-to-end wall times of \(162.678\,\mathrm{s}\) and \(182.749\,\mathrm{s}\), respectively. The difference was \(20.071\,\mathrm{s}\). The recorded time covers the pipeline and should not be treated as instruction-to-first-action response time.
+
+\begin{table}[H]
+\centering
+\caption{Recorded stage medians with unequal measurement boundaries}
+\label{tab:comparison-6}
+\small
+\begin{tabularx}{\linewidth}{|L{\dimexpr0.359\linewidth-2\tabcolsep\relax}|C{\dimexpr0.221\linewidth-2\tabcolsep\relax}|Y|}
+\hline
+\rowcolor{tableheader}
+\textbf{Stage} & \textbf{Kimodo} & \textbf{ARDY} \\ \hline
+Model loading & \(17.571\,\mathrm{s}\) & Included in generation \\ \hline
+Generation & \(50.705\,\mathrm{s}\) & \(97.227\,\mathrm{s}\) including load \\ \hline
+Adapter & \(5.727\,\mathrm{s}\) & \(8.304\,\mathrm{s}\) \\ \hline
+SONIC initialization & \(36.721\,\mathrm{s}\) & Included in replay \\ \hline
+Replay & \(16.200\,\mathrm{s}\) & \(56.567\,\mathrm{s}\) including initialization \\ \hline
+\end{tabularx}
+\end{table}
+
+The generation stage accounts for much of the observed timing difference. However, the Kimodo formal plan recorded physical GPU 1, whereas the ARDY launch command used GPU 7, despite the protocol specifying GPU 1 for both. The cards were both MTT S4000, but occupancy, thermal and warm-up conditions were not fully controlled. The batch order and DDS resource waits introduce further confounding. The timing comparison is therefore descriptive; it cannot establish an architecture-level speed advantage. Stage medians also cannot be added to reconstruct a median end-to-end trial.
+
+A separate fixed-reference Kimodo smoke compared profiling disabled and enabled. Both runs succeeded. With profiling enabled, 3,240 measured control-step events had a mean duration of \(3.278\,\mathrm{ms}\), \(P_{95}\) of \(3.631\,\mathrm{ms}\), \(P_{99}\) of \(3.790\,\mathrm{ms}\), and maximum of \(4.446\,\mathrm{ms}\), with no measured event exceeding a \(5\,\mathrm{ms}\) budget.
+
+This result supports the absence of a material observed regression for that reference and measurement scope. It does not demonstrate complete real-time performance for both methods. The timing endpoint precedes some subsequent state recording and printing, and the evidence does not cover the complete DDS state-to-command path. The pilot also lacked the full profiling v0.3 event stream. Thousands of control steps constitute measurements within an episode, not thousands of independent grasp trials.
+
+\section*{Instruction Following and Physical Feasibility}
+
+Our task tests a specific right-hand reach, grasp, lift, and hold sequence. Structured constraints and calibration assist accurate positioning. Arbitrary language understanding, online prompt updates, and visual closed-loop generalization were outside the evaluation. Runtime user corrections were prohibited by the protocol, and the earlier ARDY development trials recorded zero corrections during replay. Prompt and clearance adjustments made during development should be distinguished from interaction during evaluation. The present experiment does not measure whether interactive corrections improve success.
+
+Motion precision should distinguish planning error, reference-to-state tracking error, and contact-level task performance. Pilot body-tracking RMSE ranged from \(0.0634\text{ to }0.1457\,\mathrm{rad}\) for eight ARDY replays and from \(0.1118\text{ to }0.1803\,\mathrm{rad}\) for five Kimodo replays with finite values; one Kimodo value was null. These small-sample ranges cannot replace matched formal precision statistics. SONIC, the standing/root reference, and independent finger control formed the execution stack, while validated success required stability without welds or artificial external assistance.
+
+\section*{Conclusions and Possible Future Works}
+
+In the calibrated center scene, each frozen pipeline achieved 19 validated successes across the same 20 seeds (\(95\%\) Wilson interval \(76.4\%\text{ to }99.1\%\)). The experiment does not provide held-out spatial evaluation: calibration was developed in the same setting, and changing a generation seed does not create a new task or object position. The pilot identifies spatial preparation and interaction limitations, but its sample size and methodological differences are insufficient for a generalization ranking.
+
+The contributions of adaptation and hand control remain unresolved. The 20 Kimodo trials had distinct raw-motion hashes, while successful lift and hold values were concentrated. Distinct hashes confirm that the raw files differ, but they do not quantify meaningful motion diversity. Comparing trajectories before adaptation, after adaptation, and during execution would show how much variation survives the pipeline. Adapter and contact-refinement ablations are also needed to identify which components contribute to successful interaction.
+
+The aggregate formal results were available for this analysis, but the complete per-trial evidence was not available for independent reconstruction. Timing distributions and compliance with every protocol field therefore remain unverified.
+
+We think future evaluations should use held-out positions, the same physical GPU with matched warm-up and alternating method order, a unified strict-contact validator, and explicit response-time boundaries. Any correction to the seed 1007 integrity problem should be evaluated in a new batch without replacing the retained failure. Speech, vision-language learning, dataset conversion, and other proposed extensions require their own completed evidence and are outside this comparison.
+
+The supported conclusion is that both methods achieved the same recorded validated-success proportion in the fixed scene, with different failure mechanisms and a lower observed median time for Kimodo. Pipeline-specific adaptation, contact rules, hardware conditions, and limited spatial coverage define the practical scope of that conclusion.
+
+\end{document}

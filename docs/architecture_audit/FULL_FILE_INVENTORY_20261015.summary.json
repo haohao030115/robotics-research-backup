@@ -1,0 +1,17 @@
+{
+  "root": "/workspace/group2",
+  "record_format": "JSONL gzip; one metadata record per workspace entry",
+  "counts": {
+    "tooling_runtime": 80516,
+    "external_repository": 84983,
+    "historical_archive": 105867,
+    "runtime_environment": 146096,
+    "compatibility_repository": 42033,
+    "maintained_source": 437,
+    "generated_artifacts": 105277,
+    "workspace_control": 3
+  },
+  "walk_errors": 0,
+  "output": "/workspace/group2/docs/architecture_audit/FULL_FILE_INVENTORY_20261015.jsonl.gz",
+  "content_hashes": false
+}

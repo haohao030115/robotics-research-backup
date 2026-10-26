@@ -1,0 +1,43 @@
+{
+  "experiment_id": "task9_formal40_20261008",
+  "status": "FROZEN_BEFORE_EXECUTION",
+  "methods": [
+    "ARDY",
+    "Kimodo"
+  ],
+  "case": "center",
+  "shared_seeds": [
+    1000,
+    1001,
+    1002,
+    1003,
+    1004,
+    1005,
+    1006,
+    1007,
+    1008,
+    1009,
+    1010,
+    1011,
+    1012,
+    1013,
+    1014,
+    1015,
+    1016,
+    1017,
+    1018,
+    1019
+  ],
+  "trials_per_method": 20,
+  "total_scored_trials": 40,
+  "hardware": "MTT S4000; both methods use physical GPU 1",
+  "duration_seconds": 16.2,
+  "reference_frames": 810,
+  "reference_hz": 50,
+  "primary_success": "lift>=0.10m; right thumb plus index/middle opposing contact; force>1e-4N; no cube-table contact during continuous qualifying hold>=2s; complete finite synchronized SONIC replay; no fall/weld/artificial support",
+  "robot_table_contact": "allowed by primary task; recorded as diagnostic; strict no-table result reported separately",
+  "method_failure_rule": "prepare/generation/adapter rejection or failure after physical replay begins remains in denominator; no retry",
+  "infrastructure_failure_rule": "zero-frame external DDS/GPU/path failure excluded from denominator; retry same candidate only with evidence retained",
+  "execution_order": "Kimodo seeds 1000-1019, then ARDY seeds 1000-1019; sequential exclusive DDS",
+  "qualification_evidence": "/workspace/group2/workspace/kunqi/task9_qualification4_20261008"
+}

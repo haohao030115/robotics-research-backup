@@ -1,0 +1,174 @@
+"""Independent reload and reconstruction of persisted truth, including physics and pixels."""
+import numpy as np
+from PIL import Image
+from .common import load_npz, read, lines, index, require, digest, snapshot_hash, ROOT
+from .policy import session, infer, parameters, Policy
+from .runtime import Runtime, mujoco, PhysicalGraspEvaluator
+from .compiler import plan_samples
+
+
+def verify(folder,a,m):
+    report={}; failures=[]
+    def check(name,fn):
+        try:
+            details=fn(); report[name]=dict(valid=True,**(details or {}))
+        except Exception as exc:
+            report[name]=dict(valid=False,error=f'{type(exc).__name__}: {exc}'); failures.append(name)
+    o=load_npz(folder/'observations.npz'); e=load_npz(folder/'sonic_encoder.npz'); d=load_npz(folder/'sonic_decoder.npz')
+    r=load_npz(folder/'references.npz'); p=load_npz(folder/'physics.npz'); post=load_npz(folder/'post_states.npz')
+    commands=lines(folder/'commands.jsonl'); timeline=lines(folder/'timeline.jsonl'); images=lines(folder/'rgb/frames.jsonl')
+    oi=index(o,'observation_id'); ei=index(e,'decision_id'); di=index(d,'decision_id'); ri=index(r,'reference_frame_id')
+    pi=index(p,'sim_step_id'); si=index(post,'post_state_id'); ci={c['command_id']:c for c in commands}
+    rt=Runtime(a,m,parameters())
+    try:
+        def schemas():
+            require(len(ci)==len(commands)==len(o['observation_id'])==len(d['decision_id'])==len(e['decision_id'])==len(r['reference_frame_id'])==len(post['post_state_id']), 'Incomplete/duplicate control tables')
+            index(o,'snapshot_id'); index(r,'hand_ref_id'); index(e,'token_id'); index(d,'command_id')
+            require(len({x['event_id'] for x in timeline})==len(timeline),'Duplicate event ID')
+            require(all(x['episode_id']==m['episode_id'] for x in timeline),'Cross-episode events')
+            require(e['exact_encoder_input'].shape[1:]==(1762,) and e['current_post_fsq_64d_token'].shape[1:]==(64,), 'Encoder shapes')
+            require(d['exact_decoder_input'].shape[1:]==(994,) and d['current_raw_29d_action'].shape[1:]==(29,), 'Decoder shapes')
+            require(o['full_qpos'].shape[1:]==(57,) and o['full_qvel'].shape[1:]==(55,) and r['hand_ref_q'].shape[1:]==(14,), 'State/ref shapes')
+            for tab in (o,e,d,r,p,post):
+                for key,x in tab.items():
+                    require(len(x)==len(next(iter(tab.values()))),'Inconsistent table length '+key)
+                    if x.dtype.kind in 'fiu': require(np.isfinite(x).all(),'Nonfinite '+key)
+            prov=read(folder/'provenance.json')
+            for rel,h in prov['implementation_hashes'].items(): require(digest(ROOT/rel)==h,'Implementation changed '+rel)
+            return {'control_ticks':len(oi),'physics_steps':len(pi)}
+        check('schema',schemas)
+        def rgb_check():
+            require(bool(images),'No RGB')
+            require(len({x['rgb_frame_id'] for x in images})==len(images),'Duplicate RGB identity')
+            expected_observations={str(r['observation_id'][j]) for j in range(len(r['reference_index'])) if int(r['reference_index'][j])%5==0}
+            require({x['observation_id'] for x in images}==expected_observations,'Missing or extra canonical RGB captures')
+            count=0
+            for image in images:
+                j=oi[image['observation_id']]
+                require(image['sim_step_id']==int(o['sim_step_id'][j]) and image['simulation_time']==float(o['simulation_time'][j]),'RGB snapshot identity mismatch')
+                h=snapshot_hash(o['full_qpos'][j],o['full_qvel'][j],o['current_applied_ctrl'][j],o['simulation_time'][j])
+                require(h==image['snapshot_sha256']==str(o['snapshot_sha256'][j]),'RGB physical snapshot hash mismatch')
+                require(digest(folder/image['path'])==image['image_sha256'],'RGB file changed')
+                mujoco.mj_setState(rt.model,rt.data,o['integration_state'][j],rt.state_spec); mujoco.mj_forward(rt.model,rt.data)
+                require(np.array_equal(rt.data.qpos,o['full_qpos'][j]) and np.array_equal(rt.data.qvel,o['full_qvel'][j]),'Snapshot restoration mismatch')
+                reconstructed=rt.render(); saved=np.asarray(Image.open(folder/image['path']).convert('RGB'))
+                require(np.array_equal(saved,reconstructed),'RGB reconstruction pixel mismatch')
+                count+=1
+            return dict(matched=count,total=len(images),max_pixel_error=0,method='restore exact integration state, mj_forward, canonical head_rgb render')
+        check('vision_alignment',rgb_check)
+        def reconstruct(tab,input_name,output_name,model):
+            s=session(model); errors=[]
+            for j in range(len(tab[input_name])):
+                got=infer(s,tab[input_name][j]); errors.append(float(np.max(np.abs(got-tab[output_name][j]))))
+            matched=sum(x<=1e-5 for x in errors)
+            require(matched==len(errors) and matched>0,f'{model}: {matched}/{len(errors)} matched, max={max(errors,default=None)}')
+            return dict(matched=matched,total=len(errors),max_absolute_error=max(errors),atol=1e-5,comparison='same decision_id; no shift')
+        check('encoder_reconstruction',lambda:reconstruct(e,'exact_encoder_input','current_post_fsq_64d_token','model_encoder.onnx'))
+        check('decoder_reconstruction',lambda:reconstruct(d,'exact_decoder_input','current_raw_29d_action','model_decoder.onnx'))
+        def decisions():
+            policy=Policy(a); previous=np.zeros(29); ordered=sorted(range(len(r['reference_index'])),key=lambda j:int(r['reference_index'][j]))
+            for j in ordered:
+                did=str(r['decision_id'][j]); u=ei[did]; v=di[did]; w=oi[str(r['observation_id'][j])]
+                for key in ('observation_id','control_tick_id','reference_frame_id','decision_id'):
+                    require(str(e[key][u])==str(d[key][v])==str(r[key][j])==str(o[key][w]),'Cross-inference ID mismatch '+key)
+                require(str(e['token_id'][u])==str(d['token_id'][v]),'Decoder token ID mismatch')
+                z=e['current_post_fsq_64d_token'][u]
+                require(np.array_equal(z,d['current_64d_token'][v]) and np.array_equal(z,d['exact_decoder_input'][v,:64]),'Current token mismatches decoder input')
+                require(np.array_equal(previous,d['previous_action'][v]),'previous_action incorrectly shifted')
+                require(np.array_equal(d['proprio_history'][v],d['exact_decoder_input'][v,64:]),'Proprio mismatch')
+                frame=int(r['reference_index'][j]); quat=o['root_quat'][w]
+                ex=policy.encoder_input(frame,quat.astype(np.float32).astype(float))
+                require(np.array_equal(ex,e['exact_encoder_input'][u]),'Encoder input not from declared observation/reference')
+                dx,_=policy.decoder_input(z,o['full_qpos'][w,rt.motor.qa],o['full_qvel'][w,rt.motor.va],quat,o['root_velocity'][w,3:])
+                require(np.array_equal(dx,d['exact_decoder_input'][v]),'Decoder input not from declared observation/history')
+                for key in ('body_ref_q','body_ref_dq','hand_ref_q','root_ref_pos','root_ref_quat'):
+                    require(np.array_equal(r[key][j],a[key][frame]),'Logged reference differs from source '+key)
+                previous=d['current_raw_29d_action'][v].astype(float); policy.previous=previous
+                require(np.array_equal(policy.target(previous),d['postprocessed_body_target'][v]),'Action postprocessing mismatch')
+            return dict(matched=len(ordered),total=len(ordered),shift=0)
+        check('no_off_by_one',decisions)
+        def command_trace():
+            used=[]
+            for c in commands:
+                did=c['decision_id']; j=di[did]
+                require(c['publish_time']<=c['receipt_time'],'Receipt before publish')
+                require(c['command_id']==str(d['command_id'][j]) and c['token_id']==str(d['token_id'][j]),'Action command mismatch')
+                require(np.array_equal(c['body_target'],d['postprocessed_body_target'][j]),'Published action changed')
+                rr=ri[c['reference_frame_id']]
+                require(c['hand_ref_id']==str(r['hand_ref_id'][rr]) and np.array_equal(c['hand_ref_q'],r['hand_ref_q'][rr]),'Command hand intent mismatch')
+                events=[x for x in timeline if x.get('decision_id')==did]
+                expected=['OBSERVE']+(['RGB'] if any(x['event']=='RGB' for x in events) else [])+['ENCODE','DECODE','COMMAND_PUBLISH','COMMAND_RECEIPT']+['APPLY','PHYSICS_STEP']*4+['POST_STATE']
+                require([x['event'] for x in events]==expected,'Missing/out-of-order inference/publish/receipt/apply event')
+                require(all(x.get('command_id')==c['command_id'] for x in events if x['event'] in ('DECODE','COMMAND_PUBLISH','COMMAND_RECEIPT','APPLY','PHYSICS_STEP','POST_STATE')),'Event command identity mismatch')
+                ids=c['consuming_sim_step_ids']; require(ids==list(range(c['first_consuming_sim_step'],c['last_consuming_sim_step']+1)) and len(ids)==4,'Consumption interval invalid')
+                require([x['sim_step_id'] for x in events if x['event']=='PHYSICS_STEP']==ids,'Event physics differs from command consumption')
+                for sid in ids:
+                    k=pi[sid]; require(str(p['command_id'][k])==c['command_id'] and str(p['decision_id'][k])==did,'Physics consumed wrong command')
+                    mujoco.mj_setState(rt.model,rt.data,p['pre_integration_state'][k],rt.state_spec); mujoco.mj_forward(rt.model,rt.data)
+                    rt.apply(np.asarray(c['body_target']),float(a['time_s'][int(r['reference_index'][rr])]))
+                    require(np.allclose(rt.data.ctrl,p['applied_ctrl'][k],atol=1e-10,rtol=0),'Applied PD/clipping differs from command')
+                    used.append(sid)
+            require(len(used)==len(set(used)) and set(used)==set(pi),'Orphan or multiply consumed physics step')
+            return dict(commands=len(commands),consuming_steps=len(used),transport='synchronous explicit receipt')
+        check('command_trace',command_trace)
+        def transition():
+            max_error=0.
+            for c in commands:
+                j=oi[c['observation_id']]; k=si[c['post_state_id']]; ids=c['consuming_sim_step_ids']
+                require(np.array_equal(o['integration_state'][j],p['pre_integration_state'][pi[ids[0]]]),'Observation does not anchor physics interval')
+                require(np.array_equal(post['integration_state'][k],p['post_integration_state'][pi[ids[-1]]]),'PostState does not terminate interval')
+                require(int(o['sim_step_id'][j])==ids[0] and int(post['sim_step_id'][k])==ids[-1]+1,'State step identity mismatch')
+                prev=None
+                for sid in ids:
+                    v=pi[sid]
+                    if prev is not None: require(np.array_equal(prev,p['pre_integration_state'][v]),'Broken physics state chain')
+                    mujoco.mj_setState(rt.model,rt.data,p['pre_integration_state'][v],rt.state_spec)
+                    rt.data.ctrl[:]=p['applied_ctrl'][v]
+                    mujoco.mj_step(rt.model,rt.data); mujoco.mj_forward(rt.model,rt.data)
+                    error=max(float(np.max(abs(rt.data.qpos-p['post_qpos'][v]))),float(np.max(abs(rt.data.qvel-p['post_qvel'][v]))))
+                    max_error=max(max_error,error); require(error<=1e-8,'Physics reconstruction mismatch '+str(error))
+                    require(abs(p['post_time'][v]-p['pre_time'][v]-.005)<1e-10,'Physics dt mismatch')
+                    prev=p['post_integration_state'][v]
+            ordered=sorted(commands,key=lambda c:c['first_consuming_sim_step'])
+            for left,right in zip(ordered,ordered[1:]):
+                require(left['last_consuming_sim_step']+1==right['first_consuming_sim_step'],'Gap across commands')
+                require(np.array_equal(post['integration_state'][si[left['post_state_id']]],o['integration_state'][oi[right['observation_id']]]),'Broken observation/poststate continuity')
+            return dict(matched=len(pi),total=len(pi),max_absolute_error=max_error)
+        check('state_transition',transition)
+        def physical():
+            # Recompute canonical metric on every saved original physics step.
+            mujoco.mj_setState(rt.model,rt.data,o['integration_state'][oi[str(r['observation_id'][int(np.argmin(r['reference_index']))])]],rt.state_spec)
+            mujoco.mj_forward(rt.model,rt.data)
+            evaluator=PhysicalGraspEvaluator(rt.model,rt.data)
+            for sid in sorted(pi):
+                j=pi[sid]
+                mujoco.mj_setState(rt.model,rt.data,p['post_integration_state'][j],rt.state_spec)
+                mujoco.mj_forward(rt.model,rt.data)
+                metrics=evaluator.step(rt.data)
+                for key in ('lift_m','opposing_contact','cube_table_contact','valid_hold','hold_seconds'):
+                    require(np.allclose(metrics[key],p[key][j],atol=1e-9,rtol=0),'Physical evidence mismatch '+key)
+            actual=evaluator.report(rt.data); saved=read(folder/'replay_validation.json')
+            require(abs(actual['max_lift_m']-saved['cube_max_lift'])<1e-9,'Lift report changed')
+            require(abs(actual['max_continuous_hold_seconds']-saved['qualifying_hold_duration'])<1e-9,'Hold report changed')
+            complete=len(oi)==len(a['time_s']) and set(r['reference_index'].tolist())==set(range(len(a['time_s'])))
+            require(saved['replay_complete']==complete,'Replay completeness mismatch')
+            success=bool(actual['physical_grasp_success'] and not actual['fall_steps'] and complete)
+            require(saved['physical_success']==success,'Physical success flag changed')
+            return dict(physical_success=success,steps=len(pi),replay_complete=complete)
+        check('physical_reconstruction',physical)
+        def future():
+            samples=plan_samples(folder); require(bool(samples),'No complete future horizons')
+            tokens=index(e,'token_id'); hands=index(r,'hand_ref_id')
+            for sample in samples:
+                anchor=oi[sample['observation_id']]; frame=int(r['reference_index'][ri[str(o['reference_frame_id'][anchor])]])
+                expected=[frame+2,frame+3,frame+4,frame+5,frame+6]
+                body_refs=[str(e['reference_frame_id'][tokens[z]]) for z in sample['body_token_ids']]
+                hand_refs=[str(r['reference_frame_id'][hands[h]]) for h in sample['hand_ref_ids']]
+                require(body_refs==hand_refs==sample['future_reference_frame_ids'],'Body/hand future identity mismatch')
+                require([int(r['reference_index'][ri[x]]) for x in body_refs]==expected,'Wrong future offsets')
+            return dict(samples=len(samples),future_offsets=[2,3,4,5,6],body_hand_same_reference_ids=True)
+        check('future_target_alignment',future)
+    finally:
+        rt.renderer.close()
+    report['failures']=failures
+    return report

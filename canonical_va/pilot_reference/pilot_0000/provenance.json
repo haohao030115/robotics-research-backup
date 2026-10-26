@@ -1,0 +1,13 @@
+{
+  "migration": "Rename timestamps to time_s; preserve required reference values exactly; no motion tuning",
+  "source": "kimodo-t6/g1-integration/task8_development_20261007_v3/accepted_touch_allowed_profile/qualification",
+  "source_hashes": {
+    "kimodo-t6/g1-integration/task8_development_20261007_v3/accepted_touch_allowed_profile/qualification/input_reference.npz": "640bc21a9f93cdd60f8e27a4f3b027d80652734bcef1ed631b8188abe25313c7",
+    "kimodo-t6/g1-integration/task8_development_20261007_v3/accepted_touch_allowed_profile/qualification/result.json": "ad516f076ccec2d3422564b05acb7f545c4dce2ef0f035766855222c77614b51",
+    "kimodo-t6/g1-integration/task8_development_20261007_v3/accepted_touch_allowed_profile/qualification/candidate/setting.json": "cb052f0295d12baaf5e305e818057d6dfd653417197cf7f0f67feaff320a46ed"
+  },
+  "historical_physical_success": true,
+  "historical_max_lift": 0.12462098555965984,
+  "historical_hold_seconds": 4.729999999999921,
+  "note": "Historical success is selection evidence only; new replay must pass independently"
+}

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Figure multimodal_fusion.svg; source: va_research/models/v4/model.py; docs/architecture_audit/PIPELINE_CALL_CHAINS.md -->
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="760" viewBox="0 0 1500 760">
+<metadata>Source evidence: va_research/models/v4/model.py; docs/architecture_audit/PIPELINE_CALL_CHAINS.md</metadata>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#34495e"/></marker><marker id="arrowblue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2878b5"/></marker></defs>
+<rect x="0" y="0" width="1500" height="760" fill="#ffffff"/>
+<text x="40" y="45" font-family="DejaVu Sans,Arial,sans-serif" font-size="29px" font-weight="700" fill="#152238" text-anchor="start">Figure 7. Visual-proprioceptive fusion and cross-attention</text>
+<text x="40" y="75" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#516171" text-anchor="start">Separate body and grasp queries attend to a shared 64-token visual sequence.</text>
+<rect x="50" y="140" width="260" height="130" rx="12" fill="#eef5fb" stroke="#2878b5" stroke-width="2"/>
+<text x="64" y="168" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#183b56" text-anchor="start">Visual tokens</text>
+<text x="64" y="195" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">RGB -&gt; four stride-2 convs</text>
+<text x="64" y="216" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">[B,64,256] + position</text>
+<rect x="50" y="360" width="260" height="130" rx="12" fill="#fff8ec" stroke="#bd7b20" stroke-width="2"/>
+<text x="64" y="388" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#183b56" text-anchor="start">Body proprioception</text>
+<text x="64" y="415" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">q,dq, root quaternion</text>
+<text x="64" y="436" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">angular velocity, gravity</text>
+<text x="64" y="457" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">[B,68] -&gt; normalized</text>
+<rect x="50" y="580" width="260" height="100" rx="12" fill="#fff8ec" stroke="#bd7b20" stroke-width="2"/>
+<text x="64" y="608" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#183b56" text-anchor="start">Hand proprioception</text>
+<text x="64" y="635" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">q,dq for 14 joints</text>
+<text x="64" y="656" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">[B,28] -&gt; hand_state [B,128]</text>
+<rect x="420" y="125" width="300" height="135" rx="12" fill="#f4effb" stroke="#7653a6" stroke-width="2"/>
+<text x="434" y="153" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#183b56" text-anchor="start">Body query branch</text>
+<text x="434" y="180" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">MLP [B,68] -&gt; [B,256]</text>
+<text x="434" y="201" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">unsqueeze -&gt; Q [B,1,256]</text>
+<text x="434" y="222" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">4-head attention over visual tokens</text>
+<rect x="420" y="335" width="300" height="135" rx="12" fill="#f4effb" stroke="#7653a6" stroke-width="2"/>
+<text x="434" y="363" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#183b56" text-anchor="start">Grasp query branch</text>
+<text x="434" y="390" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">MLP [B,68] -&gt; [B,256]</text>
+<text x="434" y="411" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">unsqueeze -&gt; Q [B,1,256]</text>
+<text x="434" y="432" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">4-head attention over visual tokens</text>
+<rect x="420" y="565" width="300" height="95" rx="12" fill="#f4effb" stroke="#7653a6" stroke-width="2"/>
+<text x="434" y="593" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#183b56" text-anchor="start">Hand feature branch</text>
+<text x="434" y="620" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">MLP [B,28] -&gt; [B,128]</text>
+<text x="434" y="641" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">concatenated downstream</text>
+<rect x="850" y="180" width="300" height="120" rx="12" fill="#eaf7ef" stroke="#4b8a5a" stroke-width="2"/>
+<text x="864" y="208" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#183b56" text-anchor="start">Body context</text>
+<text x="864" y="235" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">Q + MultiheadAttention(Q,K,V)</text>
+<text x="864" y="256" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">residual + LayerNorm</text>
+<text x="864" y="277" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">FF 256→512→256</text>
+<text x="864" y="298" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">output [B,256]</text>
+<rect x="850" y="390" width="300" height="120" rx="12" fill="#eaf7ef" stroke="#4b8a5a" stroke-width="2"/>
+<text x="864" y="418" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#183b56" text-anchor="start">Grasp context</text>
+<text x="864" y="445" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">Q + MultiheadAttention(Q,K,V)</text>
+<text x="864" y="466" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">residual + LayerNorm</text>
+<text x="864" y="487" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">FF 256→512→256</text>
+<text x="864" y="508" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">output [B,256]</text>
+<rect x="1220" y="250" width="220" height="180" rx="12" fill="#fceff0" stroke="#b44351" stroke-width="2"/>
+<text x="1234" y="278" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#183b56" text-anchor="start">Fusion semantics</text>
+<text x="1234" y="305" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">body context drives 10-token body plan</text>
+<text x="1234" y="326" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">grasp context drives 50-step hand plan</text>
+<text x="1234" y="347" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">phase/progress/readiness read grasp context</text>
+<line x1="310" y1="205" x2="420" y2="205" stroke="#34495e" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="310" y1="425" x2="420" y2="425" stroke="#34495e" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="310" y1="630" x2="420" y2="630" stroke="#34495e" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="720" y1="205" x2="850" y2="240" stroke="#34495e" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="720" y1="415" x2="850" y2="450" stroke="#34495e" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="1150" y1="240" x2="1220" y2="305" stroke="#34495e" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="1150" y1="450" x2="1220" y2="375" stroke="#34495e" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="50" y="725" font-family="DejaVu Sans,Arial,sans-serif" font-size="14px" font-weight="400" fill="#516171" text-anchor="start">Attention uses 4 heads at embedding width 256; no temporal token mixer is present in V4.1.</text>
+</svg>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Figure native_physical_evaluation.svg; source: outputs/va_v4_1_kimodo_rule_20261009/closed_loop/report.json; outputs/va_v4_1_kimodo_rule_20261009/closed_loop/renderer_worker.json -->
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="850" viewBox="0 0 1500 850">
+<metadata>Source evidence: outputs/va_v4_1_kimodo_rule_20261009/closed_loop/report.json; outputs/va_v4_1_kimodo_rule_20261009/closed_loop/renderer_worker.json</metadata>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#34495e"/></marker><marker id="arrowblue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2878b5"/></marker></defs>
+<rect x="0" y="0" width="1500" height="850" fill="#ffffff"/>
+<text x="40" y="45" font-family="DejaVu Sans,Arial,sans-serif" font-size="29px" font-weight="700" fill="#152238" text-anchor="start">Figure 14. Native physical evaluation and failure diagnostics</text>
+<text x="40" y="75" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#516171" text-anchor="start">Representative V4.1 rollout: complete strict runtime trace, failed lift/hold criterion.</text>
+<text x="50" y="140" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#152238" text-anchor="start">Physical criterion vs recorded result</text>
+<text x="50" y="210" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="700" fill="#203a50" text-anchor="start">Maximum lift (m)</text>
+<rect x="300" y="185" width="138.79232183208657" height="36" rx="5" fill="#b44351" stroke="#ffffff" stroke-width="1"/>
+<line x1="1000" y1="177" x2="1000" y2="235" stroke="#203a50" stroke-width="3" marker-end=""/>
+<text x="1020" y="210" font-family="DejaVu Sans,Arial,sans-serif" font-size="14px" font-weight="700" fill="#203a50" text-anchor="start">recorded 0.019827; threshold 0.1</text>
+<text x="50" y="300" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="700" fill="#203a50" text-anchor="start">Continuous hold (s)</text>
+<rect x="300" y="275" width="0.0" height="36" rx="5" fill="#b44351" stroke="#ffffff" stroke-width="1"/>
+<line x1="1000" y1="267" x2="1000" y2="325" stroke="#203a50" stroke-width="3" marker-end=""/>
+<text x="1020" y="300" font-family="DejaVu Sans,Arial,sans-serif" font-size="14px" font-weight="700" fill="#203a50" text-anchor="start">recorded 0.000000; threshold 2</text>
+<rect x="50" y="420" width="330" height="170" rx="12" fill="#eaf7ef" stroke="#4b8a5a" stroke-width="2"/>
+<text x="64" y="448" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#203a50" text-anchor="start">Scheduler integrity</text>
+<text x="64" y="475" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">ticks 810/810</text>
+<text x="64" y="496" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">uncovered 0</text>
+<text x="64" y="517" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">deadline misses 1</text>
+<text x="64" y="538" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">strict pass True</text>
+<rect x="430" y="420" width="330" height="170" rx="12" fill="#fceff0" stroke="#b44351" stroke-width="2"/>
+<text x="444" y="448" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#203a50" text-anchor="start">Contact diagnostics</text>
+<text x="444" y="475" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">robot-table steps 107</text>
+<text x="444" y="496" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">robot self-contact steps 640</text>
+<text x="444" y="517" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">fall steps 0</text>
+<text x="444" y="538" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">cube attached False</text>
+<rect x="810" y="420" width="300" height="170" rx="12" fill="#eef5fb" stroke="#2878b5" stroke-width="2"/>
+<text x="824" y="448" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#203a50" text-anchor="start">Renderer evidence</text>
+<text x="824" y="475" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">vendor Moore Threads</text>
+<text x="824" y="496" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">renderer MTT S4000</text>
+<text x="824" y="517" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">hardware verified True</text>
+<text x="824" y="538" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">camera head_rgb</text>
+<rect x="1160" y="420" width="290" height="170" rx="12" fill="#fceff0" stroke="#b44351" stroke-width="2"/>
+<text x="1174" y="448" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#203a50" text-anchor="start">Task outcome</text>
+<text x="1174" y="475" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">physical success False</text>
+<text x="1174" y="496" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">final lift -0.000108 m</text>
+<text x="1174" y="517" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">hold 0.0 s</text>
+<text x="1174" y="538" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">runtime completed</text>
+<text x="50" y="700" font-family="DejaVu Sans,Arial,sans-serif" font-size="14px" font-weight="700" fill="#203a50" text-anchor="start">Recorded result: insufficient lift/contact state; no causal decomposition is established. No fall occurred and the scheduler covered every tick.</text>
+</svg>

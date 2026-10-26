@@ -1,0 +1,61 @@
+{
+  "model_type": "token_v2",
+  "data": {
+    "manifests": ["../expert_datasets/grid_xy_v1/training_manifest.json", "../expert_datasets/xy_random_v1/training_manifest.json"],
+    "control_hz": 50,
+    "target_offset": 1,
+    "split_seed": 38,
+    "val_fraction": 0.2,
+    "episode_ids": []
+  },
+  "model": {
+    "image_size": 128,
+    "vision_channels": [32, 64, 128],
+    "d_model": 256,
+    "fusion_hidden": 512,
+    "field_hidden": 32,
+    "history_length": 3,
+    "token_chunk_size": 1
+  },
+  "training": {
+    "device": "musa",
+    "seed": 38,
+    "epochs": 400,
+    "max_steps": 2000,
+    "batch_size_per_rank": 32,
+    "num_workers": 0,
+    "lr": 0.001,
+    "weight_decay": 0.0,
+    "grad_clip": 1.0,
+    "body_loss_weight": 1.0,
+    "hand_loss_weight": 1.0,
+    "token_loss": "huber",
+    "huber_delta": 0.0625,
+    "normalization_min_std": 0.001,
+    "log_every": 20,
+    "output_dir": "../outputs/va_v2/train",
+    "overfit_token_mae_max": 0.01,
+    "overfit_fsq_accuracy_min": 0.95,
+    "overfit_hand_mae_max": 0.02,
+    "heldout_token_mae_max": 0.04,
+    "heldout_fsq_accuracy_min": 0.6,
+    "heldout_hand_mae_max": 0.1
+  },
+  "sonic": {
+    "repository": "../GR00T-WholeBodyControl",
+    "encoder": "../GR00T-WholeBodyControl/gear_sonic_deploy/policy/release/model_encoder.onnx",
+    "decoder": "../GR00T-WholeBodyControl/gear_sonic_deploy/policy/release/model_decoder.onnx",
+    "observation_config": "../GR00T-WholeBodyControl/gear_sonic_deploy/policy/release/observation_config.yaml",
+    "binary": "../GR00T-WholeBodyControl/gear_sonic_deploy/target/release/g1_deploy_onnx_ref",
+    "robot_xml": "../GR00T-WholeBodyControl/decoupled_wbc/control/robot_model/model_data/g1/g1_29dof_with_hand_rev_1_0_activatedfinger.xml"
+  },
+  "rollout": {
+    "visual_hz": 10,
+    "physics_hz": 200,
+    "zmq_port": 5588,
+    "zmq_output_port": 5589,
+    "network_interface": "lo",
+    "timeout_seconds": 180,
+    "project_token": false
+  }
+}

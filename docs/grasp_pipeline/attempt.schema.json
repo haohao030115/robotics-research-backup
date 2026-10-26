@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Grasp stage attempt v1", "type": "object",
+  "required": ["schema_version", "stage", "state", "attempt", "started_at", "ended_at", "inputs", "config", "command", "exit_code", "output_hashes", "result", "error", "log"],
+  "properties": {
+    "schema_version": {"const": 1}, "stage": {"enum": ["compile", "dataset_build"]},
+    "state": {"enum": ["RUNNING", "SUCCEEDED", "FAILED"]}, "attempt": {"type": "integer", "minimum": 1},
+    "started_at": {"type": "string"}, "ended_at": {"type": ["string", "null"]},
+    "inputs": {"type": "object"}, "config": {"type": "object"}, "command": {"type": ["string", "array", "object"]},
+    "exit_code": {"type": ["integer", "null"]}, "output_hashes": {"type": "object"}, "result": {"type": ["object", "null"]},
+    "error": {"type": ["object", "null"]}, "log": {"type": "string"}
+  }
+}

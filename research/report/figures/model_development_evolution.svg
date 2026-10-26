@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Figure model_development_evolution.svg; source: outputs/va_v4_1_kimodo_rule_20261009/offline_metrics.json; outputs/va_v4_ablation/*/offline_metrics.json -->
+<svg xmlns="http://www.w3.org/2000/svg" width="1700" height="900" viewBox="0 0 1700 900">
+<metadata>Source evidence: outputs/va_v4_1_kimodo_rule_20261009/offline_metrics.json; outputs/va_v4_ablation/*/offline_metrics.json</metadata>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#34495e"/></marker><marker id="arrowblue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2878b5"/></marker></defs>
+<rect x="0" y="0" width="1700" height="900" fill="#ffffff"/>
+<text x="40" y="45" font-family="DejaVu Sans,Arial,sans-serif" font-size="29px" font-weight="700" fill="#152238" text-anchor="start">Figure 15. Model development and version evolution</text>
+<text x="40" y="75" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#516171" text-anchor="start">Recorded offline ablations isolate fusion and auxiliary-head changes under the same dataset split.</text>
+<text x="60" y="102" font-family="DejaVu Sans,Arial,sans-serif" font-size="14px" font-weight="700" fill="#203a50" text-anchor="start">Historical model sequence (version docs; no cross-version metric interpolation)</text>
+<rect x="520" y="82" width="130" height="34" rx="8" fill="#f7f9fb" stroke="#7a8791" stroke-width="2"/>
+<text x="585.0" y="104" font-family="DejaVu Sans,Arial,sans-serif" font-size="14px" font-weight="700" fill="#203a50" text-anchor="middle">V1 / V2</text>
+<rect x="705" y="82" width="130" height="34" rx="8" fill="#f7f9fb" stroke="#7a8791" stroke-width="2"/>
+<text x="770.0" y="104" font-family="DejaVu Sans,Arial,sans-serif" font-size="14px" font-weight="700" fill="#203a50" text-anchor="middle">V3</text>
+<rect x="890" y="82" width="130" height="34" rx="8" fill="#eef5fb" stroke="#2878b5" stroke-width="2"/>
+<text x="955.0" y="104" font-family="DejaVu Sans,Arial,sans-serif" font-size="14px" font-weight="700" fill="#203a50" text-anchor="middle">V4</text>
+<rect x="1075" y="82" width="150" height="34" rx="8" fill="#f4effb" stroke="#7653a6" stroke-width="2"/>
+<text x="1150.0" y="104" font-family="DejaVu Sans,Arial,sans-serif" font-size="14px" font-weight="700" fill="#203a50" text-anchor="middle">V4.1 (final)</text>
+<line x1="650" y1="99" x2="700" y2="99" stroke="#34495e" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="835" y1="99" x2="885" y2="99" stroke="#34495e" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="1020" y1="99" x2="1070" y2="99" stroke="#34495e" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="60" y="140" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#152238" text-anchor="start">Token MAE (lower is better)</text>
+<line x1="320" y1="480" x2="320" y2="190" stroke="#34495e" stroke-width="2" marker-end=""/>
+<line x1="320" y1="480" x2="1520" y2="480" stroke="#34495e" stroke-width="2" marker-end=""/>
+<line x1="520.0" y1="480" x2="520.0" y2="190" stroke="#e1e6eb" stroke-width="1" stroke-dasharray="4 4" marker-end=""/>
+<text x="520.0" y="502" font-family="DejaVu Sans,Arial,sans-serif" font-size="12px" font-weight="400" fill="#516171" text-anchor="middle">1</text>
+<line x1="720.0" y1="480" x2="720.0" y2="190" stroke="#e1e6eb" stroke-width="1" stroke-dasharray="4 4" marker-end=""/>
+<text x="720.0" y="502" font-family="DejaVu Sans,Arial,sans-serif" font-size="12px" font-weight="400" fill="#516171" text-anchor="middle">2</text>
+<line x1="920.0" y1="480" x2="920.0" y2="190" stroke="#e1e6eb" stroke-width="1" stroke-dasharray="4 4" marker-end=""/>
+<text x="920.0" y="502" font-family="DejaVu Sans,Arial,sans-serif" font-size="12px" font-weight="400" fill="#516171" text-anchor="middle">3</text>
+<line x1="1120.0" y1="480" x2="1120.0" y2="190" stroke="#e1e6eb" stroke-width="1" stroke-dasharray="4 4" marker-end=""/>
+<text x="1120.0" y="502" font-family="DejaVu Sans,Arial,sans-serif" font-size="12px" font-weight="400" fill="#516171" text-anchor="middle">4</text>
+<line x1="1320.0" y1="480" x2="1320.0" y2="190" stroke="#e1e6eb" stroke-width="1" stroke-dasharray="4 4" marker-end=""/>
+<text x="1320.0" y="502" font-family="DejaVu Sans,Arial,sans-serif" font-size="12px" font-weight="400" fill="#516171" text-anchor="middle">5</text>
+<line x1="1520.0" y1="480" x2="1520.0" y2="190" stroke="#e1e6eb" stroke-width="1" stroke-dasharray="4 4" marker-end=""/>
+<text x="1520.0" y="502" font-family="DejaVu Sans,Arial,sans-serif" font-size="12px" font-weight="400" fill="#516171" text-anchor="middle">6</text>
+<line x1="320" y1="480.0" x2="1520" y2="480.0" stroke="#e1e6eb" stroke-width="1" stroke-dasharray="4 4" marker-end=""/>
+<text x="310" y="484.0" font-family="DejaVu Sans,Arial,sans-serif" font-size="12px" font-weight="400" fill="#516171" text-anchor="end">0</text>
+<line x1="320" y1="424.534615660212" x2="1520" y2="424.534615660212" stroke="#e1e6eb" stroke-width="1" stroke-dasharray="4 4" marker-end=""/>
+<text x="310" y="428.534615660212" font-family="DejaVu Sans,Arial,sans-serif" font-size="12px" font-weight="400" fill="#516171" text-anchor="end">0.001</text>
+<line x1="320" y1="369.06923132042397" x2="1520" y2="369.06923132042397" stroke="#e1e6eb" stroke-width="1" stroke-dasharray="4 4" marker-end=""/>
+<text x="310" y="373.06923132042397" font-family="DejaVu Sans,Arial,sans-serif" font-size="12px" font-weight="400" fill="#516171" text-anchor="end">0.002</text>
+<line x1="320" y1="313.6038469806359" x2="1520" y2="313.6038469806359" stroke="#e1e6eb" stroke-width="1" stroke-dasharray="4 4" marker-end=""/>
+<text x="310" y="317.6038469806359" font-family="DejaVu Sans,Arial,sans-serif" font-size="12px" font-weight="400" fill="#516171" text-anchor="end">0.003</text>
+<line x1="320" y1="258.13846264084793" x2="1520" y2="258.13846264084793" stroke="#e1e6eb" stroke-width="1" stroke-dasharray="4 4" marker-end=""/>
+<text x="310" y="262.13846264084793" font-family="DejaVu Sans,Arial,sans-serif" font-size="12px" font-weight="400" fill="#516171" text-anchor="end">0.004</text>
+<line x1="320" y1="202.67307830105995" x2="1520" y2="202.67307830105995" stroke="#e1e6eb" stroke-width="1" stroke-dasharray="4 4" marker-end=""/>
+<text x="310" y="206.67307830105995" font-family="DejaVu Sans,Arial,sans-serif" font-size="12px" font-weight="400" fill="#516171" text-anchor="end">0.005</text>
+<text x="920.0" y="528" font-family="DejaVu Sans,Arial,sans-serif" font-size="14px" font-weight="700" fill="#203a50" text-anchor="middle">variant</text>
+<text x="265" y="335.0" font-family="DejaVu Sans,Arial,sans-serif" font-size="14px" font-weight="700" fill="#203a50" text-anchor="middle">token MAE</text>
+<rect x="355.0" y="248.0" width="130" height="232.0" rx="4" fill="#2878b5" stroke="#ffffff" stroke-width="1"/>
+<text x="420.0" y="504" font-family="DejaVu Sans,Arial,sans-serif" font-size="12px" font-weight="400" fill="#203a50" text-anchor="middle">V4.1 baseline</text>
+<text x="420.0" y="240.0" font-family="DejaVu Sans,Arial,sans-serif" font-size="12px" font-weight="700" fill="#203a50" text-anchor="middle">0.0042</text>
+<rect x="555.0" y="311.89420728438756" width="130" height="168.10579271561244" rx="4" fill="#2878b5" stroke="#ffffff" stroke-width="1"/>
+<text x="620.0" y="504" font-family="DejaVu Sans,Arial,sans-serif" font-size="12px" font-weight="400" fill="#203a50" text-anchor="middle">No phase</text>
+<text x="620.0" y="303.89420728438756" font-family="DejaVu Sans,Arial,sans-serif" font-size="12px" font-weight="700" fill="#203a50" text-anchor="middle">0.0030</text>
+<rect x="755.0" y="308.948901922422" width="130" height="171.051098077578" rx="4" fill="#2878b5" stroke="#ffffff" stroke-width="1"/>
+<text x="820.0" y="504" font-family="DejaVu Sans,Arial,sans-serif" font-size="12px" font-weight="400" fill="#203a50" text-anchor="middle">No progress</text>
+<text x="820.0" y="300.948901922422" font-family="DejaVu Sans,Arial,sans-serif" font-size="12px" font-weight="700" fill="#203a50" text-anchor="middle">0.0031</text>
+<rect x="955.0" y="285.99516235565915" width="130" height="194.00483764434085" rx="4" fill="#2878b5" stroke="#ffffff" stroke-width="1"/>
+<text x="1020.0" y="504" font-family="DejaVu Sans,Arial,sans-serif" font-size="12px" font-weight="400" fill="#203a50" text-anchor="middle">No phase + progress</text>
+<text x="1020.0" y="277.99516235565915" font-family="DejaVu Sans,Arial,sans-serif" font-size="12px" font-weight="700" fill="#203a50" text-anchor="middle">0.0035</text>
+<rect x="1155.0" y="269.78084760863686" width="130" height="210.21915239136314" rx="4" fill="#2878b5" stroke="#ffffff" stroke-width="1"/>
+<text x="1220.0" y="504" font-family="DejaVu Sans,Arial,sans-serif" font-size="12px" font-weight="400" fill="#203a50" text-anchor="middle">MLP fusion</text>
+<text x="1220.0" y="261.78084760863686" font-family="DejaVu Sans,Arial,sans-serif" font-size="12px" font-weight="700" fill="#203a50" text-anchor="middle">0.0038</text>
+<rect x="1355.0" y="271.1627274944723" width="130" height="208.83727250552772" rx="4" fill="#2878b5" stroke="#ffffff" stroke-width="1"/>
+<text x="1420.0" y="504" font-family="DejaVu Sans,Arial,sans-serif" font-size="12px" font-weight="400" fill="#203a50" text-anchor="middle">Proprio only</text>
+<text x="1420.0" y="263.1627274944723" font-family="DejaVu Sans,Arial,sans-serif" font-size="12px" font-weight="700" fill="#203a50" text-anchor="middle">0.0038</text>
+<text x="60" y="650" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#152238" text-anchor="start">Associated offline metrics</text>
+<text x="60" y="690" font-family="DejaVu Sans,Arial,sans-serif" font-size="14px" font-weight="700" fill="#203a50" text-anchor="start">Variant</text>
+<text x="360" y="690" font-family="DejaVu Sans,Arial,sans-serif" font-size="14px" font-weight="700" fill="#203a50" text-anchor="start">Token MAE</text>
+<text x="580" y="690" font-family="DejaVu Sans,Arial,sans-serif" font-size="14px" font-weight="700" fill="#203a50" text-anchor="start">Hand MAE</text>
+<text x="800" y="690" font-family="DejaVu Sans,Arial,sans-serif" font-size="14px" font-weight="700" fill="#203a50" text-anchor="start">Phase accuracy</text>
+<text x="1080" y="690" font-family="DejaVu Sans,Arial,sans-serif" font-size="14px" font-weight="700" fill="#203a50" text-anchor="start">Progress MAE</text>
+<text x="60" y="720" font-family="DejaVu Sans,Arial,sans-serif" font-size="13px" font-weight="400" fill="#233240" text-anchor="start">V4.1 baseline</text>
+<text x="360" y="720" font-family="DejaVu Sans,Arial,sans-serif" font-size="13px" font-weight="400" fill="#233240" text-anchor="start">0.004183</text>
+<text x="580" y="720" font-family="DejaVu Sans,Arial,sans-serif" font-size="13px" font-weight="400" fill="#233240" text-anchor="start">0.002954</text>
+<text x="800" y="720" font-family="DejaVu Sans,Arial,sans-serif" font-size="13px" font-weight="400" fill="#233240" text-anchor="start">0.993044</text>
+<text x="1080" y="720" font-family="DejaVu Sans,Arial,sans-serif" font-size="13px" font-weight="400" fill="#233240" text-anchor="start">0.004347</text>
+<text x="60" y="747" font-family="DejaVu Sans,Arial,sans-serif" font-size="13px" font-weight="400" fill="#233240" text-anchor="start">No phase</text>
+<text x="360" y="747" font-family="DejaVu Sans,Arial,sans-serif" font-size="13px" font-weight="400" fill="#233240" text-anchor="start">0.003031</text>
+<text x="580" y="747" font-family="DejaVu Sans,Arial,sans-serif" font-size="13px" font-weight="400" fill="#233240" text-anchor="start">0.002801</text>
+<text x="800" y="747" font-family="DejaVu Sans,Arial,sans-serif" font-size="13px" font-weight="400" fill="#233240" text-anchor="start">0.994422</text>
+<text x="1080" y="747" font-family="DejaVu Sans,Arial,sans-serif" font-size="13px" font-weight="400" fill="#233240" text-anchor="start">0.002346</text>
+<text x="60" y="774" font-family="DejaVu Sans,Arial,sans-serif" font-size="13px" font-weight="400" fill="#233240" text-anchor="start">No progress</text>
+<text x="360" y="774" font-family="DejaVu Sans,Arial,sans-serif" font-size="13px" font-weight="400" fill="#233240" text-anchor="start">0.003084</text>
+<text x="580" y="774" font-family="DejaVu Sans,Arial,sans-serif" font-size="13px" font-weight="400" fill="#233240" text-anchor="start">0.001974</text>
+<text x="800" y="774" font-family="DejaVu Sans,Arial,sans-serif" font-size="13px" font-weight="400" fill="#233240" text-anchor="start">0.999867</text>
+<text x="1080" y="774" font-family="DejaVu Sans,Arial,sans-serif" font-size="13px" font-weight="400" fill="#233240" text-anchor="start">0.014145</text>
+<text x="60" y="801" font-family="DejaVu Sans,Arial,sans-serif" font-size="13px" font-weight="400" fill="#233240" text-anchor="start">No phase + progress</text>
+<text x="360" y="801" font-family="DejaVu Sans,Arial,sans-serif" font-size="13px" font-weight="400" fill="#233240" text-anchor="start">0.003498</text>
+<text x="580" y="801" font-family="DejaVu Sans,Arial,sans-serif" font-size="13px" font-weight="400" fill="#233240" text-anchor="start">0.002233</text>
+<text x="800" y="801" font-family="DejaVu Sans,Arial,sans-serif" font-size="13px" font-weight="400" fill="#233240" text-anchor="start">0.996946</text>
+<text x="1080" y="801" font-family="DejaVu Sans,Arial,sans-serif" font-size="13px" font-weight="400" fill="#233240" text-anchor="start">0.007949</text>
+<text x="60" y="828" font-family="DejaVu Sans,Arial,sans-serif" font-size="13px" font-weight="400" fill="#233240" text-anchor="start">MLP fusion</text>
+<text x="360" y="828" font-family="DejaVu Sans,Arial,sans-serif" font-size="13px" font-weight="400" fill="#233240" text-anchor="start">0.003790</text>
+<text x="580" y="828" font-family="DejaVu Sans,Arial,sans-serif" font-size="13px" font-weight="400" fill="#233240" text-anchor="start">0.002344</text>
+<text x="800" y="828" font-family="DejaVu Sans,Arial,sans-serif" font-size="13px" font-weight="400" fill="#233240" text-anchor="start">0.998938</text>
+<text x="1080" y="828" font-family="DejaVu Sans,Arial,sans-serif" font-size="13px" font-weight="400" fill="#233240" text-anchor="start">0.004365</text>
+<text x="60" y="855" font-family="DejaVu Sans,Arial,sans-serif" font-size="13px" font-weight="400" fill="#233240" text-anchor="start">Proprio only</text>
+<text x="360" y="855" font-family="DejaVu Sans,Arial,sans-serif" font-size="13px" font-weight="400" fill="#233240" text-anchor="start">0.003765</text>
+<text x="580" y="855" font-family="DejaVu Sans,Arial,sans-serif" font-size="13px" font-weight="400" fill="#233240" text-anchor="start">0.003930</text>
+<text x="800" y="855" font-family="DejaVu Sans,Arial,sans-serif" font-size="13px" font-weight="400" fill="#233240" text-anchor="start">0.999203</text>
+<text x="1080" y="855" font-family="DejaVu Sans,Arial,sans-serif" font-size="13px" font-weight="400" fill="#233240" text-anchor="start">0.006279</text>
+<text x="60" y="885" font-family="DejaVu Sans,Arial,sans-serif" font-size="13px" font-weight="400" fill="#516171" text-anchor="start">These are offline predictions only; the representative native physical result remains the separate Figure 14 evidence.</text>
+</svg>

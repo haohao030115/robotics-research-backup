@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Figure generation_to_execution.svg; source: docs/TECHNICAL_REPORT.md; docs/architecture_audit/PIPELINE_CALL_CHAINS.md; va_research/models/v4_1/model.py; data_factory/runtime; outputs/va_v4_1_kimodo_rule_20261009/closed_loop/provenance.json -->
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="760" viewBox="0 0 1500 760">
+<metadata>Source evidence: docs/TECHNICAL_REPORT.md; docs/architecture_audit/PIPELINE_CALL_CHAINS.md; va_research/models/v4_1/model.py; data_factory/runtime; outputs/va_v4_1_kimodo_rule_20261009/closed_loop/provenance.json</metadata>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#34495e"/></marker><marker id="arrowblue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2878b5"/></marker></defs>
+<rect x="0" y="0" width="1500" height="760" fill="#ffffff"/>
+<text x="40" y="45" font-family="DejaVu Sans,Arial,sans-serif" font-size="29px" font-weight="700" fill="#152238" text-anchor="start">Figure 2. Kimodo/ARDY generation to SONIC execution</text>
+<text x="40" y="75" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#516171" text-anchor="start">Producer-neutral adapter boundary and canonical runtime handoff.</text>
+<rect x="35" y="300" width="160" height="135" rx="12" fill="#eef5fb" stroke="#2878b5" stroke-width="2"/>
+<text x="49" y="328" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#183b56" text-anchor="start">Kimodo</text>
+<text x="49" y="355" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">prompt, seed, native checkpoint</text>
+<line x1="195" y1="367" x2="231" y2="367" stroke="#34495e" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="235" y="300" width="160" height="135" rx="12" fill="#eef5fb" stroke="#2878b5" stroke-width="2"/>
+<text x="249" y="328" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#183b56" text-anchor="start">ARDY</text>
+<text x="249" y="355" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">segmented trajectory, seed</text>
+<line x1="395" y1="367" x2="431" y2="367" stroke="#34495e" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="435" y="260" width="210" height="135" rx="12" fill="#fff8ec" stroke="#bd7b20" stroke-width="2"/>
+<text x="449" y="288" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#183b56" text-anchor="start">Unified Adapter</text>
+<text x="449" y="315" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">canonical 50 Hz body + hand references</text>
+<line x1="645" y1="367" x2="681" y2="367" stroke="#34495e" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="685" y="260" width="180" height="135" rx="12" fill="#fff8ec" stroke="#bd7b20" stroke-width="2"/>
+<text x="699" y="288" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#183b56" text-anchor="start">Canonical replay</text>
+<text x="699" y="315" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">SONIC encoder, references, observations</text>
+<line x1="865" y1="367" x2="881" y2="367" stroke="#34495e" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="885" y="300" width="180" height="135" rx="12" fill="#f4effb" stroke="#7653a6" stroke-width="2"/>
+<text x="899" y="328" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#183b56" text-anchor="start">V4.1 policy</text>
+<text x="899" y="355" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">current RGB/state -&gt; future plan</text>
+<line x1="1065" y1="367" x2="1081" y2="367" stroke="#34495e" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="1085" y="300" width="180" height="135" rx="12" fill="#fff8ec" stroke="#bd7b20" stroke-width="2"/>
+<text x="1099" y="328" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#183b56" text-anchor="start">SONIC + hand PD</text>
+<text x="1099" y="355" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">64D tokens + 14D hand reference</text>
+<line x1="1265" y1="367" x2="1281" y2="367" stroke="#34495e" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="1285" y="300" width="180" height="135" rx="12" fill="#f1f7f2" stroke="#4b8a5a" stroke-width="2"/>
+<text x="1299" y="328" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#183b56" text-anchor="start">DDS/MuJoCo</text>
+<text x="1299" y="355" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">physics, contacts, task metrics</text>
+<text x="35" y="180" font-family="DejaVu Sans,Arial,sans-serif" font-size="19px" font-weight="700" fill="#152238" text-anchor="start">Training-time artifact lineage</text>
+<line x1="35" y1="210" x2="1320" y2="210" stroke="#a0aab5" stroke-width="2" stroke-dasharray="4 4" marker-end=""/>
+<circle cx="115" cy="210" r="7" fill="#2878b5"/>
+<text x="115" y="245" font-family="DejaVu Sans,Arial,sans-serif" font-size="14px" font-weight="400" fill="#516171" text-anchor="middle">native motion</text>
+<circle cx="340" cy="210" r="7" fill="#2878b5"/>
+<text x="340" y="245" font-family="DejaVu Sans,Arial,sans-serif" font-size="14px" font-weight="400" fill="#516171" text-anchor="middle">adapted motion</text>
+<circle cx="575" cy="210" r="7" fill="#2878b5"/>
+<text x="575" y="245" font-family="DejaVu Sans,Arial,sans-serif" font-size="14px" font-weight="400" fill="#516171" text-anchor="middle">validated episode</text>
+<circle cx="775" cy="210" r="7" fill="#2878b5"/>
+<text x="775" y="245" font-family="DejaVu Sans,Arial,sans-serif" font-size="14px" font-weight="400" fill="#516171" text-anchor="middle">sample mapping</text>
+<circle cx="975" cy="210" r="7" fill="#2878b5"/>
+<text x="975" y="245" font-family="DejaVu Sans,Arial,sans-serif" font-size="14px" font-weight="400" fill="#516171" text-anchor="middle">checkpoint</text>
+<circle cx="1175" cy="210" r="7" fill="#2878b5"/>
+<text x="1175" y="245" font-family="DejaVu Sans,Arial,sans-serif" font-size="14px" font-weight="400" fill="#516171" text-anchor="middle">release plan</text>
+<text x="35" y="560" font-family="DejaVu Sans,Arial,sans-serif" font-size="19px" font-weight="700" fill="#152238" text-anchor="start">Invariants carried across the boundary</text>
+<rect x="35" y="590" width="330" height="105" rx="12" fill="#f7f9fb" stroke="#7a8791" stroke-width="2"/>
+<text x="49" y="618" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#203a50" text-anchor="start">Identity</text>
+<text x="49" y="645" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">sample_id, observation_id, token_id, hand_ref_id</text>
+<rect x="400" y="590" width="330" height="105" rx="12" fill="#f7f9fb" stroke="#7a8791" stroke-width="2"/>
+<text x="414" y="618" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#203a50" text-anchor="start">Timing</text>
+<text x="414" y="645" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">authored timestamps; 50 Hz control / 200 Hz physics</text>
+<rect x="765" y="590" width="330" height="105" rx="12" fill="#f7f9fb" stroke="#7a8791" stroke-width="2"/>
+<text x="779" y="618" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#203a50" text-anchor="start">Semantics</text>
+<text x="779" y="645" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">native post-FSQ 64D tokens; no synthetic future labels</text>
+<rect x="1130" y="590" width="330" height="105" rx="12" fill="#f7f9fb" stroke="#7a8791" stroke-width="2"/>
+<text x="1144" y="618" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#203a50" text-anchor="start">Diagnostics</text>
+<text x="1144" y="645" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">source hashes, scheduler events, physical criterion</text>
+</svg>

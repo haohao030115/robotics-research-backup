@@ -1,0 +1,59 @@
+{
+  "model_type": "token_v3",
+  "data": {
+    "manifests": [
+      "../expert_datasets/grid_xy_v1/training_manifest.json",
+      "../expert_datasets/xy_random_v1/training_manifest.json"
+    ],
+    "control_hz": 50,
+    "split_seed": 38,
+    "val_fraction": 0.2,
+    "episode_ids": []
+  },
+  "model": {
+    "image_size": 128,
+    "proprio_dim": 96,
+    "embedding_dim": 256,
+    "heads": 4,
+    "cross_attention_blocks": 1,
+    "shared_dim": 512,
+    "token_chunk_size": 2
+  },
+  "training": {
+    "device": "musa",
+    "seed": 38,
+    "max_steps": 2000,
+    "batch_size": 32,
+    "lr": 0.0003,
+    "weight_decay": 0.0001,
+    "body_loss": "huber",
+    "huber_delta": 0.0625,
+    "log_every": 100,
+    "eval_every": 500
+  },
+  "sonic": {
+    "repository": "../GR00T-WholeBodyControl",
+    "encoder": "../GR00T-WholeBodyControl/gear_sonic_deploy/policy/release/model_encoder.onnx",
+    "decoder": "../GR00T-WholeBodyControl/gear_sonic_deploy/policy/release/model_decoder.onnx",
+    "observation_config": "../GR00T-WholeBodyControl/gear_sonic_deploy/policy/release/observation_config.yaml",
+    "binary": "../GR00T-WholeBodyControl/gear_sonic_deploy/target/release/g1_deploy_onnx_ref",
+    "robot_xml": "../GR00T-WholeBodyControl/decoupled_wbc/control/robot_model/model_data/g1/g1_29dof_with_hand_rev_1_0_activatedfinger.xml"
+  },
+  "rollout": {
+    "visual_hz": 25,
+    "physics_hz": 200,
+    "zmq_port": 5588,
+    "zmq_output_port": 5589,
+    "network_interface": "lo",
+    "timeout_seconds": 180,
+    "project_token": false
+  },
+  "timing": {
+    "control_hz": 50,
+    "inference_hz": 25,
+    "stride": 2,
+    "prediction_horizon": 2,
+    "execution_horizon": 2,
+    "post_step_target_offset": 1
+  }
+}

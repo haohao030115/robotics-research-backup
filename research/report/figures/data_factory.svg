@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Figure data_factory.svg; source: docs/TECHNICAL_REPORT.md; docs/architecture_audit/PIPELINE_CALL_CHAINS.md; va_research/models/v4_1/model.py; data_factory/runtime; outputs/va_v4_1_kimodo_rule_20261009/closed_loop/provenance.json -->
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="850" viewBox="0 0 1500 850">
+<metadata>Source evidence: docs/TECHNICAL_REPORT.md; docs/architecture_audit/PIPELINE_CALL_CHAINS.md; va_research/models/v4_1/model.py; data_factory/runtime; outputs/va_v4_1_kimodo_rule_20261009/closed_loop/provenance.json</metadata>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#34495e"/></marker><marker id="arrowblue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2878b5"/></marker></defs>
+<rect x="0" y="0" width="1500" height="850" fill="#ffffff"/>
+<text x="40" y="45" font-family="DejaVu Sans,Arial,sans-serif" font-size="29px" font-weight="700" fill="#152238" text-anchor="start">Figure 3. Canonical Data Factory architecture</text>
+<text x="40" y="75" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#516171" text-anchor="start">Canonical compilation preserves native traces, IDs, timing and validation evidence.</text>
+<rect x="45" y="130" width="260" height="220" rx="12" fill="#eef5fb" stroke="#2878b5" stroke-width="2"/>
+<text x="59" y="158" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#183b56" text-anchor="start">Inputs</text>
+<text x="59" y="185" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">Kimodo/ARDY reference</text>
+<text x="59" y="206" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">native SONIC replay</text>
+<text x="59" y="227" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">camera + body/hand state</text>
+<text x="59" y="248" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">controller observations</text>
+<rect x="365" y="130" width="270" height="220" rx="12" fill="#fff8ec" stroke="#bd7b20" stroke-width="2"/>
+<text x="379" y="158" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#183b56" text-anchor="start">Trace join and alignment</text>
+<text x="379" y="185" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">authored tick IDs</text>
+<text x="379" y="206" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">observation/token/reference IDs</text>
+<text x="379" y="227" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">RGB at 10 Hz, control at 50 Hz</text>
+<text x="379" y="248" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">physics snapshots at 200 Hz</text>
+<rect x="695" y="130" width="255" height="220" rx="12" fill="#f1f7f2" stroke="#4b8a5a" stroke-width="2"/>
+<text x="709" y="158" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#183b56" text-anchor="start">Validation gates</text>
+<text x="709" y="185" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">finite arrays</text>
+<text x="709" y="206" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">joint order / quaternion wxyz</text>
+<text x="709" y="227" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">target-prefix equality</text>
+<text x="709" y="248" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">renderer and replay checks</text>
+<rect x="1010" y="130" width="240" height="220" rx="12" fill="#f4effb" stroke="#7653a6" stroke-width="2"/>
+<text x="1024" y="158" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#183b56" text-anchor="start">Episode artifact</text>
+<text x="1024" y="185" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">metadata.json</text>
+<text x="1024" y="206" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">samples.npz</text>
+<text x="1024" y="227" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">sample_mapping.jsonl</text>
+<text x="1024" y="248" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">provenance hashes</text>
+<rect x="1310" y="130" width="145" height="220" rx="12" fill="#fceff0" stroke="#b44351" stroke-width="2"/>
+<text x="1324" y="158" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#183b56" text-anchor="start">Dataset</text>
+<text x="1324" y="185" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">accepted</text>
+<text x="1324" y="206" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">or rejected</text>
+<line x1="305" y1="240" x2="360" y2="240" stroke="#34495e" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="635" y1="240" x2="690" y2="240" stroke="#34495e" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="950" y1="240" x2="1005" y2="240" stroke="#34495e" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="1250" y1="240" x2="1305" y2="240" stroke="#34495e" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="55" y="420" font-family="DejaVu Sans,Arial,sans-serif" font-size="19px" font-weight="700" fill="#152238" text-anchor="start">V4 sample compiler (per retained sample)</text>
+<rect x="55" y="455" width="255" height="200" rx="12" fill="#eef5fb" stroke="#2878b5" stroke-width="2"/>
+<text x="69" y="483" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#183b56" text-anchor="start">Current observation</text>
+<text x="69" y="510" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">RGB [3,128,128]</text>
+<text x="69" y="531" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">body [68]</text>
+<text x="69" y="552" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">hand [28]</text>
+<text x="69" y="573" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">history-valid mask</text>
+<rect x="365" y="455" width="255" height="200" rx="12" fill="#f4effb" stroke="#7653a6" stroke-width="2"/>
+<text x="379" y="483" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#183b56" text-anchor="start">Authored targets</text>
+<text x="379" y="510" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">body_tokens [10,64]</text>
+<text x="379" y="531" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">hand_ref [50,14]</text>
+<text x="379" y="552" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">future offsets +2..+6</text>
+<text x="379" y="573" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">phase + progress labels</text>
+<rect x="675" y="455" width="255" height="200" rx="12" fill="#f1f7f2" stroke="#4b8a5a" stroke-width="2"/>
+<text x="689" y="483" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#183b56" text-anchor="start">Integrity checks</text>
+<text x="689" y="510" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">sample ID match</text>
+<text x="689" y="531" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">contiguous target IDs</text>
+<text x="689" y="552" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">exact 5-slot prefix</text>
+<text x="689" y="573" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">drop incomplete tails</text>
+<rect x="985" y="455" width="255" height="200" rx="12" fill="#fff8ec" stroke="#bd7b20" stroke-width="2"/>
+<text x="999" y="483" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#183b56" text-anchor="start">Splits and normalization</text>
+<text x="999" y="510" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">63 episodes total</text>
+<text x="999" y="531" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">train 7,530 / val 1,958</text>
+<text x="999" y="552" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">train-only mean/std</text>
+<text x="999" y="573" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">std clamp min 0.05</text>
+<rect x="1295" y="455" width="160" height="200" rx="12" fill="#fceff0" stroke="#b44351" stroke-width="2"/>
+<text x="1309" y="483" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#183b56" text-anchor="start">Output</text>
+<text x="1309" y="510" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">9488 rows</text>
+<text x="1309" y="531" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">manifest + hashes</text>
+<line x1="310" y1="555" x2="365" y2="555" stroke="#34495e" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="620" y1="555" x2="675" y2="555" stroke="#34495e" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="930" y1="555" x2="985" y2="555" stroke="#34495e" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="1240" y1="555" x2="1295" y2="555" stroke="#34495e" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="55" y="730" font-family="DejaVu Sans,Arial,sans-serif" font-size="14px" font-weight="400" fill="#516171" text-anchor="start">Source: va_research/models/v4/dataset.py; expert_datasets/train_dataset_v0/manifest.json and split.json</text>
+</svg>

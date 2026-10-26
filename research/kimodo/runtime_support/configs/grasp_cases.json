@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "instruction": "拿起桌上的红色方块",
+  "duration_seconds": 11.0,
+  "repeats": 2,
+  "state_hz": 50,
+  "image_hz": 10,
+  "image_width": 320,
+  "image_height": 240,
+  "randomization": "none; repeated runs verify determinism",
+  "cases": [
+    {"id": "center", "block_xy": [0.40, -0.15], "block_yaw_deg": 0},
+    {"id": "near", "block_xy": [0.30, -0.15], "block_yaw_deg": 0},
+    {"id": "far", "block_xy": [0.50, -0.15], "block_yaw_deg": 0},
+    {"id": "left", "block_xy": [0.40, -0.00], "block_yaw_deg": 0},
+    {"id": "right", "block_xy": [0.40, -0.30], "block_yaw_deg": 0}
+  ]
+}

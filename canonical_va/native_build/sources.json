@@ -1,0 +1,15 @@
+{
+  "source_deploy": "/workspace/group2/GR00T-WholeBodyControl/gear_sonic_deploy",
+  "changes": {
+    "src/g1/g1_deploy_onnx_ref/include/robot_parameters.hpp": {
+      "original": "073f8d04f292473851b6f0b923e6af7b2dc0686658eba19a8deab08c839e4fb1",
+      "instrumented": "ba217ec0ec730d9b2049ade5f140cae97617da03ddfd4d5765c99761caa45f11"
+    },
+    "src/g1/g1_deploy_onnx_ref/src/g1_deploy_onnx_ref.cpp": {
+      "original": "4c89bf3064708ff1fffaa880b7cb067ea35d987e933ec853e54a516fcbaf29d3",
+      "instrumented": "eadb9e9221fa06ad4ff08e3df30a5ab4cf044a5081487b771066efbd93f3953f"
+    }
+  },
+  "original_binary_sha256": "a4c1a00c6794184cb062d150a294d36047c748dc9590474146a68c2b7368102e",
+  "semantics": "Only new trace writes, MotorCommand metadata, LowCmd reserved fields; weights/controller arithmetic/thread periods unchanged"
+}

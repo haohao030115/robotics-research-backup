@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Figure dataset_composition.svg; source: expert_datasets/train_dataset_v0/manifest.json; expert_datasets/train_dataset_v0/split.json -->
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="760" viewBox="0 0 1400 760">
+<metadata>Source evidence: expert_datasets/train_dataset_v0/manifest.json; expert_datasets/train_dataset_v0/split.json</metadata>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#34495e"/></marker><marker id="arrowblue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2878b5"/></marker></defs>
+<rect x="0" y="0" width="1400" height="760" fill="#ffffff"/>
+<text x="40" y="45" font-family="DejaVu Sans,Arial,sans-serif" font-size="29px" font-weight="700" fill="#152238" text-anchor="start">Figure 11. Dataset composition and coverage</text>
+<text x="40" y="75" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#516171" text-anchor="start">Manifest-level counts for the accepted V4 training dataset.</text>
+<text x="45" y="145" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#152238" text-anchor="start">Episodes by producer type</text>
+<text x="100" y="232" font-family="DejaVu Sans,Arial,sans-serif" font-size="16px" font-weight="700" fill="#203a50" text-anchor="start">kimodo</text>
+<rect x="270" y="210" width="241.8181818181818" height="38" rx="5" fill="#2878b5" stroke="#ffffff" stroke-width="1"/>
+<text x="526.8181818181818" y="236" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="700" fill="#203a50" text-anchor="start">19 episodes</text>
+<text x="100" y="317" font-family="DejaVu Sans,Arial,sans-serif" font-size="16px" font-weight="700" fill="#203a50" text-anchor="start">rule_based</text>
+<rect x="270" y="295" width="560.0" height="38" rx="5" fill="#4b8a5a" stroke="#ffffff" stroke-width="1"/>
+<text x="845.0" y="321" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="700" fill="#203a50" text-anchor="start">44 episodes</text>
+<text x="760" y="145" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#152238" text-anchor="start">Samples by producer type</text>
+<text x="760" y="232" font-family="DejaVu Sans,Arial,sans-serif" font-size="16px" font-weight="700" fill="#203a50" text-anchor="start">kimodo</text>
+<rect x="930" y="210" width="245.04242424242423" height="38" rx="5" fill="#2878b5" stroke="#ffffff" stroke-width="1"/>
+<text x="1190.0424242424242" y="236" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="700" fill="#203a50" text-anchor="start">2888 samples</text>
+<text x="760" y="317" font-family="DejaVu Sans,Arial,sans-serif" font-size="16px" font-weight="700" fill="#203a50" text-anchor="start">rule_based</text>
+<rect x="930" y="295" width="560.0" height="38" rx="5" fill="#4b8a5a" stroke="#ffffff" stroke-width="1"/>
+<text x="1505.0" y="321" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="700" fill="#203a50" text-anchor="start">6600 samples</text>
+<rect x="100" y="520" width="350" height="110" rx="12" fill="#f7f9fb" stroke="#7a8791" stroke-width="2"/>
+<text x="114" y="548" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#203a50" text-anchor="start">Manifest total</text>
+<text x="114" y="575" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">episodes: 63</text>
+<text x="114" y="596" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">samples: 9488</text>
+<text x="114" y="617" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">tensor shape: [9488,...]</text>
+<rect x="525" y="520" width="350" height="110" rx="12" fill="#f7f9fb" stroke="#7a8791" stroke-width="2"/>
+<text x="539" y="548" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#203a50" text-anchor="start">Explicit split</text>
+<text x="539" y="575" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">train episodes: 50</text>
+<text x="539" y="596" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">validation episodes: 13</text>
+<text x="539" y="617" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">train/val rows: 7530/1958</text>
+<rect x="950" y="520" width="350" height="110" rx="12" fill="#f7f9fb" stroke="#7a8791" stroke-width="2"/>
+<text x="964" y="548" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#203a50" text-anchor="start">Coverage</text>
+<text x="964" y="575" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">reference rate: 50 Hz</text>
+<text x="964" y="596" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">episode length: 810 frames</text>
+<text x="964" y="617" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">RGB model input: 128×128</text>
+<text x="45" y="700" font-family="DejaVu Sans,Arial,sans-serif" font-size="13px" font-weight="400" fill="#516171" text-anchor="start">Counts are directly read from manifest metadata; no duplicate identity expansion is applied in this figure.</text>
+</svg>

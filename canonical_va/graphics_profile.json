@@ -1,0 +1,13 @@
+{
+  "profile_version": "mthreads-host-musa-3.3.5-graphics-v1",
+  "files": {
+    "vendor": "outputs/mujoco_gpu_rendering/driver_stage/00_mtgpu.json",
+    "dri": "outputs/mujoco_gpu_rendering/driver_stage/dri/mtgpu_dri.so",
+    "compiler": "outputs/mujoco_gpu_rendering/driver_stage/lib/libmtgfxc64.so.14"
+  },
+  "sha256": {
+    "vendor": "c6315ab99446f23e994172287e06d4c55ffb12c0295d1c49913c0019b60cf541",
+    "dri": "92985ebab50ebac142698f2794bfd90dab49c443b00e92ad2f5ae8624ea4d1ec",
+    "compiler": "486eacc9b6bd3e3bb215782f6e4d71cdc6ed112d8767390cbb40e420e4087f5a"
+  }
+}

@@ -1,0 +1,604 @@
+{
+  "policy_version": 1,
+  "review": "Explicit reviewed baseline 2026-10-09; simulator-only audio volume request guard and startup markers reviewed; original hardware audio path, MotionSwitcher lifecycle, controller formulas, timing, and sample plan unchanged",
+  "sources": {
+    "GR00T-WholeBodyControl/decoupled_wbc/control/robot_model/model_data/g1/g1_29dof_with_hand_rev_1_0_activatedfinger.xml": {
+      "classification": "critical",
+      "sha256": "72fa3c795c24fe357ae8725452f1487e0176847e191568ff5403322674f60c9c"
+    },
+    "GR00T-WholeBodyControl/decoupled_wbc/control/robot_model/model_data/g1/meshes/head_link.STL": {
+      "classification": "critical",
+      "sha256": "005fb67fbd3eff94aa8bf4a6e83238174e9f91b6721f7111594322f223724411"
+    },
+    "GR00T-WholeBodyControl/decoupled_wbc/control/robot_model/model_data/g1/meshes/left_ankle_pitch_link.STL": {
+      "classification": "critical",
+      "sha256": "d49e3abc6f5b12e532062cd575b87b5ef40cd2a3fc18f54a1ca5bba4f773d51d"
+    },
+    "GR00T-WholeBodyControl/decoupled_wbc/control/robot_model/model_data/g1/meshes/left_ankle_roll_link.STL": {
+      "classification": "critical",
+      "sha256": "c4092af943141d4d9f74232f3cfa345afc6565f46a077793b8ae0e68b39dc33f"
+    },
+    "GR00T-WholeBodyControl/decoupled_wbc/control/robot_model/model_data/g1/meshes/left_elbow_link.STL": {
+      "classification": "critical",
+      "sha256": "fa752198accd104d5c4c3a01382e45165b944fbbc5acce085059223324e5bed3"
+    },
+    "GR00T-WholeBodyControl/decoupled_wbc/control/robot_model/model_data/g1/meshes/left_hand_index_0_link.STL": {
+      "classification": "critical",
+      "sha256": "6b35f2f77211d5a366f0b9a4e47c4ee35e536731266f1a34e9efa12db579b892"
+    },
+    "GR00T-WholeBodyControl/decoupled_wbc/control/robot_model/model_data/g1/meshes/left_hand_index_1_link.STL": {
+      "classification": "critical",
+      "sha256": "9e315ebc8a7a0cb98e033985b586b20d81cf8aa761181ae61ce56fcb14077a06"
+    },
+    "GR00T-WholeBodyControl/decoupled_wbc/control/robot_model/model_data/g1/meshes/left_hand_middle_0_link.STL": {
+      "classification": "critical",
+      "sha256": "6b35f2f77211d5a366f0b9a4e47c4ee35e536731266f1a34e9efa12db579b892"
+    },
+    "GR00T-WholeBodyControl/decoupled_wbc/control/robot_model/model_data/g1/meshes/left_hand_middle_1_link.STL": {
+      "classification": "critical",
+      "sha256": "9e315ebc8a7a0cb98e033985b586b20d81cf8aa761181ae61ce56fcb14077a06"
+    },
+    "GR00T-WholeBodyControl/decoupled_wbc/control/robot_model/model_data/g1/meshes/left_hand_palm_link.STL": {
+      "classification": "critical",
+      "sha256": "23a486b75bd78a9bf03cec25d84d87f97f3dae038cf21a743b6d469b337e4004"
+    },
+    "GR00T-WholeBodyControl/decoupled_wbc/control/robot_model/model_data/g1/meshes/left_hand_thumb_0_link.STL": {
+      "classification": "critical",
+      "sha256": "a90c721661c0622685488a3c74d1e122c7da89242d3a1daef75edb83422d05e0"
+    },
+    "GR00T-WholeBodyControl/decoupled_wbc/control/robot_model/model_data/g1/meshes/left_hand_thumb_1_link.STL": {
+      "classification": "critical",
+      "sha256": "445c54a45bc13ce36001556f66bc0f49c83cb40321205ae4d676bb2874325684"
+    },
+    "GR00T-WholeBodyControl/decoupled_wbc/control/robot_model/model_data/g1/meshes/left_hand_thumb_2_link.STL": {
+      "classification": "critical",
+      "sha256": "3d8dbe5085acfc213d21aa8b0782e89cd79084e9678f3a85fc7b04a86b029db5"
+    },
+    "GR00T-WholeBodyControl/decoupled_wbc/control/robot_model/model_data/g1/meshes/left_hip_pitch_link.STL": {
+      "classification": "critical",
+      "sha256": "4725168105ee768ee31638ef22b53f6be2d7641bfd7cfefe803488d884776fa4"
+    },
+    "GR00T-WholeBodyControl/decoupled_wbc/control/robot_model/model_data/g1/meshes/left_hip_roll_link.STL": {
+      "classification": "critical",
+      "sha256": "91f25922ee8a7c3152790051bebad17b4d9cd243569c38fe340285ff93a97acf"
+    },
+    "GR00T-WholeBodyControl/decoupled_wbc/control/robot_model/model_data/g1/meshes/left_hip_yaw_link.STL": {
+      "classification": "critical",
+      "sha256": "a16d88aa6ddac8083aa7ad55ed317bea44b1fa003d314fba88965b7ed0f3b55b"
+    },
+    "GR00T-WholeBodyControl/decoupled_wbc/control/robot_model/model_data/g1/meshes/left_knee_link.STL": {
+      "classification": "critical",
+      "sha256": "8d92b9e3d3a636761150bb8025e32514c4602b91c7028d523ee42b3e632de477"
+    },
+    "GR00T-WholeBodyControl/decoupled_wbc/control/robot_model/model_data/g1/meshes/left_shoulder_pitch_link.STL": {
+      "classification": "critical",
+      "sha256": "f0d1cfd02fcf0d42f95e678eeca33da3afbcc366ffba5c052847773ec4f31d52"
+    },
+    "GR00T-WholeBodyControl/decoupled_wbc/control/robot_model/model_data/g1/meshes/left_shoulder_roll_link.STL": {
+      "classification": "critical",
+      "sha256": "fb9df21687773522598dc384f1a2945c7519f11cbc8bd372a49170316d6eee88"
+    },
+    "GR00T-WholeBodyControl/decoupled_wbc/control/robot_model/model_data/g1/meshes/left_shoulder_yaw_link.STL": {
+      "classification": "critical",
+      "sha256": "1aa97e9748e924336567992181f78c7cd0652fd52a4afcca3df6b2ef6f9e712e"
+    },
+    "GR00T-WholeBodyControl/decoupled_wbc/control/robot_model/model_data/g1/meshes/left_wrist_pitch_link.STL": {
+      "classification": "critical",
+      "sha256": "b251d8e05047f695d0f536cd78c11973cfa4e78d08cfe82759336cc3471de3a9"
+    },
+    "GR00T-WholeBodyControl/decoupled_wbc/control/robot_model/model_data/g1/meshes/left_wrist_roll_link.STL": {
+      "classification": "critical",
+      "sha256": "edc387c9a0ba8c2237e9b296d32531426fabeb6f53e58df45c76106bca74148c"
+    },
+    "GR00T-WholeBodyControl/decoupled_wbc/control/robot_model/model_data/g1/meshes/left_wrist_yaw_link.STL": {
+      "classification": "critical",
+      "sha256": "83f8fb3a726bf9613d65dd14f0f447cb918c3c95b3938042a0c9c09749267d3b"
+    },
+    "GR00T-WholeBodyControl/decoupled_wbc/control/robot_model/model_data/g1/meshes/logo_link.STL": {
+      "classification": "critical",
+      "sha256": "8571a0a19bc4916fa55f91449f51d5fdefd751000054865a842449429d5f155b"
+    },
+    "GR00T-WholeBodyControl/decoupled_wbc/control/robot_model/model_data/g1/meshes/pelvis.STL": {
+      "classification": "critical",
+      "sha256": "5ba6bbc888e630550140d3c26763f10206da8c8bd30ed886b8ede41c61f57a31"
+    },
+    "GR00T-WholeBodyControl/decoupled_wbc/control/robot_model/model_data/g1/meshes/pelvis_contour_link.STL": {
+      "classification": "critical",
+      "sha256": "5cc5c2c7a312329e3feeb2b03d3fc09fc29705bd01864f6767e51be959662420"
+    },
+    "GR00T-WholeBodyControl/decoupled_wbc/control/robot_model/model_data/g1/meshes/right_ankle_pitch_link.STL": {
+      "classification": "critical",
+      "sha256": "15be426539ec1be70246d4d82a168806db64a41301af8b35c197a33348c787a9"
+    },
+    "GR00T-WholeBodyControl/decoupled_wbc/control/robot_model/model_data/g1/meshes/right_ankle_roll_link.STL": {
+      "classification": "critical",
+      "sha256": "4b66222ea56653e627711b56d0a8949b4920da5df091da0ceb343f54e884e3a5"
+    },
+    "GR00T-WholeBodyControl/decoupled_wbc/control/robot_model/model_data/g1/meshes/right_elbow_link.STL": {
+      "classification": "critical",
+      "sha256": "1be925d7aa268bb8fddf5362b9173066890c7d32092c05638608126e59d1e2ab"
+    },
+    "GR00T-WholeBodyControl/decoupled_wbc/control/robot_model/model_data/g1/meshes/right_hand_index_0_link.STL": {
+      "classification": "critical",
+      "sha256": "12ab4300c95e437e834f9aef772b3b431c671bf34338930b52ad11aef73bbd0d"
+    },
+    "GR00T-WholeBodyControl/decoupled_wbc/control/robot_model/model_data/g1/meshes/right_hand_index_1_link.STL": {
+      "classification": "critical",
+      "sha256": "c9c34efce4563cacdcfd29fc838a982976d40f5442c71219811dcbbf3923a33d"
+    },
+    "GR00T-WholeBodyControl/decoupled_wbc/control/robot_model/model_data/g1/meshes/right_hand_middle_0_link.STL": {
+      "classification": "critical",
+      "sha256": "12ab4300c95e437e834f9aef772b3b431c671bf34338930b52ad11aef73bbd0d"
+    },
+    "GR00T-WholeBodyControl/decoupled_wbc/control/robot_model/model_data/g1/meshes/right_hand_middle_1_link.STL": {
+      "classification": "critical",
+      "sha256": "c9c34efce4563cacdcfd29fc838a982976d40f5442c71219811dcbbf3923a33d"
+    },
+    "GR00T-WholeBodyControl/decoupled_wbc/control/robot_model/model_data/g1/meshes/right_hand_palm_link.STL": {
+      "classification": "critical",
+      "sha256": "86c0b231cc44477d64a6493e5a427ba16617a00738112dd187c652675b086fb9"
+    },
+    "GR00T-WholeBodyControl/decoupled_wbc/control/robot_model/model_data/g1/meshes/right_hand_thumb_0_link.STL": {
+      "classification": "critical",
+      "sha256": "544298d0ea1088f5b276a10cc6a6a9e533efdd91594955fdc956c46211d07f83"
+    },
+    "GR00T-WholeBodyControl/decoupled_wbc/control/robot_model/model_data/g1/meshes/right_hand_thumb_1_link.STL": {
+      "classification": "critical",
+      "sha256": "0a9a820da8dd10f298778b714f1364216e8a5976f4fd3a05689ea26327d44bf6"
+    },
+    "GR00T-WholeBodyControl/decoupled_wbc/control/robot_model/model_data/g1/meshes/right_hand_thumb_2_link.STL": {
+      "classification": "critical",
+      "sha256": "3f1bfb37668e8f61801c8d25f171fa1949e08666be86c67acad7e0079937cc45"
+    },
+    "GR00T-WholeBodyControl/decoupled_wbc/control/robot_model/model_data/g1/meshes/right_hip_pitch_link.STL": {
+      "classification": "critical",
+      "sha256": "e4f3c99d7f4a7d34eadbef9461fc66e3486cb5442db1ec50c86317d459f1a9c6"
+    },
+    "GR00T-WholeBodyControl/decoupled_wbc/control/robot_model/model_data/g1/meshes/right_hip_roll_link.STL": {
+      "classification": "critical",
+      "sha256": "4c254ef66a356f492947f360dd931965477b631e3fcc841f91ccc46d945d54f6"
+    },
+    "GR00T-WholeBodyControl/decoupled_wbc/control/robot_model/model_data/g1/meshes/right_hip_yaw_link.STL": {
+      "classification": "critical",
+      "sha256": "e479c2936ca2057e9eb2f7dff6c189b7419d7b8484dea0b298cbb36a2a6aa668"
+    },
+    "GR00T-WholeBodyControl/decoupled_wbc/control/robot_model/model_data/g1/meshes/right_knee_link.STL": {
+      "classification": "critical",
+      "sha256": "63c4008449c9bbe701a6e2b557b7a252e90cf3a5abcf54cee46862b9a69f8ec8"
+    },
+    "GR00T-WholeBodyControl/decoupled_wbc/control/robot_model/model_data/g1/meshes/right_shoulder_pitch_link.STL": {
+      "classification": "critical",
+      "sha256": "24cdb387e0128dfe602770a81c56cdce3a0181d34d039a11d1aaf8819b7b8c02"
+    },
+    "GR00T-WholeBodyControl/decoupled_wbc/control/robot_model/model_data/g1/meshes/right_shoulder_roll_link.STL": {
+      "classification": "critical",
+      "sha256": "962b97c48f9ce9e8399f45dd9522e0865d19aa9fd299406b2d475a8fc4a53e81"
+    },
+    "GR00T-WholeBodyControl/decoupled_wbc/control/robot_model/model_data/g1/meshes/right_shoulder_yaw_link.STL": {
+      "classification": "critical",
+      "sha256": "a0b76489271da0c72461a344c9ffb0f0c6e64f019ea5014c1624886c442a2fe5"
+    },
+    "GR00T-WholeBodyControl/decoupled_wbc/control/robot_model/model_data/g1/meshes/right_wrist_pitch_link.STL": {
+      "classification": "critical",
+      "sha256": "d22f8f3b3127f15a63e5be1ee273cd5075786c3142f1c3d9f76cbf43d2a26477"
+    },
+    "GR00T-WholeBodyControl/decoupled_wbc/control/robot_model/model_data/g1/meshes/right_wrist_roll_link.STL": {
+      "classification": "critical",
+      "sha256": "a7ee9212ff5b94d6cb7f52bb1bbf3f352194d5b598acff74f4c77d340c5b344f"
+    },
+    "GR00T-WholeBodyControl/decoupled_wbc/control/robot_model/model_data/g1/meshes/right_wrist_yaw_link.STL": {
+      "classification": "critical",
+      "sha256": "bc9dece2d12509707e0057ba2e48df8f3d56db0c79410212963a25e8a50f61a6"
+    },
+    "GR00T-WholeBodyControl/decoupled_wbc/control/robot_model/model_data/g1/meshes/torso_link_rev_1_0.STL": {
+      "classification": "critical",
+      "sha256": "11ddb46f2098efbbd8816b1d65893632d8e78be936376c7cdcd6771899ccc723"
+    },
+    "GR00T-WholeBodyControl/decoupled_wbc/control/robot_model/model_data/g1/meshes/waist_roll_link_rev_1_0.STL": {
+      "classification": "critical",
+      "sha256": "b67c347a05abc3e8ddae600d98a082bee273bb39f8e651647708b0a7140a8a97"
+    },
+    "GR00T-WholeBodyControl/decoupled_wbc/control/robot_model/model_data/g1/meshes/waist_yaw_link_rev_1_0.STL": {
+      "classification": "critical",
+      "sha256": "ec6db442b11f25eed898b5add07940c85d804f300de24dcbd264ccd8be7d554c"
+    },
+    "GR00T-WholeBodyControl/gear_sonic/envs/env_utils/joint_utils.py": {
+      "classification": "critical",
+      "sha256": "b69a07f6bd1850370f8b7d6161e9e099222eebc6eec967b3dc5a936bc8b87f4a"
+    },
+    "GR00T-WholeBodyControl/gear_sonic/utils/mujoco_sim/__init__.py": {
+      "classification": "critical",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "GR00T-WholeBodyControl/gear_sonic/utils/mujoco_sim/base_sim.py": {
+      "classification": "critical",
+      "sha256": "15cd5a48e60dd34eef3696783b4d1def15ecb1ff9f69bb76c592c24e2b500dcb"
+    },
+    "GR00T-WholeBodyControl/gear_sonic/utils/mujoco_sim/configs.py": {
+      "classification": "critical",
+      "sha256": "06945b00653e7a8b8f3a4adfda64ad03b925be59ceb5c1482b4cf94ca273bff8"
+    },
+    "GR00T-WholeBodyControl/gear_sonic/utils/mujoco_sim/image_publish_utils.py": {
+      "classification": "critical",
+      "sha256": "3ffce7c7beae200db8de7422662eff3b7c1779bcb72a5d3eb2af92ac0f680233"
+    },
+    "GR00T-WholeBodyControl/gear_sonic/utils/mujoco_sim/metric_utils.py": {
+      "classification": "critical",
+      "sha256": "ce725c41c67140816aa980eb5e57b33e19b55d53af63056372506a82f294254e"
+    },
+    "GR00T-WholeBodyControl/gear_sonic/utils/mujoco_sim/robot.py": {
+      "classification": "critical",
+      "sha256": "9edd458c8c9397b57166f9f00ce951171b951d19144a47c2f1ef411e1ee224aa"
+    },
+    "GR00T-WholeBodyControl/gear_sonic/utils/mujoco_sim/sensor_server.py": {
+      "classification": "critical",
+      "sha256": "968f3dfee1b70eb743024e72b129c85f874272580cf4fa3be994df7dcf8cb9a7"
+    },
+    "GR00T-WholeBodyControl/gear_sonic/utils/mujoco_sim/sim_utils.py": {
+      "classification": "critical",
+      "sha256": "e99ca73a9403a3bfb0e87b4add2da09f403a0b2486f8ea508a66fa39f20a5ce5"
+    },
+    "GR00T-WholeBodyControl/gear_sonic/utils/mujoco_sim/simulator_factory.py": {
+      "classification": "critical",
+      "sha256": "b503df6c15ad7ac5411167be75265b63232f1e0efabedd2547e8a6c117728e29"
+    },
+    "GR00T-WholeBodyControl/gear_sonic/utils/mujoco_sim/unitree_sdk2py_bridge.py": {
+      "classification": "critical",
+      "sha256": "9873d67aa6b9dcbe2ceba2c9d0a8810ba0e303fbd3fc3a6bcfde24fb111ab3a3"
+    },
+    "GR00T-WholeBodyControl/gear_sonic/utils/mujoco_sim/wbc_configs/g1_29dof_sonic_model12.yaml": {
+      "classification": "critical",
+      "sha256": "28a7fb6b80692b081e880d11662a63fe179c7bb31354c3a98b9dbedc624abfae"
+    },
+    "GR00T-WholeBodyControl/gear_sonic_deploy/policy/release/model_decoder.onnx": {
+      "classification": "critical",
+      "sha256": "c7241a123eaa36b5d64bad19540efde93cac1ad443bd4572fd12ca99898118ed"
+    },
+    "GR00T-WholeBodyControl/gear_sonic_deploy/policy/release/model_encoder.onnx": {
+      "classification": "critical",
+      "sha256": "013ab0287236aa2721e13f1e936d699db982302d0de0bfcdae76d5c3245362d3"
+    },
+    "GR00T-WholeBodyControl/gear_sonic_deploy/policy/release/observation_config.yaml": {
+      "classification": "critical",
+      "sha256": "466d05947c78af6c76388adfb86e3a2a77b2a1d921a64883ed3d085ebf58de1b"
+    },
+    "GR00T-WholeBodyControl/gear_sonic_deploy/src/g1/g1_deploy_onnx_ref/include/policy_parameters.hpp": {
+      "classification": "critical",
+      "sha256": "b9332adf07c2c9b75c9b1e0756e57c7a1c2a890d8bb0aa53c3f1905fb739b791"
+    },
+    "GR00T-WholeBodyControl/gear_sonic_deploy/src/g1/g1_deploy_onnx_ref/src/g1_deploy_onnx_ref.cpp": {
+      "classification": "critical",
+      "sha256": "4c89bf3064708ff1fffaa880b7cb067ea35d987e933ec853e54a516fcbaf29d3"
+    },
+    "canonical_va/__init__.py": {
+      "classification": "non-critical",
+      "sha256": "14eae216c352b3a0129d354a57b1f17077dc8e8623925a8c8aed8249a00e7117"
+    },
+    "canonical_va/aggregate.py": {
+      "classification": "non-critical",
+      "sha256": "ddf315734ddb04e063eb6c6322dc4b14fcac1a29cc6a36ac83d8f902b66cc53d"
+    },
+    "canonical_va/batch.py": {
+      "classification": "non-critical",
+      "sha256": "c0a049fbbfbbea7b1967502f65de4be7f5a6d9f692618de7eb758b990fd6d7fd"
+    },
+    "canonical_va/common.py": {
+      "classification": "critical",
+      "sha256": "5807ee472fe515366314fcbd9cc12145dd3dba4dd1b3bd57fbf9b6441ba944d8"
+    },
+    "canonical_va/compiler.py": {
+      "classification": "critical",
+      "sha256": "8d946c0f8a6dff4f0cda37e969c29a2cd47f1d64216b95b7ca441353f6035b6b"
+    },
+    "canonical_va/forensic.py": {
+      "classification": "non-critical",
+      "sha256": "2e75d00650a97eba0cac137a8508403eddc9a86608bbe4dc54c17a9328eee13e"
+    },
+    "canonical_va/native_build.py": {
+      "classification": "non-critical",
+      "sha256": "84af480776d2fe9ade305632470931eb78f22d4fbc5055ccad79c348a7c299ad"
+    },
+    "canonical_va/native_build/src/TRTInference/InferenceEngine.cpp": {
+      "classification": "critical",
+      "sha256": "ae70e6a032e5838c1739b53879ac4b1f9cca0ccae7fab5f28ab29101137ee393"
+    },
+    "canonical_va/native_build/src/audio_thread/audio_thread.cpp": {
+      "classification": "critical",
+      "sha256": "aa390f9669ace1f0fecb2a37b953ce4c5f920201e1387f1ac55f30d6c4a48a6b"
+    },
+    "canonical_va/native_build/src/audio_thread/audio_thread.hpp": {
+      "classification": "critical",
+      "sha256": "d48404f6e901b2b798512a39a1670ed80aab4f2d723c3e193e63807e6d7ed81b"
+    },
+    "canonical_va/native_build/src/g1/freq_test/src/freq_test.cpp": {
+      "classification": "critical",
+      "sha256": "7b6610ebfaa4d588e6f7a50872b6d45b3def89867cdb88265bceeabf6bb7fc44"
+    },
+    "canonical_va/native_build/src/g1/g1_deploy_onnx_ref/include/canonical_trace.hpp": {
+      "classification": "critical",
+      "sha256": "c7da9c4b55734f32e181022c6b1ec3a444f1fdc6ab5f52a9ef4d8dff7b058d6e"
+    },
+    "canonical_va/native_build/src/g1/g1_deploy_onnx_ref/include/control_policy.hpp": {
+      "classification": "critical",
+      "sha256": "fab5c31a6419d260d9bbf1123a3471bc087fd0199b45f99297bcad56d0c1ba56"
+    },
+    "canonical_va/native_build/src/g1/g1_deploy_onnx_ref/include/dex3_hands.hpp": {
+      "classification": "critical",
+      "sha256": "cba9e3317ab7aca24e71f70abcd641377ed91a1612ac387c29d55192bb27ab47"
+    },
+    "canonical_va/native_build/src/g1/g1_deploy_onnx_ref/include/encoder.hpp": {
+      "classification": "critical",
+      "sha256": "98e9ebdbb2a49b4f46b65c61ea721e9f7fca6136c6635b140cd4fd45b29a7403"
+    },
+    "canonical_va/native_build/src/g1/g1_deploy_onnx_ref/include/error_monitor.hpp": {
+      "classification": "critical",
+      "sha256": "938b7b84ce5617e61ca1814b2230d3119a7ae8ab3ce4e7e77912575bc4fcf89b"
+    },
+    "canonical_va/native_build/src/g1/g1_deploy_onnx_ref/include/file_sink.hpp": {
+      "classification": "critical",
+      "sha256": "37c39dfb7406dd81a5c02d38459488d59377b62144d9222a9cde8d4153ff91bd"
+    },
+    "canonical_va/native_build/src/g1/g1_deploy_onnx_ref/include/fk.hpp": {
+      "classification": "critical",
+      "sha256": "ec500585ccfb84ec588191c1b6a975b5c3bade2afd85c095b25091ba073eeb36"
+    },
+    "canonical_va/native_build/src/g1/g1_deploy_onnx_ref/include/input_interface/gamepad.hpp": {
+      "classification": "critical",
+      "sha256": "6e49b1faa4bcb63d5deadc319139eb2f9b3b6f366499f139fc070fbfc939d21b"
+    },
+    "canonical_va/native_build/src/g1/g1_deploy_onnx_ref/include/input_interface/gamepad_manager.hpp": {
+      "classification": "critical",
+      "sha256": "97bfda596b897b85c7e3c91690d5371b147d0fdeb48a31f539b5885998a5fa3e"
+    },
+    "canonical_va/native_build/src/g1/g1_deploy_onnx_ref/include/input_interface/input_command.hpp": {
+      "classification": "critical",
+      "sha256": "9cf158de8f65f16a0b7de6e32c55969d019126a75f4006a40f1a70bf0b68803d"
+    },
+    "canonical_va/native_build/src/g1/g1_deploy_onnx_ref/include/input_interface/input_interface.hpp": {
+      "classification": "critical",
+      "sha256": "f6e51c33c2f140b50d946b0a422b3b527b3f9a4e29a5afce0b775c7a3c09c3c4"
+    },
+    "canonical_va/native_build/src/g1/g1_deploy_onnx_ref/include/input_interface/interface_manager.hpp": {
+      "classification": "critical",
+      "sha256": "9612cf9280de7ddf7b080f9b3584b989cdbb4cb1ecaec1a8efc65c72947314d2"
+    },
+    "canonical_va/native_build/src/g1/g1_deploy_onnx_ref/include/input_interface/keyboard_handler.hpp": {
+      "classification": "critical",
+      "sha256": "e6067e5717c8bc7f92080ce045546d48f6eeb1b157fa5e446ca78c25bc8f5930"
+    },
+    "canonical_va/native_build/src/g1/g1_deploy_onnx_ref/include/input_interface/ros2_input_handler.hpp": {
+      "classification": "critical",
+      "sha256": "f70260704225f5607ddb3790a03e86665e8dda3bd26b72cffbfd7b822e809a28"
+    },
+    "canonical_va/native_build/src/g1/g1_deploy_onnx_ref/include/input_interface/streamed_motion_merger.hpp": {
+      "classification": "critical",
+      "sha256": "35f95a51e12910b7fd4a77c6ae12677181030526e393ee365509359ebbf79287"
+    },
+    "canonical_va/native_build/src/g1/g1_deploy_onnx_ref/include/input_interface/zmq_endpoint_interface.hpp": {
+      "classification": "critical",
+      "sha256": "0c182fa3dfe1310a07e07860b4653f56c24ef725eb4695a4e991f499ff03a39f"
+    },
+    "canonical_va/native_build/src/g1/g1_deploy_onnx_ref/include/input_interface/zmq_manager.hpp": {
+      "classification": "critical",
+      "sha256": "327723b44dcb3cc38c4ca65f9bcb2aebce06c062224f7d1a28738b8fc15e934b"
+    },
+    "canonical_va/native_build/src/g1/g1_deploy_onnx_ref/include/input_interface/zmq_packed_message_subscriber.hpp": {
+      "classification": "critical",
+      "sha256": "35d5142bfce39c0632e96dbb6f17316a0d200f044c62f1f7e9edabfa351452c4"
+    },
+    "canonical_va/native_build/src/g1/g1_deploy_onnx_ref/include/localmotion_kplanner.hpp": {
+      "classification": "critical",
+      "sha256": "2cd8fcd975e01017f3b3d9a32a2d0e6abc9bf4bdf4a0a9503f9bf4a9f080b34b"
+    },
+    "canonical_va/native_build/src/g1/g1_deploy_onnx_ref/include/localmotion_kplanner_onnx.hpp": {
+      "classification": "critical",
+      "sha256": "c9b70e04c6a1ddff3be83700342c48810b641907aa26847ec15bcc5034fcd9ba"
+    },
+    "canonical_va/native_build/src/g1/g1_deploy_onnx_ref/include/localmotion_kplanner_tensorrt.hpp": {
+      "classification": "critical",
+      "sha256": "969439193b8db5c352cd13efaba4cf6478fac69dc1305f93d22f1beb41d25c1a"
+    },
+    "canonical_va/native_build/src/g1/g1_deploy_onnx_ref/include/math_utils.hpp": {
+      "classification": "critical",
+      "sha256": "d85de60b9f2c6a4d26b1380264b172b3380200138173998f2a64660310f3c4d5"
+    },
+    "canonical_va/native_build/src/g1/g1_deploy_onnx_ref/include/motion_data_reader.hpp": {
+      "classification": "critical",
+      "sha256": "0fa19bc0fff66087e0eb47e41a8f0dbd0913fbb76e9409d4d57e84a04a7572b3"
+    },
+    "canonical_va/native_build/src/g1/g1_deploy_onnx_ref/include/motor_gain_scaling.hpp": {
+      "classification": "critical",
+      "sha256": "647cebb180b172720297d354408b7c37c3c7cf28280baa3151abcb47ffbcbade"
+    },
+    "canonical_va/native_build/src/g1/g1_deploy_onnx_ref/include/musa_inference.hpp": {
+      "classification": "critical",
+      "sha256": "82b05015d87319763a76c9adf1d85cd148f22344339db515d40e02c57877f7b7"
+    },
+    "canonical_va/native_build/src/g1/g1_deploy_onnx_ref/include/observation_config.hpp": {
+      "classification": "critical",
+      "sha256": "8085f7dcdd0f265001ab18663ace0353e7f07bfa2fa5f6c005b9c0c8e9c5c9d6"
+    },
+    "canonical_va/native_build/src/g1/g1_deploy_onnx_ref/include/ort_session.hpp": {
+      "classification": "critical",
+      "sha256": "9ceb0d2c8230c90f74703fe8c477cce2e9e0ee87ebbf8b5a21d0995ec03acdbe"
+    },
+    "canonical_va/native_build/src/g1/g1_deploy_onnx_ref/include/output_interface/output_interface.hpp": {
+      "classification": "critical",
+      "sha256": "6e3d2434d7988c42e5b420dc49832c36c01d3e3c1f606cc9ab033f752ac09d08"
+    },
+    "canonical_va/native_build/src/g1/g1_deploy_onnx_ref/include/output_interface/ros2_output_handler.hpp": {
+      "classification": "critical",
+      "sha256": "c84de8865a77c4a013eb57b191cdff0ba2b04756b626781f94651c3db4fbe270"
+    },
+    "canonical_va/native_build/src/g1/g1_deploy_onnx_ref/include/output_interface/zmq_output_handler.hpp": {
+      "classification": "critical",
+      "sha256": "50c39ae3d7f10eb1ce8e9ef328615f0c8baf6b45851c89beb9d8c105d91f1ccf"
+    },
+    "canonical_va/native_build/src/g1/g1_deploy_onnx_ref/include/policy_parameters.hpp": {
+      "classification": "critical",
+      "sha256": "b9332adf07c2c9b75c9b1e0756e57c7a1c2a890d8bb0aa53c3f1905fb739b791"
+    },
+    "canonical_va/native_build/src/g1/g1_deploy_onnx_ref/include/robot_parameters.hpp": {
+      "classification": "critical",
+      "sha256": "ba217ec0ec730d9b2049ade5f140cae97617da03ddfd4d5765c99761caa45f11"
+    },
+    "canonical_va/native_build/src/g1/g1_deploy_onnx_ref/include/state_logger.hpp": {
+      "classification": "critical",
+      "sha256": "d09a94c935a5deeede9f02d8569eb6c067ed29e02a5eba5e7432fc5040e11f99"
+    },
+    "canonical_va/native_build/src/g1/g1_deploy_onnx_ref/include/utils.hpp": {
+      "classification": "critical",
+      "sha256": "bf35c0c3160bd9c8eea53e85ee1a9a64ebad689d8ece5c6b2e0da97905a6b39b"
+    },
+    "canonical_va/native_build/src/g1/g1_deploy_onnx_ref/src/cnpy.cpp": {
+      "classification": "critical",
+      "sha256": "66ba14e7f40b4872ed34f673ff0eeb7d866fd77f69910edbbb18bf6a2f4a02f6"
+    },
+    "canonical_va/native_build/src/g1/g1_deploy_onnx_ref/src/file_sink.cpp": {
+      "classification": "critical",
+      "sha256": "093d74b4637a52e36d5f226c1791771a7f37e494aac9b767825f09fb8ea3040d"
+    },
+    "canonical_va/native_build/src/g1/g1_deploy_onnx_ref/src/fk.cpp": {
+      "classification": "critical",
+      "sha256": "2b73b889888a470fa49c6b8bf9e4be880be4c6e7344b698042f473f308905d43"
+    },
+    "canonical_va/native_build/src/g1/g1_deploy_onnx_ref/src/g1_deploy_onnx_ref.cpp": {
+      "classification": "critical",
+      "sha256": "25b5c9f025e5196cd12f8a205bb52f9705ab5f9c9b6e90a2535ff0da924e6e00"
+    },
+    "canonical_va/native_build/src/g1/g1_deploy_onnx_ref/src/motor_gain_scaling.cpp": {
+      "classification": "critical",
+      "sha256": "27dc15179fdf72d7cb1765961472b52f356ab586114259fcba58871c49495285"
+    },
+    "canonical_va/native_build/src/g1/g1_deploy_onnx_ref/src/state_logger.cpp": {
+      "classification": "critical",
+      "sha256": "21532714aed16d7aa0faa5b4e27b5665a5022defe24daeb795b594e92c659dc0"
+    },
+    "canonical_va/native_build/src/g1/g1_deploy_onnx_ref/tests/test_ros2.cpp": {
+      "classification": "critical",
+      "sha256": "dbe2c8bef1cee1f4f52486940a0bdab67abb3726ba02f6b36fd833d69bd433f4"
+    },
+    "canonical_va/native_build/src/g1/g1_deploy_onnx_ref/tests/zmq_pose_subscriber_test.cpp": {
+      "classification": "critical",
+      "sha256": "3e67fb4a04bb83ba860b40daba315b53cc0e2a35f9cc9b215145366581b5ecb7"
+    },
+    "canonical_va/native_build/src/g1/g1_deploy_onnx_ref/tests/zmq_python_sender_test.cpp": {
+      "classification": "critical",
+      "sha256": "77f1e3c1e95938de4538921a3b879639731bc01217bf136c05ef9d320e64fc36"
+    },
+    "canonical_va/native_build/src/g1/g1_deploy_onnx_ref/unit_tests/test_fk.cpp": {
+      "classification": "critical",
+      "sha256": "581dc7c4aaecb3200adfa861deff03669f93f1a17278fa08c8b9f84226fa51d7"
+    },
+    "canonical_va/native_build/src/g1/g1_deploy_onnx_ref/unit_tests/test_main.cpp": {
+      "classification": "critical",
+      "sha256": "6e5581504afa789d7447d337adb82df9bde9253c0293d80eb25332d8503e124a"
+    },
+    "canonical_va/native_build/target/release/g1_deploy_onnx_ref": {
+      "classification": "critical",
+      "sha256": "229772cd6eea5db0654db32bce36da754674b5166ada8cdf699c2fc1ef2adf90"
+    },
+    "canonical_va/native_forensic.py": {
+      "classification": "non-critical",
+      "sha256": "1f0c28dcfe786cc21631462a3e33dc9721f29092c5b1acd0e00e03b43c12ea27"
+    },
+    "canonical_va/native_replay.py": {
+      "classification": "critical",
+      "sha256": "bfcbc30021193e5a3da43109a7ba6f0ee85a251344ea9af8422cb52685a8e37a"
+    },
+    "canonical_va/native_scene.py": {
+      "classification": "critical",
+      "sha256": "3a9e542519acb0ba1835bc912698d15b556d3c7c2c7e39c46ba56d1c92ffe6f6"
+    },
+    "canonical_va/native_truth.py": {
+      "classification": "critical",
+      "sha256": "639bf85deaf885954948f19eb28c81aef61f072758ae2a36f995361430cbf1b1"
+    },
+    "canonical_va/pipeline.py": {
+      "classification": "non-critical",
+      "sha256": "63f668df6150dc8840f2a73a81047d573de1ae7f98b59f59464a783a3277b47b"
+    },
+    "canonical_va/policy.py": {
+      "classification": "non-critical",
+      "sha256": "5972f9f13b14969079af00df931c64cab3b6125b8b228a64b720781c5a6cbf1d"
+    },
+    "canonical_va/prepare_pilot.py": {
+      "classification": "non-critical",
+      "sha256": "81c659960fa8a6b9230fccf33a106c237dadb162502b5b10eee6d7d4304f96c5"
+    },
+    "canonical_va/production.py": {
+      "classification": "non-critical",
+      "sha256": "2028a041c073707dc4e1df6548b414a8f41494d4e21e059b492a2957f874d0d7"
+    },
+    "canonical_va/rendering.py": {
+      "classification": "non-critical",
+      "sha256": "2593e4008378d724c92a6f5fed59c725224087fe43d580ad92d1c2cc194d8492"
+    },
+    "canonical_va/replay.py": {
+      "classification": "critical",
+      "sha256": "8f8091bc5ecfae8fabe2ef54f2fe21f0c44c1df9405d370d8fa214206d529489"
+    },
+    "canonical_va/runtime.py": {
+      "classification": "critical",
+      "sha256": "6250852cf8eeff64ef6a1bec88fc2ced1f0d6277ca9513824e35e6ca4a01a48d"
+    },
+    "canonical_va/runtime_contract.json": {
+      "classification": "critical",
+      "sha256": "cc461a35b26713ccf752c56c67fcbd11a42b5b7c37a1d147c2c10ccd3f8915c4"
+    },
+    "canonical_va/schema.py": {
+      "classification": "critical",
+      "sha256": "fa456e7a69e36d6e287b6f77a379b2614edec9d23285e38492bd7dc510a03b30"
+    },
+    "canonical_va/versioning.py": {
+      "classification": "critical",
+      "sha256": "d720df5c769e74a2293080cd26867edced27f2b12f01002f3b432ed228d1489a"
+    },
+    "dl-group2/configs/grasp_cases.json": {
+      "classification": "critical",
+      "sha256": "25a69154ff41e2d12627fcf7800e6ac4c4c4825304b1e66b9a8cf164b5635811"
+    },
+    "dl-group2/scenes/tabletop.xml": {
+      "classification": "critical",
+      "sha256": "e3a92089bb550afdb3aca43a5a8c7fb75f483836cd7a466ef56e39d34aabc19d"
+    },
+    "dl-group2/scripts/cases.py": {
+      "classification": "critical",
+      "sha256": "cb28e3871dfdd9d02054f48bf08f25145c5e7258b6865e6f693ff8e5841985ab"
+    },
+    "dl-group2/scripts/expert_trajectory.py": {
+      "classification": "mixed",
+      "critical_symbols": {
+        "JointMap": "9f1b2f50d03bcbc64b92055b99c7a17c239139ab0641b4e47af2a328db559e3d",
+        "__module_bindings__": "24318525de1268464e1c1f1278aafcc4dcf41321fef765892889462d8abc9914",
+        "deployment_order": "2a6427727e7696e4a3b29d4e0c9b05a28db3a15fdfd4db44931252ee661992b5",
+        "literal_assignment": "adfb3b253b1dd417b4ebd50a6afa1652fdf56acd496ffb2d9e69e2ce31d4fc03",
+        "orders": "a5792b5afb459d846cc58bd309021dab3b18da171fa279ab2a893477a3058f8a",
+        "robot_state": "0cc1908e0c72f3a481585c3eab8aa14d28d68d3168f5e8b54cb1194c90e16065"
+      },
+      "sha256": "ff0ee60591e63fa0c38674e531a253b3481e192145b887328ad32288efa5110a"
+    },
+    "dl-group2/scripts/generate_freebase_expert.py": {
+      "classification": "critical",
+      "sha256": "6f368428135389798955288adb7efb43f11829cf0f25b848e6f59b6e74c8fc8d"
+    },
+    "dl-group2/scripts/hand_trajectory_controller.py": {
+      "classification": "critical",
+      "sha256": "40c1fb759a315fa41af37de7b80f8123e3262d3ab775d04ee2a56d6992f613be"
+    },
+    "dl-group2/scripts/run_sonic_grasp.py": {
+      "classification": "mixed",
+      "critical_symbols": {
+        "CSVFollower": "e64d6f68db006bc4121da52267e1b818fb53dc1ccaf07c23b825494de8ac43bb",
+        "PlaybackCursor": "2ebf330781799e52dd1a8f2c6d81d7e46ece3d19d216e387591f730eaab84da2",
+        "TabletopDDS": "74291b91b7f1d7bb6a4eba3dc7fe80ff3ce495150c8be864a084bebf0ef6fb94",
+        "__module_bindings__": "9a6c5749542b0f1902f0a0b70913d976ed82a6fe1fef4ded8bf529ecb580ab68"
+      },
+      "sha256": "8564ca079eb6fb385566f861364676c039723ebebd2e22566bd921b15fa87c40"
+    },
+    "dl-group2/scripts/scene.py": {
+      "classification": "critical",
+      "sha256": "2d991287cd8937bb9460e0e5e393e3a73e07e784b8328944f6d39d0c4a9d4b5f"
+    }
+  }
+}

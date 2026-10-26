@@ -1,0 +1,15 @@
+quantity,value,source
+episodes_total,63,expert_datasets/train_dataset_v0/manifest.json
+samples_total,9488,expert_datasets/train_dataset_v0/manifest.json
+kimodo_episodes,19,expert_datasets/train_dataset_v0/manifest.json
+rule_based_episodes,44,expert_datasets/train_dataset_v0/manifest.json
+kimodo_samples,2888,expert_datasets/train_dataset_v0/manifest.json
+rule_based_samples,6600,expert_datasets/train_dataset_v0/manifest.json
+train_episodes,50,expert_datasets/train_dataset_v0/split.json
+val_episodes,13,expert_datasets/train_dataset_v0/split.json
+train_samples,7530,expert_datasets/train_dataset_v0/split.json
+val_samples,1958,expert_datasets/train_dataset_v0/split.json
+reference_hz,50,expert_datasets/train_dataset_v0/manifest.json
+kimodo_frames_per_episode,810,expert_datasets/train_dataset_v0/manifest.json
+rule_based_frames_per_episode,800,expert_datasets/train_dataset_v0/manifest.json
+rgb_model_resolution,128x128,expert_datasets/train_dataset_v0/manifest.json

@@ -1,0 +1,69 @@
+{
+  "version": "ardy_tabletop_segmented_native_history_v2",
+  "case": "center",
+  "duration_s": 16.2,
+  "seed": 2,
+  "physical_gpu": 7,
+  "prompt": "A standing person slowly raises the right hand outside the front edge of a table. | A standing person reaches the right hand over the table and lowers it beside a red cube. | A standing person steadily grasps a red cube with the right hand. | A standing person slowly lifts a red cube with the right hand. | A standing person holds a red cube steadily in the right hand above the table.",
+  "diffusion_steps": 10,
+  "cfg_weight": [
+    2,
+    4
+  ],
+  "adapter": {
+    "position_halfwidth_m": 0.005,
+    "rotation_radius_rad": 0.04,
+    "entry_blend_s": 1.5,
+    "refinement_blend_s": [
+      1,
+      2
+    ],
+    "clearance_m": 0.03,
+    "clearance_blend_s": [
+      4,
+      7
+    ],
+    "clearance_decay_s": [
+      6,
+      8
+    ],
+    "hand_preclose_s": [
+      7,
+      8
+    ],
+    "hand_preclose_fraction": 0.4,
+    "close_end_s": 10,
+    "calibration": null,
+    "maximum_position_correction_m": 0.1,
+    "calibration": "/workspace/group2/workspace/fuyuhan/ardy_tabletop_segmented_20261008/config/center_segmented_tracking_seed0.json"
+  },
+  "evaluation": {
+    "minimum_lift_m": 0.1,
+    "minimum_hold_s": 2,
+    "robot_table_contact": "diagnostic; also report strict no-table result",
+    "runtime_body_ik": false,
+    "online_prompt": false
+  },
+  "prompts": [
+    "A standing person slowly raises the right hand outside the front edge of a table.",
+    "A standing person reaches the right hand over the table and lowers it beside a red cube.",
+    "A standing person steadily grasps a red cube with the right hand.",
+    "A standing person slowly lifts a red cube with the right hand.",
+    "A standing person holds a red cube steadily in the right hand above the table."
+  ],
+  "segmented": true,
+  "segment_frames": [
+    100,
+    100,
+    50,
+    50,
+    106
+  ],
+  "transition_frames": 5,
+  "source_frames": 406,
+  "source_fps": 25,
+  "reference_frames": 810,
+  "native_postprocessing": false,
+  "native_history_frames": 4,
+  "condition_codec": "matrix-preserving"
+}

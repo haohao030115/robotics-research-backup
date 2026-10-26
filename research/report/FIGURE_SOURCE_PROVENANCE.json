@@ -1,0 +1,109 @@
+{
+  "generated_by": "generate_report_assets.py (standard-library SVG/CSV writer)",
+  "figures": {
+    "system_architecture.svg": [
+      "docs/TECHNICAL_REPORT.md",
+      "docs/architecture_audit/PIPELINE_CALL_CHAINS.md",
+      "va_research/models/v4_1/model.py",
+      "data_factory/runtime",
+      "outputs/va_v4_1_kimodo_rule_20261009/closed_loop/provenance.json",
+      "va_research/models/v4/model.py"
+    ],
+    "generation_to_execution.svg": [
+      "docs/TECHNICAL_REPORT.md",
+      "docs/architecture_audit/PIPELINE_CALL_CHAINS.md",
+      "research/shared_adapter",
+      "data_factory/runtime",
+      "va_research/models/v4_1/model.py"
+    ],
+    "data_factory.svg": [
+      "data_factory/runtime",
+      "data_factory/dataset",
+      "va_research/models/v4/dataset.py",
+      "expert_datasets/train_dataset_v0/manifest.json"
+    ],
+    "temporal_alignment.svg": [
+      "outputs/va_v4_1_kimodo_rule_20261009/closed_loop/provenance.json",
+      "va_research/models/v4/runtime.py",
+      "docs/architecture_audit/PIPELINE_CALL_CHAINS.md"
+    ],
+    "dataset_structure.svg": [
+      "expert_datasets/train_dataset_v0/index.jsonl",
+      "expert_datasets/train_dataset_v0/manifest.json",
+      "va_research/models/v4/dataset.py"
+    ],
+    "va_model_architecture.svg": [
+      "va_research/models/v4/model.py",
+      "va_research/models/v4_1/model.py",
+      "outputs/va_v4_1_kimodo_rule_20261009/training_status.json"
+    ],
+    "multimodal_fusion.svg": [
+      "va_research/models/v4/model.py",
+      "docs/architecture_audit/PIPELINE_CALL_CHAINS.md"
+    ],
+    "prediction_heads.svg": [
+      "va_research/models/v4/model.py",
+      "va_research/models/v4_1/model.py"
+    ],
+    "auxiliary_tasks.svg": [
+      "va_research/models/v4/losses.py",
+      "va_research/models/v4_1/losses.py",
+      "outputs/va_v4_1_kimodo_rule_20261009/history.json"
+    ],
+    "closed_loop_inference.svg": [
+      "va_research/models/v4/runtime.py",
+      "va_research/models/v4_1/model.py",
+      "outputs/va_v4_1_kimodo_rule_20261009/closed_loop/report.json",
+      "outputs/va_v4_1_kimodo_rule_20261009/closed_loop/provenance.json"
+    ],
+    "dataset_composition.svg": [
+      "expert_datasets/train_dataset_v0/manifest.json",
+      "expert_datasets/train_dataset_v0/split.json"
+    ],
+    "training_validation_curves.svg": [
+      "outputs/va_v4_1_kimodo_rule_20261009/history.json"
+    ],
+    "offline_prediction_results.svg": [
+      "outputs/va_v4_1_kimodo_rule_20261009/offline_metrics.json"
+    ],
+    "native_physical_evaluation.svg": [
+      "outputs/va_v4_1_kimodo_rule_20261009/closed_loop/report.json",
+      "outputs/va_v4_1_kimodo_rule_20261009/closed_loop/renderer_worker.json"
+    ],
+    "model_development_evolution.svg": [
+      "outputs/va_v4_1_kimodo_rule_20261009/offline_metrics.json",
+      "outputs/va_v4_ablation/AUX-1_no_phase/offline_metrics.json",
+      "outputs/va_v4_ablation/AUX-2_no_progress/offline_metrics.json",
+      "outputs/va_v4_ablation/AUX-3_no_phase_progress/offline_metrics.json",
+      "outputs/va_v4_ablation/ARCH-1_mlp_fusion/offline_metrics.json",
+      "outputs/va_v4_ablation/ARCH-2_proprio_only/offline_metrics.json"
+    ]
+  },
+  "tables": {
+    "model_architecture.csv": [
+      "va_research/models/v4/model.py",
+      "va_research/models/v4_1/model.py"
+    ],
+    "training_configuration.csv": [
+      "va_research/models/v4_1/train_mixed.py",
+      "outputs/va_v4_1_kimodo_rule_20261009/training_status.json",
+      "expert_datasets/train_dataset_v0/manifest.json",
+      "expert_datasets/train_dataset_v0/split.json"
+    ],
+    "dataset_statistics.csv": [
+      "expert_datasets/train_dataset_v0/manifest.json",
+      "expert_datasets/train_dataset_v0/split.json"
+    ],
+    "offline_evaluation.csv": [
+      "outputs/va_v4_1_kimodo_rule_20261009/offline_metrics.json"
+    ],
+    "physical_evaluation.csv": [
+      "outputs/va_v4_1_kimodo_rule_20261009/closed_loop/report.json",
+      "outputs/va_v4_1_kimodo_rule_20261009/closed_loop/renderer_worker.json"
+    ],
+    "model_ablation.csv": [
+      "outputs/va_v4_ablation/*/offline_metrics.json",
+      "outputs/va_v4_1_kimodo_rule_20261009/offline_metrics.json"
+    ]
+  }
+}

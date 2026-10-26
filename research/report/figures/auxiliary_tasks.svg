@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Figure auxiliary_tasks.svg; source: va_research/models/v4/losses.py; va_research/models/v4_1/losses.py; outputs/va_v4_1_kimodo_rule_20261009/history.json -->
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="850" viewBox="0 0 1500 850">
+<metadata>Source evidence: va_research/models/v4/losses.py; va_research/models/v4_1/losses.py; outputs/va_v4_1_kimodo_rule_20261009/history.json</metadata>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#34495e"/></marker><marker id="arrowblue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2878b5"/></marker></defs>
+<rect x="0" y="0" width="1500" height="850" fill="#ffffff"/>
+<text x="40" y="45" font-family="DejaVu Sans,Arial,sans-serif" font-size="29px" font-weight="700" fill="#152238" text-anchor="start">Figure 9. Auxiliary task heads, labels and loss connections</text>
+<text x="40" y="75" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#516171" text-anchor="start">V4.1 adds readiness, velocity and reopening terms to the base V4 objective.</text>
+<rect x="45" y="120" width="290" height="150" rx="12" fill="#eef5fb" stroke="#2878b5" stroke-width="2"/>
+<text x="59" y="148" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#183b56" text-anchor="start">Body-token label</text>
+<text x="59" y="175" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">target body_tokens [B,10,64]</text>
+<text x="59" y="196" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">smooth L1 loss</text>
+<text x="59" y="217" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">weight 1.0</text>
+<rect x="45" y="335" width="290" height="150" rx="12" fill="#eef5fb" stroke="#2878b5" stroke-width="2"/>
+<text x="59" y="363" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#183b56" text-anchor="start">Hand-reference label</text>
+<text x="59" y="390" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">target hand_ref [B,50,14]</text>
+<text x="59" y="411" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">MSE loss</text>
+<text x="59" y="432" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">weight 1.0</text>
+<rect x="45" y="550" width="290" height="170" rx="12" fill="#fff8ec" stroke="#bd7b20" stroke-width="2"/>
+<text x="59" y="578" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#183b56" text-anchor="start">Derived phase/progress labels</text>
+<text x="59" y="605" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">phase from right-hand reference projection</text>
+<text x="59" y="626" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">OPEN &lt;= .05; HOLD &gt;= .95</text>
+<text x="59" y="647" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">progress clipped to [0,1]</text>
+<text x="59" y="668" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">phase CE weight .1; progress MSE .1</text>
+<rect x="445" y="125" width="320" height="130" rx="12" fill="#f4effb" stroke="#7653a6" stroke-width="2"/>
+<text x="459" y="153" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#183b56" text-anchor="start">Primary body loss</text>
+<text x="459" y="180" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">pred body_tokens</text>
+<text x="459" y="201" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">smooth-L1(body_pred, body_target)</text>
+<text x="459" y="222" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">L_body</text>
+<rect x="445" y="340" width="320" height="130" rx="12" fill="#f4effb" stroke="#7653a6" stroke-width="2"/>
+<text x="459" y="368" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#183b56" text-anchor="start">Primary hand loss</text>
+<text x="459" y="395" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">pred hand_ref</text>
+<text x="459" y="416" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">MSE(hand_pred, hand_target)</text>
+<text x="459" y="437" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">L_hand</text>
+<rect x="445" y="555" width="320" height="150" rx="12" fill="#f4effb" stroke="#7653a6" stroke-width="2"/>
+<text x="459" y="583" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#183b56" text-anchor="start">Phase and progress losses</text>
+<text x="459" y="610" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">pred phase_logits -&gt; CE</text>
+<text x="459" y="631" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">pred closure_progress -&gt; MSE</text>
+<text x="459" y="652" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">L_phase, L_progress</text>
+<rect x="880" y="110" width="300" height="145" rx="12" fill="#fceff0" stroke="#b44351" stroke-width="2"/>
+<text x="894" y="138" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#183b56" text-anchor="start">V4.1 readiness loss</text>
+<text x="894" y="165" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">grasp_ready_logit</text>
+<text x="894" y="186" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">label 1 iff phase &gt;= CLOSING</text>
+<text x="894" y="207" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">binary cross entropy</text>
+<text x="894" y="228" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">weight .1</text>
+<rect x="880" y="315" width="300" height="145" rx="12" fill="#fceff0" stroke="#b44351" stroke-width="2"/>
+<text x="894" y="343" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#183b56" text-anchor="start">Velocity consistency</text>
+<text x="894" y="370" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">hand_ref[t+1]-hand_ref[t]</text>
+<text x="894" y="391" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">smooth L1 to target velocity</text>
+<text x="894" y="412" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">weight .1</text>
+<rect x="880" y="520" width="300" height="145" rx="12" fill="#fceff0" stroke="#b44351" stroke-width="2"/>
+<text x="894" y="548" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#183b56" text-anchor="start">Reopening penalty</text>
+<text x="894" y="575" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">active phases CLOSING/HOLD</text>
+<text x="894" y="596" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">penalize negative predicted velocity</text>
+<text x="894" y="617" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">weight .02</text>
+<rect x="1260" y="260" width="180" height="230" rx="12" fill="#eaf7ef" stroke="#4b8a5a" stroke-width="2"/>
+<text x="1274" y="288" font-family="DejaVu Sans,Arial,sans-serif" font-size="18px" font-weight="700" fill="#183b56" text-anchor="start">Total objective</text>
+<text x="1274" y="315" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start">L = L_body + L_hand</text>
+<text x="1274" y="336" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start"> + .1 L_phase + .1 L_progress</text>
+<text x="1274" y="357" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start"> + .1 L_trigger</text>
+<text x="1274" y="378" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start"> + .1 L_velocity</text>
+<text x="1274" y="399" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#233240" text-anchor="start"> + .02 L_reopen</text>
+<line x1="335" y1="190" x2="445" y2="190" stroke="#34495e" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="335" y1="410" x2="445" y2="410" stroke="#34495e" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="335" y1="630" x2="445" y2="630" stroke="#34495e" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="765" y1="190" x2="1260" y2="365" stroke="#34495e" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="765" y1="410" x2="1260" y2="365" stroke="#34495e" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="765" y1="630" x2="1260" y2="365" stroke="#34495e" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="1180" y1="180" x2="1260" y2="365" stroke="#34495e" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="1180" y1="385" x2="1260" y2="365" stroke="#34495e" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="1180" y1="590" x2="1260" y2="365" stroke="#34495e" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="45" y="790" font-family="DejaVu Sans,Arial,sans-serif" font-size="14px" font-weight="400" fill="#516171" text-anchor="start">The final V4.1 history records trigger, velocity and reopen terms at epochs 1,10,...,50.</text>
+</svg>

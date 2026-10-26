@@ -1,0 +1,13 @@
+{
+  "seed": 4,
+  "epochs": 4000,
+  "batch_size": 32,
+  "learning_rate": 0.0003,
+  "loss_weights": [1.0, 1.0, 0.1, 0.1],
+  "body_horizon": 10,
+  "hand_horizon": 50,
+  "execution_horizon": 5,
+  "control_hz": 50,
+  "replan_hz": 10,
+  "offline_gate": {"token_mae": 0.01, "fsq_scalar_accuracy": 0.95, "hand_mae": 0.02, "moving_right_hand_mae": 0.03, "phase_accuracy": 0.98, "progress_mae": 0.03}
+}

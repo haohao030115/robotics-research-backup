@@ -1,0 +1,89 @@
+"""Event identities originate in the control loop, never reconstructed from log rows."""
+import time
+import numpy as np
+from PIL import Image
+from .common import dump, jsonl, table, digest, ROOT, require
+from .policy import Policy, infer
+from .runtime import Runtime
+
+
+def replay(a,m,out):
+    out.mkdir(); (out/'rgb').mkdir()
+    policy=Policy(a); rt=Runtime(a,m,policy.p)
+    dump(out/'metadata.json',dict(episode_id=m['episode_id'],producer_type=m['producer_type'],runtime=rt.config,
+        observation_semantic='PRE_ACTION exact physical snapshot before inference; no physics during inference/render',
+        token_semantic='release encoder encoded_tokens output: post-FSQ 64D',
+        decoder_semantic='exact input includes previous_action; current raw action stored immediately after same inference',
+        phases=m['phases'],reference_hz=50,rgb_hz=10))
+    dump(out/'provenance.json',dict(source_reference_sha256=m['source_reference_sha256'],
+        implementation_hashes={str(p.relative_to(ROOT)):digest(p) for p in (ROOT/'canonical_va').glob('*.py')},
+        runtime_contract_sha256=digest(ROOT/'canonical_va/runtime_contract.json'),**rt.config))
+    events=[]; obs=[]; post=[]; enc=[]; dec=[]; cmds=[]; phys=[]; refs=[]; rgb=[]; complete=False; failure=None
+    counts={}
+    def identity(kind):
+        counts[kind]=counts.get(kind,0)+1
+        return f"{m['episode_id']}:{kind}:{counts[kind]:06d}"
+    def event(kind,**kw):
+        events.append(dict(event_id=identity('event'),episode_id=m['episode_id'],event=kind,
+                           monotonic_ns=time.monotonic_ns(),simulation_time=float(rt.data.time),**kw))
+    step=0
+    try:
+        for frame in range(len(a['time_s'])):
+            oid,tid,did,cid,rid,hid,zid,pid=[identity(k) for k in ('observation','tick','decision','command','reference','handref','token','poststate')]
+            ids=dict(observation_id=oid,control_tick_id=tid,decision_id=did,reference_frame_id=rid)
+            snap=rt.snapshot(oid,step); obs.append(dict(snap,**ids,phase=m['phases'][frame]))
+            event('OBSERVE',**ids,sim_step_id=step,snapshot_sha256=snap['snapshot_sha256'])
+            if frame%5==0:
+                rgbid=identity('rgb'); path=f'rgb/{rgbid.split(":")[-1]}.png'
+                Image.fromarray(rt.render()).save(out/path)
+                rgb.append(dict(rgb_frame_id=rgbid,observation_id=oid,sim_step_id=step,simulation_time=float(rt.data.time),
+                                path=path,snapshot_sha256=snap['snapshot_sha256'],image_sha256=digest(out/path)))
+                event('RGB',**ids,rgb_frame_id=rgbid,sim_step_id=step)
+            refs.append(dict(**ids,hand_ref_id=hid,reference_index=frame,simulation_time=float(rt.data.time),
+                             hand_ref_q=a['hand_ref_q'][frame],body_ref_q=a['body_ref_q'][frame],body_ref_dq=a['body_ref_dq'][frame],
+                             root_ref_pos=a['root_ref_pos'][frame],root_ref_quat=a['root_ref_quat'][frame],phase=m['phases'][frame]))
+            x=policy.encoder_input(frame,snap['root_quat'].astype(np.float32).astype(float)); z=infer(policy.encoder,x)
+            enc.append(dict(**ids,token_id=zid,exact_encoder_input=x,current_encoder_output=z,current_post_fsq_64d_token=z))
+            event('ENCODE',**ids,token_id=zid)
+            previous=policy.previous.copy()
+            dx,proprio=policy.decoder_input(z,rt.data.qpos[rt.motor.qa],rt.data.qvel[rt.motor.va],snap['root_quat'],snap['root_velocity'][3:])
+            action=infer(policy.decoder,dx); target=policy.target(action); policy.previous=action.astype(float)
+            dec.append(dict(**ids,command_id=cid,token_id=zid,exact_decoder_input=dx,current_64d_token=z,proprio_history=proprio,
+                            previous_action=previous,current_raw_29d_action=action,postprocessed_body_target=target))
+            event('DECODE',**ids,command_id=cid,token_id=zid)
+            publish=time.monotonic_ns(); event('COMMAND_PUBLISH',**ids,command_id=cid)
+            # Actual synchronous mailbox hand-off: copied command consumed by the physics owner.
+            received_target=target.copy(); received_id=cid
+            receipt=time.monotonic_ns(); event('COMMAND_RECEIPT',**ids,command_id=received_id)
+            command=dict(**ids,command_id=cid,post_state_id=pid,token_id=zid,hand_ref_id=hid,publish_time=publish,receipt_time=receipt,
+                         time_unit='monotonic_ns',first_consuming_sim_step=step,last_consuming_sim_step=step+3,
+                         consuming_sim_step_ids=list(range(step,step+4)),body_target=received_target.tolist(),
+                         hand_ref_q=a['hand_ref_q'][frame].tolist(),transport='synchronous_in_process')
+            for _ in range(4):
+                before=rt.integration_state(); pre_time=float(rt.data.time)
+                rt.apply(received_target,float(a['time_s'][frame])); ctrl=rt.data.ctrl.copy()
+                event('APPLY',**ids,command_id=received_id,sim_step_id=step)
+                metrics=rt.step()
+                phys.append(dict(sim_step_id=step,command_id=received_id,decision_id=did,observation_id=oid,post_state_id=pid,
+                                 pre_time=pre_time,post_time=float(rt.data.time),pre_integration_state=before,
+                                 post_integration_state=rt.integration_state(),applied_ctrl=ctrl,
+                                 post_qpos=rt.data.qpos.copy(),post_qvel=rt.data.qvel.copy(),**metrics))
+                event('PHYSICS_STEP',**ids,command_id=received_id,sim_step_id=step)
+                step+=1
+            post.append(dict(rt.snapshot(pid,step),post_state_id=pid,observation_id=oid,decision_id=did,command_id=cid))
+            cmds.append(command); event('POST_STATE',**ids,command_id=cid,post_state_id=pid,sim_step_id=step)
+            if frame%100==0: print(f"tick={frame} sim={rt.data.time:.3f} lift={metrics['lift_m']:.4f} hold={metrics['hold_seconds']:.3f}",flush=True)
+            if rt.evaluator.fall_steps:
+                raise RuntimeError('Robot fell; stop single pilot without reset/retry')
+        complete=True
+    except Exception as exc:
+        failure=f'{type(exc).__name__}: {exc}'
+    finally:
+        rt.renderer.close()
+        for name,rows in [('observations',obs),('post_states',post),('references',refs),('sonic_encoder',enc),('sonic_decoder',dec),('physics',phys)]:
+            if rows: table(out/(name+'.npz'),rows)
+        jsonl(out/'timeline.jsonl',events); jsonl(out/'commands.jsonl',cmds); jsonl(out/'rgb/frames.jsonl',rgb)
+        report=rt.physical_report(complete); report['failure']=failure; report['control_ticks']=len(obs)
+        report['physics_steps']=len(phys); report['camera_valid']=True
+        dump(out/'replay_validation.json',report)
+    return report

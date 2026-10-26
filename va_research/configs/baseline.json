@@ -1,0 +1,66 @@
+{
+  "model_type": "baseline",
+  "data": {
+    "manifest": null,
+    "timestamp_unit": "seconds",
+    "control_hz": 50,
+    "state_period_tolerance_seconds": 0.002,
+    "alignment": "reference_frame_mapping",
+    "mapping_semantics": "rgb_capture_state_index",
+    "rgb_time_offset_seconds": 0.0,
+    "alignment_tolerance_seconds": 0.02,
+    "split_seed": 38,
+    "val_fraction": 0.2,
+    "keys": {
+      "state_timestamps": "timestamps",
+      "rgb_timestamps": "timestamps",
+      "body_q": "body_q",
+      "body_dq": "body_dq",
+      "body_ref_q": "body_ref_q",
+      "hand_q": "hand_q",
+      "hand_dq": "hand_dq",
+      "hand_ref_q": "hand_ref_q",
+      "head_rgb": "head_rgb",
+      "rgb_state_indices": "rgb_reference_frame_indices"
+    },
+    "episode_state_filename": null
+  },
+  "model": {
+    "horizon": 20,
+    "action_dim": 43,
+    "image_size": 128,
+    "d_model": 256,
+    "vision_channels": [
+      32,
+      64,
+      128
+    ],
+    "state_hidden": 256,
+    "fusion_hidden": 512,
+    "depth": 6,
+    "heads": 8,
+    "mlp_ratio": 4,
+    "language_enabled": false,
+    "language_max_bytes": 128,
+    "sampling_steps": 16
+  },
+  "training": {
+    "device": "musa",
+    "seed": 38,
+    "epochs": 10,
+    "max_steps": 100,
+    "batch_size_per_rank": 8,
+    "num_workers": 2,
+    "lr": 0.0003,
+    "weight_decay": 0.01,
+    "grad_clip": 1.0,
+    "log_every": 10,
+    "checkpoint_every_epochs": 1,
+    "validation_sampling_batches": 2,
+    "output_dir": "outputs/baseline",
+    "normalization_min_std": 0.001,
+    "body_loss_weight": 1.0,
+    "hand_loss_weight": 1.0,
+    "disable_musa_ddp_runtime_timing": true
+  }
+}

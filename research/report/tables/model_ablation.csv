@@ -1,0 +1,7 @@
+variant_label,fusion_variant,auxiliary_ablation,token_mae,hand_mae,phase_accuracy,progress_mae,offline_gate,source
+V4.1 baseline,cross_attention,all,0.004182789009064436,0.0029544811695814133,0.993043839931488,0.004346785135567188,True,outputs/va_v4_1_kimodo_rule_20261009/offline_metrics.json
+No phase,cross_attention,no_phase,0.0030308235436677933,0.0028009475208818913,0.9944223761558533,0.00234584859572351,True,outputs/va_v4_ablation/AUX-1_no_phase/offline_metrics.json
+No progress,cross_attention,no_progress,0.0030839252285659313,0.0019743151497095823,0.9998672604560852,0.01414463296532631,True,outputs/va_v4_ablation/AUX-2_no_progress/offline_metrics.json
+No phase + progress,cross_attention,no_phase_progress,0.0034977642353624105,0.002232760889455676,0.9969456195831299,0.00794899370521307,True,outputs/va_v4_ablation/AUX-3_no_phase_progress/offline_metrics.json
+MLP fusion,mlp_fusion,all,0.003790096379816532,0.0023439775686711073,0.9989376068115234,0.0043645803816616535,True,outputs/va_v4_ablation/ARCH-1_mlp_fusion/offline_metrics.json
+Proprio only,proprio_only,all,0.003765182103961706,0.0039300560019910336,0.9992032647132874,0.006279295776039362,True,outputs/va_v4_ablation/ARCH-2_proprio_only/offline_metrics.json

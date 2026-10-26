@@ -1,0 +1,71 @@
+{
+  "episode_id": "pilot_0000",
+  "producer_type": "kimodo",
+  "reference_hz": 50,
+  "reference_complete": true,
+  "body_joint_names": [
+    "left_hip_pitch_joint",
+    "right_hip_pitch_joint",
+    "waist_yaw_joint",
+    "left_hip_roll_joint",
+    "right_hip_roll_joint",
+    "waist_roll_joint",
+    "left_hip_yaw_joint",
+    "right_hip_yaw_joint",
+    "waist_pitch_joint",
+    "left_knee_joint",
+    "right_knee_joint",
+    "left_shoulder_pitch_joint",
+    "right_shoulder_pitch_joint",
+    "left_ankle_pitch_joint",
+    "right_ankle_pitch_joint",
+    "left_shoulder_roll_joint",
+    "right_shoulder_roll_joint",
+    "left_ankle_roll_joint",
+    "right_ankle_roll_joint",
+    "left_shoulder_yaw_joint",
+    "right_shoulder_yaw_joint",
+    "left_elbow_joint",
+    "right_elbow_joint",
+    "left_wrist_roll_joint",
+    "right_wrist_roll_joint",
+    "left_wrist_pitch_joint",
+    "right_wrist_pitch_joint",
+    "left_wrist_yaw_joint",
+    "right_wrist_yaw_joint"
+  ],
+  "hand_joint_names": [
+    "left_hand_index_0_joint",
+    "left_hand_index_1_joint",
+    "left_hand_middle_0_joint",
+    "left_hand_middle_1_joint",
+    "left_hand_thumb_0_joint",
+    "left_hand_thumb_1_joint",
+    "left_hand_thumb_2_joint",
+    "right_hand_index_0_joint",
+    "right_hand_index_1_joint",
+    "right_hand_middle_0_joint",
+    "right_hand_middle_1_joint",
+    "right_hand_thumb_0_joint",
+    "right_hand_thumb_1_joint",
+    "right_hand_thumb_2_joint"
+  ],
+  "quaternion_convention": "wxyz",
+  "root_pose_frame": "world",
+  "units": {
+    "time_s": "s",
+    "body_ref_q": "rad",
+    "body_ref_dq": "rad/s",
+    "root_ref_pos": "m",
+    "root_ref_quat": "unitless",
+    "hand_ref_q": "rad"
+  },
+  "case": {
+    "id": "center",
+    "block_xy": [
+      0.4,
+      -0.15
+    ],
+    "block_yaw_deg": 0
+  }
+}

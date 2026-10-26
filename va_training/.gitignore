@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+checkpoints/*
+logs/*
+outputs/*
+!**/.gitkeep
+tests/fixtures/

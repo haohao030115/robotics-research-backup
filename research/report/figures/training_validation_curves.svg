@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Figure training_validation_curves.svg; source: outputs/va_v4_1_kimodo_rule_20261009/history.json -->
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="850" viewBox="0 0 1500 850">
+<metadata>Source evidence: outputs/va_v4_1_kimodo_rule_20261009/history.json</metadata>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#34495e"/></marker><marker id="arrowblue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2878b5"/></marker></defs>
+<rect x="0" y="0" width="1500" height="850" fill="#ffffff"/>
+<text x="40" y="45" font-family="DejaVu Sans,Arial,sans-serif" font-size="29px" font-weight="700" fill="#152238" text-anchor="start">Figure 12. Recorded V4.1 training and validation curves</text>
+<text x="40" y="75" font-family="DejaVu Sans,Arial,sans-serif" font-size="15px" font-weight="400" fill="#516171" text-anchor="start">Only recorded checkpoints (epochs 1, 10, 20, 30, 40, 50) are plotted.</text>
+<line x1="120" y1="390" x2="120" y2="130" stroke="#34495e" stroke-width="2" marker-end=""/>
+<line x1="120" y1="390" x2="680" y2="390" stroke="#34495e" stroke-width="2" marker-end=""/>
+<line x1="120.0" y1="390" x2="120.0" y2="130" stroke="#e1e6eb" stroke-width="1" stroke-dasharray="4 4" marker-end=""/>
+<text x="120.0" y="412" font-family="DejaVu Sans,Arial,sans-serif" font-size="12px" font-weight="400" fill="#516171" text-anchor="middle">0</text>
+<line x1="232.0" y1="390" x2="232.0" y2="130" stroke="#e1e6eb" stroke-width="1" stroke-dasharray="4 4" marker-end=""/>
+<text x="232.0" y="412" font-family="DejaVu Sans,Arial,sans-serif" font-size="12px" font-weight="400" fill="#516171" text-anchor="middle">10</text>
+<line x1="344.0" y1="390" x2="344.0" y2="130" stroke="#e1e6eb" stroke-width="1" stroke-dasharray="4 4" marker-end=""/>
+<text x="344.0" y="412" font-family="DejaVu Sans,Arial,sans-serif" font-size="12px" font-weight="400" fill="#516171" text-anchor="middle">20</text>
+<line x1="456.0" y1="390" x2="456.0" y2="130" stroke="#e1e6eb" stroke-width="1" stroke-dasharray="4 4" marker-end=""/>
+<text x="456.0" y="412" font-family="DejaVu Sans,Arial,sans-serif" font-size="12px" font-weight="400" fill="#516171" text-anchor="middle">30</text>
+<line x1="568.0" y1="390" x2="568.0" y2="130" stroke="#e1e6eb" stroke-width="1" stroke-dasharray="4 4" marker-end=""/>
+<text x="568.0" y="412" font-family="DejaVu Sans,Arial,sans-serif" font-size="12px" font-weight="400" fill="#516171" text-anchor="middle">40</text>
+<line x1="680.0" y1="390" x2="680.0" y2="130" stroke="#e1e6eb" stroke-width="1" stroke-dasharray="4 4" marker-end=""/>
+<text x="680.0" y="412" font-family="DejaVu Sans,Arial,sans-serif" font-size="12px" font-weight="400" fill="#516171" text-anchor="middle">50</text>
+<line x1="120" y1="390.0" x2="680" y2="390.0" stroke="#e1e6eb" stroke-width="1" stroke-dasharray="4 4" marker-end=""/>
+<text x="110" y="394.0" font-family="DejaVu Sans,Arial,sans-serif" font-size="12px" font-weight="400" fill="#516171" text-anchor="end">0</text>
+<line x1="120" y1="315.2088271937497" x2="680" y2="315.2088271937497" stroke="#e1e6eb" stroke-width="1" stroke-dasharray="4 4" marker-end=""/>
+<text x="110" y="319.2088271937497" font-family="DejaVu Sans,Arial,sans-serif" font-size="12px" font-weight="400" fill="#516171" text-anchor="end">0.002</text>
+<line x1="120" y1="240.41765438749945" x2="680" y2="240.41765438749945" stroke="#e1e6eb" stroke-width="1" stroke-dasharray="4 4" marker-end=""/>
+<text x="110" y="244.41765438749945" font-family="DejaVu Sans,Arial,sans-serif" font-size="12px" font-weight="400" fill="#516171" text-anchor="end">0.004</text>
+<line x1="120" y1="165.62648158124918" x2="680" y2="165.62648158124918" stroke="#e1e6eb" stroke-width="1" stroke-dasharray="4 4" marker-end=""/>
+<text x="110" y="169.62648158124918" font-family="DejaVu Sans,Arial,sans-serif" font-size="12px" font-weight="400" fill="#516171" text-anchor="end">0.006</text>
+<text x="400.0" y="438" font-family="DejaVu Sans,Arial,sans-serif" font-size="14px" font-weight="700" fill="#203a50" text-anchor="middle">epoch</text>
+<text x="65" y="260.0" font-family="DejaVu Sans,Arial,sans-serif" font-size="14px" font-weight="700" fill="#203a50" text-anchor="middle">validation loss</text>
+<path d="M 131.2,163.9 L 232.0,259.4 L 344.0,253.5 L 456.0,191.4 L 568.0,240.0 L 680.0,281.5" fill="none" stroke="#2878b5" stroke-width="3"/>
+<circle cx="131.2" cy="163.9" r="5" fill="#2878b5"/>
+<circle cx="232.0" cy="259.4" r="5" fill="#2878b5"/>
+<circle cx="344.0" cy="253.5" r="5" fill="#2878b5"/>
+<circle cx="456.0" cy="191.4" r="5" fill="#2878b5"/>
+<circle cx="568.0" cy="240.0" r="5" fill="#2878b5"/>
+<circle cx="680.0" cy="281.5" r="5" fill="#2878b5"/>
+<line x1="850" y1="390" x2="850" y2="130" stroke="#34495e" stroke-width="2" marker-end=""/>
+<line x1="850" y1="390" x2="1410" y2="390" stroke="#34495e" stroke-width="2" marker-end=""/>
+<line x1="850.0" y1="390" x2="850.0" y2="130" stroke="#e1e6eb" stroke-width="1" stroke-dasharray="4 4" marker-end=""/>
+<text x="850.0" y="412" font-family="DejaVu Sans,Arial,sans-serif" font-size="12px" font-weight="400" fill="#516171" text-anchor="middle">0</text>
+<line x1="962.0" y1="390" x2="962.0" y2="130" stroke="#e1e6eb" stroke-width="1" stroke-dasharray="4 4" marker-end=""/>
+<text x="962.0" y="412" font-family="DejaVu Sans,Arial,sans-serif" font-size="12px" font-weight="400" fill="#516171" text-anchor="middle">10</text>
+<line x1="1074.0" y1="390" x2="1074.0" y2="130" stroke="#e1e6eb" stroke-width="1" stroke-dasharray="4 4" marker-end=""/>
+<text x="1074.0" y="412" font-family="DejaVu Sans,Arial,sans-serif" font-size="12px" font-weight="400" fill="#516171" text-anchor="middle">20</text>
+<line x1="1186.0" y1="390" x2="1186.0" y2="130" stroke="#e1e6eb" stroke-width="1" stroke-dasharray="4 4" marker-end=""/>
+<text x="1186.0" y="412" font-family="DejaVu Sans,Arial,sans-serif" font-size="12px" font-weight="400" fill="#516171" text-anchor="middle">30</text>
+<line x1="1298.0" y1="390" x2="1298.0" y2="130" stroke="#e1e6eb" stroke-width="1" stroke-dasharray="4 4" marker-end=""/>
+<text x="1298.0" y="412" font-family="DejaVu Sans,Arial,sans-serif" font-size="12px" font-weight="400" fill="#516171" text-anchor="middle">40</text>
+<line x1="1410.0" y1="390" x2="1410.0" y2="130" stroke="#e1e6eb" stroke-width="1" stroke-dasharray="4 4" marker-end=""/>
+<text x="1410.0" y="412" font-family="DejaVu Sans,Arial,sans-serif" font-size="12px" font-weight="400" fill="#516171" text-anchor="middle">50</text>
+<line x1="850" y1="390.0" x2="1410" y2="390.0" stroke="#e1e6eb" stroke-width="1" stroke-dasharray="4 4" marker-end=""/>
+<text x="840" y="394.0" font-family="DejaVu Sans,Arial,sans-serif" font-size="12px" font-weight="400" fill="#516171" text-anchor="end">0</text>
+<line x1="850" y1="325.0" x2="1410" y2="325.0" stroke="#e1e6eb" stroke-width="1" stroke-dasharray="4 4" marker-end=""/>
+<text x="840" y="329.0" font-family="DejaVu Sans,Arial,sans-serif" font-size="12px" font-weight="400" fill="#516171" text-anchor="end">0.25</text>
+<line x1="850" y1="260.0" x2="1410" y2="260.0" stroke="#e1e6eb" stroke-width="1" stroke-dasharray="4 4" marker-end=""/>
+<text x="840" y="264.0" font-family="DejaVu Sans,Arial,sans-serif" font-size="12px" font-weight="400" fill="#516171" text-anchor="end">0.5</text>
+<line x1="850" y1="195.0" x2="1410" y2="195.0" stroke="#e1e6eb" stroke-width="1" stroke-dasharray="4 4" marker-end=""/>
+<text x="840" y="199.0" font-family="DejaVu Sans,Arial,sans-serif" font-size="12px" font-weight="400" fill="#516171" text-anchor="end">0.75</text>
+<line x1="850" y1="130.0" x2="1410" y2="130.0" stroke="#e1e6eb" stroke-width="1" stroke-dasharray="4 4" marker-end=""/>
+<text x="840" y="134.0" font-family="DejaVu Sans,Arial,sans-serif" font-size="12px" font-weight="400" fill="#516171" text-anchor="end">1</text>
+<text x="1130.0" y="438" font-family="DejaVu Sans,Arial,sans-serif" font-size="14px" font-weight="700" fill="#203a50" text-anchor="middle">epoch</text>
+<text x="795" y="260.0" font-family="DejaVu Sans,Arial,sans-serif" font-size="14px" font-weight="700" fill="#203a50" text-anchor="middle">metric</text>
+<path d="M 861.2,131.5 L 962.0,131.2 L 1074.0,131.2 L 1186.0,131.7 L 1298.0,131.2 L 1410.0,131.1" fill="none" stroke="#4b8a5a" stroke-width="3"/>
+<circle cx="861.2" cy="131.5" r="5" fill="#4b8a5a"/>
+<circle cx="962.0" cy="131.2" r="5" fill="#4b8a5a"/>
+<circle cx="1074.0" cy="131.2" r="5" fill="#4b8a5a"/>
+<circle cx="1186.0" cy="131.7" r="5" fill="#4b8a5a"/>
+<circle cx="1298.0" cy="131.2" r="5" fill="#4b8a5a"/>
+<circle cx="1410.0" cy="131.1" r="5" fill="#4b8a5a"/>
+<path d="M 861.2,267.8 L 962.0,268.2 L 1074.0,268.0 L 1186.0,267.8 L 1298.0,268.1 L 1410.0,268.1" fill="none" stroke="#b44351" stroke-width="3"/>
+<circle cx="861.2" cy="267.8" r="5" fill="#b44351"/>
+<circle cx="962.0" cy="268.2" r="5" fill="#b44351"/>
+<circle cx="1074.0" cy="268.0" r="5" fill="#b44351"/>
+<circle cx="1186.0" cy="267.8" r="5" fill="#b44351"/>
+<circle cx="1298.0" cy="268.1" r="5" fill="#b44351"/>
+<circle cx="1410.0" cy="268.1" r="5" fill="#b44351"/>
+<text x="120" y="760" font-family="DejaVu Sans,Arial,sans-serif" font-size="14px" font-weight="400" fill="#516171" text-anchor="start">Left: val_loss. Right: val_phase_accuracy and mean trigger probability recorded by V4.1 trainer.</text>
+<line x1="120" y1="805" x2="155" y2="805" stroke="#2878b5" stroke-width="4" marker-end=""/>
+<text x="165" y="810" font-family="DejaVu Sans,Arial,sans-serif" font-size="13px" font-weight="400" fill="#516171" text-anchor="start">val loss</text>
+<line x1="390" y1="805" x2="425" y2="805" stroke="#4b8a5a" stroke-width="4" marker-end=""/>
+<text x="435" y="810" font-family="DejaVu Sans,Arial,sans-serif" font-size="13px" font-weight="400" fill="#516171" text-anchor="start">phase accuracy</text>
+<line x1="660" y1="805" x2="695" y2="805" stroke="#b44351" stroke-width="4" marker-end=""/>
+<text x="705" y="810" font-family="DejaVu Sans,Arial,sans-serif" font-size="13px" font-weight="400" fill="#516171" text-anchor="start">trigger rate</text>
+</svg>

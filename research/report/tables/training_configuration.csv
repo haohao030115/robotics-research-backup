@@ -1,0 +1,14 @@
+field,value,source
+model_family,V4.1 (V4 policy + readiness head),va_research/models/v4_1/model.py
+dataset,expert_datasets/train_dataset_v0,expert_datasets/train_dataset_v0/manifest.json + expert_datasets/train_dataset_v0/split.json
+epochs,50,outputs/va_v4_1_kimodo_rule_20261009/training_status.json
+parameters,3502977,outputs/va_v4_1_kimodo_rule_20261009/training_status.json
+train_samples,7530,outputs/va_v4_1_kimodo_rule_20261009/training_status.json
+val_samples,1958,outputs/va_v4_1_kimodo_rule_20261009/training_status.json
+optimizer,"AdamW, lr=3e-4, weight_decay=0",va_research/models/v4_1/train_mixed.py
+batch_size,32,va_research/models/v4_1/train_mixed.py
+gradient_clip,10,va_research/models/v4_1/train_mixed.py
+seed,4,va_research/models/v4_1/train_mixed.py
+state_normalization,train mean/std; std clamp_min(0.05),va_research/models/v4_1/train_mixed.py
+loss_weights,"body=1, hand=1, phase=.1, progress=.1, trigger=.1, velocity=.1, reopen=.02",va_research/models/v4_1/train_mixed.py
+checkpoint,outputs/va_v4_1_kimodo_rule_20261009/checkpoint.pt,outputs/va_v4_1_kimodo_rule_20261009/training_status.json
