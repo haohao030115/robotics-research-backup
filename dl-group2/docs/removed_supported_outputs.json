@@ -1,0 +1,90 @@
+{
+  "timestamp": "2026-10-01T21:16:24.878796+08:00",
+  "reason": "User requested deletion of superseded fixed-pelvis trajectories",
+  "removed": [
+    {
+      "path": "outputs/expert_episodes/grasp_center_001",
+      "file_count": 556,
+      "logical_bytes": 94966804
+    },
+    {
+      "path": "outputs/expert_episodes/grasp_center_001_generation_draft",
+      "file_count": 73,
+      "logical_bytes": 3954096
+    },
+    {
+      "path": "outputs/expert_episodes/grasp_center_002",
+      "file_count": 261,
+      "logical_bytes": 65886128
+    },
+    {
+      "path": "outputs/expert_episodes/grasp_center_003",
+      "file_count": 179,
+      "logical_bytes": 21220289
+    },
+    {
+      "path": "outputs/expert_episodes/grasp_center_background_001",
+      "file_count": 224,
+      "logical_bytes": 37973928
+    },
+    {
+      "path": "outputs/expert_episodes/grasp_center_background_high_001",
+      "file_count": 73,
+      "logical_bytes": 7037324
+    },
+    {
+      "path": "outputs/expert_episodes/grasp_center_background_high_002",
+      "file_count": 150,
+      "logical_bytes": 29746361
+    },
+    {
+      "path": "outputs/expert_episodes/grasp_center_background_hold_001",
+      "file_count": 73,
+      "logical_bytes": 7036922
+    },
+    {
+      "path": "outputs/expert_episodes/grasp_center_background_slow_001",
+      "file_count": 205,
+      "logical_bytes": 61043667
+    },
+    {
+      "path": "outputs/expert_episodes/grasp_center_grounded_001",
+      "file_count": 336,
+      "logical_bytes": 64926777
+    },
+    {
+      "path": "outputs/expert_episodes/grasp_center_sonic_home_001",
+      "file_count": 73,
+      "logical_bytes": 3920818
+    },
+    {
+      "path": "outputs/references/target/grasp_center",
+      "file_count": 11,
+      "logical_bytes": 194352
+    },
+    {
+      "path": "outputs/references/actual/grasp_center_actual",
+      "file_count": 13,
+      "logical_bytes": 718739
+    },
+    {
+      "path": "outputs/experiments/sonic_tracking_actual_ab_20261001",
+      "file_count": 67,
+      "logical_bytes": 41410389
+    },
+    {
+      "path": "outputs/reports/sonic_reference_actual_audit.md",
+      "file_count": 1,
+      "logical_bytes": 3367
+    },
+    {
+      "path": "outputs/reports/sonic_reference_audit.md",
+      "file_count": 1,
+      "logical_bytes": 3367
+    }
+  ],
+  "preserved_expert": "outputs/expert_episodes/freebase_wbc_002",
+  "preserved_freebase_debug": "outputs/expert_episodes/freebase_wbc_001",
+  "status": "completed",
+  "total_logical_bytes_removed": 440043328
+}

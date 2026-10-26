@@ -1,0 +1,97 @@
+{
+  "returncode": 0,
+  "report": {
+    "physical_grasp_success": true,
+    "max_lift_m": 0.14610520917336078,
+    "final_lift_m": 0.13423460464927361,
+    "max_continuous_hold_seconds": 4.379999999999929,
+    "final_continuous_hold_seconds": 4.379999999999929,
+    "robot_table_contact_steps": 166,
+    "robot_table_contact_bodies": [
+      "left_hand_middle_0_link",
+      "left_hand_middle_1_link",
+      "left_wrist_yaw_link",
+      "right_hand_thumb_2_link"
+    ],
+    "fall_steps": 0,
+    "final_cube_contacts": [
+      {
+        "body": "right_hand_thumb_2_link",
+        "normal_force_n": 6.517864005842368
+      },
+      {
+        "body": "right_hand_thumb_2_link",
+        "normal_force_n": 6.7339327686711545
+      },
+      {
+        "body": "right_hand_thumb_2_link",
+        "normal_force_n": 6.494786433925905
+      },
+      {
+        "body": "right_hand_index_1_link",
+        "normal_force_n": 6.398258227082482
+      },
+      {
+        "body": "right_hand_index_1_link",
+        "normal_force_n": 6.428768836658944
+      },
+      {
+        "body": "right_hand_index_1_link",
+        "normal_force_n": 6.6318424068171815
+      }
+    ],
+    "criterion": {
+      "minimum_lift_m": 0.1,
+      "minimum_continuous_hold_s": 2.0,
+      "contacts": "positive normal-force right thumb AND index/middle; no cube/table contact",
+      "physical_only": true,
+      "cube_attachment_allowed": false,
+      "cube_teleport_after_reset_allowed": false,
+      "require_complete_finite_synchronized_sonic_hand_rollout": true,
+      "require_no_fall": true
+    },
+    "cube_attached": false,
+    "cube_teleported_during_rollout": false,
+    "expert_valid": true,
+    "failure_reason": [],
+    "episode_completed": true,
+    "recorded_frames": 650,
+    "expected_frames": 650,
+    "frame_coverage_complete": true,
+    "hand_synchronized": true,
+    "hand_applied_reference_max_error": 0.0,
+    "physics_hz": 200,
+    "physical_duration_seconds": 12.979999999999393,
+    "reference_duration_seconds": 12.980000000001004,
+    "sync_age_max_seconds": 0.00887441635131836,
+    "sonic_target_max_error_rad": 4.9824727563763105e-06,
+    "skipped_frames": [],
+    "encoder_mode": 0,
+    "encoder_mode_matches": true,
+    "sonic_body_command_steps": 2600,
+    "body_reference_rmse_rad": 0.11518565015085193
+  },
+  "command": [
+    "/userhome/cs5/u3684383/GR00T-WholeBodyControl/.venv_sim/bin/python",
+    "/userhome/cs5/u3684383/dl-group2/scripts/run_sonic_grasp.py",
+    "--episode",
+    "/tmp/freebase_cleanup_validation_o3x4wrwp/episode",
+    "--run-name",
+    "cleanup_replay",
+    "--no-images"
+  ],
+  "original_expert_untouched": true,
+  "audit": {
+    "files_valid": true,
+    "expert_valid": true,
+    "source_success": true
+  },
+  "runtime": {
+    "candidate_type": "cartesian_safe_003",
+    "elastic_band": "off",
+    "initialization_support": "none",
+    "body_startup_controller": "freebase-wbc",
+    "warmup_control_ticks": 0,
+    "pelvis_supported_during_final_rollout": "none"
+  }
+}

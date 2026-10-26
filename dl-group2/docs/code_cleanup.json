@@ -1,0 +1,126 @@
+{
+  "status": "completed",
+  "removed_scripts": {
+    "analyze_sonic_body_tracking.py": "2392679698c9a290a004b46c284eb3b3596b7cc59565f8e425ad082f8d8faf21",
+    "audit_sonic_reference.py": "61e92f918b0b2270000846c0bac982d2d69e38661e46e897432adee70e9f78f3",
+    "augment_cartesian_reference.py": "aafa67474fe53980426c7b377233c82a7a12660d1b69c18e312074c5fd99c49a",
+    "derive_measured_reference.py": "412ce359c2ec7ca1c37c3c53261e5b03c5047017627febea263502150110a66c",
+    "generate_expert_candidates.py": "6f608276ea5e7e1b14ec9f382e39c9d87320e1b7ebfe1dbc632c66852ab36b38",
+    "generate_sonic_reference.py": "c9d249ce14331ef3f2a7312aed1dcc23b216d046194cc7fe88e2ada12597326b",
+    "generate_sonic_reference_actual.py": "8080550d5c5a20089af505029c5ab28e0931ad2f924e61e7e4a8e1a908476559",
+    "grasp.py": "257b23cc3852df2cf6107f6af1fae0e41344a00084d6cfa0a20831304e77e862",
+    "install_sonic_deps_no_sudo.sh": "36d167dc1b97ee7d0eebc6ce7e2ef6efa75e2b3c606fd169ab087ddf03d981ce",
+    "pick_red_cube.py": "8bb53a7dc6a7a2cdf3911d23d6692a70415b1a65f5a98dae9af5066665517729",
+    "record_camera_headless.py": "f29bf251e82d440373326b43b8ea0a79fb876772ef9c52f0352aba24b88a1ca1",
+    "refine_sonic_candidate.py": "a46da3bcd2055944856c09370658737c7a72d13c2368f78e833d739a1baedd6f",
+    "run_sim_loop_multicam.py": "bc07a7ef1ca8f8f8885b5d4ead0dfe7ddc870de417973e2d11d85326379dbe2a",
+    "test_sonic_body_tracking.py": "764cc217029bc328c662c21fdacd0454787a80df9c0c4f50b35e372a3dd8b11a"
+  },
+  "official_repo": "/userhome/cs5/u3684383/GR00T-WholeBodyControl",
+  "official_patch_removed": "diff --git a/gear_sonic/utils/mujoco_sim/simulator_factory.py b/gear_sonic/utils/mujoco_sim/simulator_factory.py\nindex 008ae87..a25aca3 100644\n--- a/gear_sonic/utils/mujoco_sim/simulator_factory.py\n+++ b/gear_sonic/utils/mujoco_sim/simulator_factory.py\n@@ -15,10 +15,8 @@ def init_channel(config: Dict[str, Any]) -> None:\n     Args:\n         config: Configuration dictionary containing DOMAIN_ID and optionally INTERFACE\n     \"\"\"\n-    if config.get(\"INTERFACE\", None):\n-        ChannelFactoryInitialize(config[\"DOMAIN_ID\"], config[\"INTERFACE\"])\n-    else:\n-        ChannelFactoryInitialize(config[\"DOMAIN_ID\"])\n+    # DDS initialization is handled in BaseSimulator.\n+    pass\n \n \n class SimulatorFactory:\n",
+  "official_reference_removed": "gear_sonic_deploy/reference/example/grasp_center",
+  "preserved_episode": "outputs/expert_episodes/freebase_wbc_002",
+  "extraction_checks": "IK/control, CSV writer/exporter, joint-order parsers AST-identical",
+  "official_reference_files": [
+    "gear_sonic_deploy/reference/example/grasp_center/body_quat.csv",
+    "gear_sonic_deploy/reference/example/grasp_center/joint_pos.csv",
+    "gear_sonic_deploy/reference/example/grasp_center/info.txt",
+    "gear_sonic_deploy/reference/example/grasp_center/body_pos.csv",
+    "gear_sonic_deploy/reference/example/grasp_center/joint_vel.csv",
+    "gear_sonic_deploy/reference/example/grasp_center/timestamps.csv",
+    "gear_sonic_deploy/reference/example/grasp_center/hand_ref_q.csv",
+    "gear_sonic_deploy/reference/example/grasp_center/body_ang_vel.csv",
+    "gear_sonic_deploy/reference/example/grasp_center/body_lin_vel.csv",
+    "gear_sonic_deploy/reference/example/grasp_center/metadata.txt"
+  ],
+  "other_removed_files": {
+    "playground/test_tabletop.py": "99a6790268b6946f32d328c2572cb125e56988087994d62af4c762ad872d14fe",
+    "scenes/experimental/tabletop_scene.xml": "638a0d6005f17caa1e938f0b8089aa6555a0702999c1c31b94dd657ede2a2c0e",
+    "scenes/experimental/g1_tabletop_scene.xml": "2fc05a32014f8874317e121f7a7e6a9282f79fb988cee03eb80093cdb7a303d5",
+    "docs/expert_trajectory.md": "1f4ab2574ac5f8509a232dbd00bd6ba9f3b2981b4a53c0d700e4a445e6df2a3e",
+    "docs/sonic_diagnosis.md": "b67c4238151bc3d575c33f93bc73f4114c1922831a7bc3c22c29ce75afbb52c9",
+    "docs/layout_and_io.md": "c46d86168301597ad2c4e648c63316372c05a3cf035c32e8ad9f12137105a04b",
+    "docs/path_migration.json": "be5c9ac08f4a4171158f19b003a733070210da99afcbf1355dda56133ac994ef",
+    "MUJOCO_LOG.TXT": "cb9b0ce2b2f0b1ca2a600097add29269b58828a21c4462f3ae2dea74e6d13ba5"
+  },
+  "removed_failed_freebase_episode": {
+    "path": "outputs/expert_episodes/freebase_wbc_001",
+    "report": {
+      "physical_grasp_success": false,
+      "max_lift_m": 0.008561588603526182,
+      "final_lift_m": -0.00010775542021734807,
+      "max_continuous_hold_seconds": 0.0,
+      "final_continuous_hold_seconds": 0.0,
+      "robot_table_contact_steps": 161,
+      "robot_table_contact_bodies": [
+        "right_hand_thumb_2_link"
+      ],
+      "fall_steps": 0,
+      "final_cube_contacts": [
+        {
+          "body": "task_table",
+          "normal_force_n": 0.24524999987313223
+        },
+        {
+          "body": "task_table",
+          "normal_force_n": 0.24525000012767012
+        },
+        {
+          "body": "task_table",
+          "normal_force_n": 0.24525000012686785
+        },
+        {
+          "body": "task_table",
+          "normal_force_n": 0.24524999987232998
+        }
+      ],
+      "criterion": {
+        "minimum_lift_m": 0.1,
+        "minimum_continuous_hold_s": 2.0,
+        "contacts": "positive normal-force right thumb AND index/middle; no cube/table contact",
+        "physical_only": true,
+        "cube_attachment_allowed": false,
+        "cube_teleport_after_reset_allowed": false,
+        "require_complete_finite_synchronized_sonic_hand_rollout": true,
+        "require_no_fall": true
+      },
+      "cube_attached": false,
+      "cube_teleported_during_rollout": false,
+      "episode_completed": true,
+      "source_success": false,
+      "expert_valid": false,
+      "failure_reason": "source_physical_grasp_failed"
+    }
+  },
+  "scripts_before": 25,
+  "scripts_after": 13,
+  "extracted_modules": [
+    "grasp_reference.py",
+    "reference_io.py"
+  ],
+  "equivalence_check": "IK/reference exactly equal at 7 phases; all exporter files byte-identical",
+  "completed_at": "2026-10-01T21:29:42.574242+08:00",
+  "official_git_status": "clean",
+  "validation_report": "docs/cleanup_validation.json",
+  "physical_replay": {
+    "expert_valid": true,
+    "final_lift_m": 0.13423460464927361,
+    "final_hold_s": 4.379999999999929,
+    "frames": 650
+  },
+  "remaining_scripts": [
+    "cases.py",
+    "expert_trajectory.py",
+    "export_expert_episode.py",
+    "generate_freebase_expert.py",
+    "grasp_reference.py",
+    "hand_trajectory_controller.py",
+    "project_paths.py",
+    "reference_io.py",
+    "refine_freebase_reference.py",
+    "render_expert_rollout.py",
+    "run_sonic_grasp.py",
+    "scene.py",
+    "verify_expert_episode.py"
+  ]
+}

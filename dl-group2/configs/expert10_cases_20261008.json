@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "case_set_id": "expert10_bilateral_v1",
+  "reference_hz": 50,
+  "cases": [
+    {
+      "id": "center_right",
+      "block_xy": [
+        0.4,
+        -0.15
+      ],
+      "block_yaw_deg": 0,
+      "task_arm": "right"
+    },
+    {
+      "id": "near_right",
+      "block_xy": [
+        0.39,
+        -0.14
+      ],
+      "block_yaw_deg": 0,
+      "task_arm": "right"
+    },
+    {
+      "id": "outer_right",
+      "block_xy": [
+        0.39,
+        -0.16
+      ],
+      "block_yaw_deg": 0,
+      "task_arm": "right"
+    },
+    {
+      "id": "center_left",
+      "block_xy": [
+        0.4,
+        0.15
+      ],
+      "block_yaw_deg": 0,
+      "task_arm": "left"
+    },
+    {
+      "id": "near_left",
+      "block_xy": [
+        0.39,
+        0.14
+      ],
+      "block_yaw_deg": 0,
+      "task_arm": "left"
+    }
+  ],
+  "producer_counts": {
+    "kimodo": 4,
+    "rule_based": 3,
+    "ardy": 3
+  },
+  "assignment_note": "First ten independent attempts across five shared cases; full per-producer coverage requires later batches."
+}
